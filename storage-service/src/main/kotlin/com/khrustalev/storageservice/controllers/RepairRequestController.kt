@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RequestParam
 import org.springframework.web.bind.annotation.RestController
+import java.time.LocalDateTime
 
 @RestController
 @RequestMapping("/api/storage/repairRequest")
@@ -22,5 +23,10 @@ class RepairRequestController(private val repairRequestService: RepairRequestSer
     @PostMapping("/save")
     fun save(@RequestBody repairRequestDto: RepairRequestDto) : ResponseEntity<Boolean> {
         return ResponseEntity(repairRequestService.createRepairRequest(repairRequestDto), HttpStatus.OK)
+    }
+    @GetMapping("/actual-repair-request/by-car-number")
+    fun getActualRepairRequestForRepairProcess(@RequestParam("actualDate") actualDate: LocalDateTime,
+                                               @RequestParam("carNumber") carNumber: String) : ResponseEntity<MutableList<Long>> {
+        return ResponseEntity(repairRequestService.getActualForRepairProcess(actualDate, carNumber), HttpStatus.OK)
     }
 }

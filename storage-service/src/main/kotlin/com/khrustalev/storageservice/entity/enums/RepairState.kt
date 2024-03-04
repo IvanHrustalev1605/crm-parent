@@ -1,7 +1,7 @@
 package com.khrustalev.storageservice.entity.enums
 
 enum class RepairState(id: Int) {
-    NONE(0),
+    NEW(0),
     TAKE_TO_WORK(1),
     DIAGNOSTICS(2),
     SPARE_PARTS_ORDERING(3),

@@ -1,14 +1,17 @@
 package com.khrustalev.storageservice.dto
 
 import java.io.Serializable
+import java.time.LocalDateTime
 
 /**
  * DTO for {@link com.khrustalev.storageservice.entity.RepairRequest}
  */
 data class RepairRequestDto(
-    val id: Long? = null,
-    val requestDescription: String? = null,
-    val engineerId: Long? = null,
-    val carId: Long? = null,
-    val repairId: Long? = null
+    var id: Long? = null,
+    var requestDescription: String? = null,
+    var engineerId: Long? = null,
+    var carId: Long? = null,
+    var repairId: Long? = null,
+    var createDate: LocalDateTime? = null,
+    var requestNumber: Long? = null
 ) : Serializable

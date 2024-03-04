@@ -9,10 +9,10 @@ import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
 
 @RestController
-@RequestMapping("/test-data")
+@RequestMapping("/api/storage/")
 class GenerateTestDataController(private val generateValueService: GenerateValueService
 ) {
-    @GetMapping
+    @GetMapping("/test-data")
     fun generate() : ResponseEntity<Boolean> {
         return ResponseEntity(generateValueService.generateDbValues(), HttpStatus.CREATED)
     }

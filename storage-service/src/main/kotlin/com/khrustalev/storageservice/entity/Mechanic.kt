@@ -16,8 +16,8 @@ open class Mechanic {
     @Enumerated(EnumType.ORDINAL)
     open var employeePosition: EmployeePosition = EmployeePosition.MECHANIC
 
-    @ManyToOne
-    open var carRepairState: CarRepairState? = null
+    @ManyToMany(mappedBy = "mechanics")
+    open var carRepairState: MutableList<CarRepairState>? = null
 
 
 

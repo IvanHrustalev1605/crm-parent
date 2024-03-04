@@ -26,7 +26,8 @@ class CarRepairStateServiceImpl(private val storageFeignClient: StorageFeignClie
             carRepairState.carId = arrivalState.carId
             carRepairState.engineerId = arrivalState.engineerId
             carRepairState.stateChangeTime = LocalDateTime.now()
-            carRepairState.repairState = RepairState.NONE
+            carRepairState.repairState = RepairState.NEW
+            carRepairState.repairParts = repairInfoDto.repairParts
             carRepairState.application = repairInfoDto.application
             carRepairState.mechanicIds = repairInfoDto.mechanicIds
             carRepairState.repairProblems = repairInfoDto.repairProblems
@@ -37,6 +38,7 @@ class CarRepairStateServiceImpl(private val storageFeignClient: StorageFeignClie
         }
         return carRepairState
     }
+
 
     override fun createChangeRepairState(repairInfoDto: RepairInfoDto): CarRepairStateDto {
         val carRepairState = CarRepairStateDto()

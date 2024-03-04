@@ -24,8 +24,12 @@ open class Car() {
 
     @OneToMany(mappedBy = "car")
     open var tracks: MutableList<Track>? = null
+
     @OneToMany(mappedBy = "car")
     open var carArrivalState: MutableList<CarArrivalState>? = null
+
+    @OneToMany(mappedBy = "car", cascade = [CascadeType.REMOVE])
+    open var repairs: MutableList<Repair>? = null
 
 
     override fun equals(other: Any?): Boolean {

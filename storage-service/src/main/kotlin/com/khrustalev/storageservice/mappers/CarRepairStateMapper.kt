@@ -21,10 +21,7 @@ class CarRepairStateMapper(private val carService: CarService,
         repairParts = carRepairState.repairParts,
         repairProblems = carRepairState.repairProblems,
         carId = carRepairState.car!!.id,
-        mechanicIds = carRepairState.mechanics!!.stream()
-            .map { it.id!! }
-            .toList()
-            .toMutableList(),
+        mechanicIds = carRepairState.mechanics?.stream()?.map { it.id!! }?.toList(),
         engineerId = carRepairState.engineer!!.id
     )
     fun toEntity(carRepairStateDto: CarRepairStateDto): CarRepairState = CarRepairState(
@@ -36,6 +33,10 @@ class CarRepairStateMapper(private val carService: CarService,
         repairProblems = carRepairStateDto.repairProblems,
         car = if (carRepairStateDto.carId != null) carService.findById(carRepairStateDto.carId) else null,
         engineer = if (carRepairStateDto.engineerId != null) engineerService.findById(carRepairStateDto.engineerId) else null,
-        mechanics = if (!CollectionUtils.isEmpty(carRepairStateDto.mechanicIds)) mechanicService.getByIds(carRepairStateDto.mechanicIds!!) else null
+        mechanics = if (!CollectionUtils.isEmpty(carRepairStateDto.mechanicIds)) carRepairStateDto.mechanicIds?.let {
+            mechanicService.getByIds(
+                it
+            )
+        } else null
     )
 }

@@ -14,18 +14,50 @@ open class Repair {
     open var carArrivalTime: LocalDateTime? = null
     @Column
     open var endRepair: LocalDateTime? = null
+    @Column
+    open var actual: Boolean? = null
 
     @Enumerated(EnumType.ORDINAL)
-    open var repairState: RepairState? = RepairState.NONE
-
-    @OneToOne
-    open var repairRequest:RepairRequest? = null
+    open var repairState: RepairState? = RepairState.NEW
 
     @OneToMany(mappedBy = "repair")
+    open var repairRequests:MutableList<RepairRequest> = mutableListOf()
+
+    @OneToMany
     open var carRepairState: MutableList<CarRepairState>? = null
 
-    @OneToOne
+    @ManyToOne(cascade = [CascadeType.ALL])
     open var car: Car? = null
+
+    override fun equals(other: Any?): Boolean {
+        if (this === other) return true
+        if (javaClass != other?.javaClass) return false
+
+        other as Repair
+
+        if (id != other.id) return false
+        if (carArrivalTime != other.carArrivalTime) return false
+        if (endRepair != other.endRepair) return false
+        if (actual != other.actual) return false
+        if (repairState != other.repairState) return false
+        if (repairRequests != other.repairRequests) return false
+        if (carRepairState != other.carRepairState) return false
+        if (car != other.car) return false
+
+        return true
+    }
+
+    override fun hashCode(): Int {
+        var result = id?.hashCode() ?: 0
+        result = 31 * result + (carArrivalTime?.hashCode() ?: 0)
+        result = 31 * result + (endRepair?.hashCode() ?: 0)
+        result = 31 * result + (actual?.hashCode() ?: 0)
+        result = 31 * result + (repairState?.hashCode() ?: 0)
+        result = 31 * result + repairRequests.hashCode()
+        result = 31 * result + (carRepairState?.hashCode() ?: 0)
+        result = 31 * result + (car?.hashCode() ?: 0)
+        return result
+    }
 
 
 }

@@ -1,6 +1,7 @@
 package com.khrustalev.storageservice.entity
 
 import jakarta.persistence.*
+import java.time.LocalDateTime
 
 @Entity
 open class RepairRequest {
@@ -10,14 +11,17 @@ open class RepairRequest {
     open var id: Long? = null
     @Column
     open var requestDescription: String? = null
-
+    @Column
+    open var createDate: LocalDateTime? = null
+    @Column(unique = true)
+    open var requestNumber: Long? = null
     @ManyToOne
     open var engineer: Engineer? = null
 
     @ManyToOne
     open var car:Car? = null
 
-    @OneToOne(mappedBy = "repairRequest")
+    @ManyToOne
     open var repair: Repair? = null
 
 }

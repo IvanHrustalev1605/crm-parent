@@ -8,4 +8,5 @@ class RepairInfoDto {
     val repairProblems: String = ""
     val engineerId: Long? = null
     val carId: Long? = null
+    val repairStateIds: List<Long>? = null
 }

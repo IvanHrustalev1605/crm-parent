@@ -25,15 +25,16 @@ open class CarRepairState(
     @Column
     open var repairProblems: String? = null,
 
-    @OneToOne
+    @ManyToOne
     open var car: Car? = null,
 
-    @OneToMany(mappedBy = "carRepairState")
+    @ManyToMany
+    @JoinTable
     open var mechanics: MutableList<Mechanic>? = null,
 
     @ManyToOne
     open var engineer: Engineer? = null,
-    @ManyToOne
+    @ManyToOne(cascade = [CascadeType.ALL])
     open var repair: Repair? = null
 
 ) {
@@ -50,7 +51,6 @@ open class CarRepairState(
         if (repairParts != other.repairParts) return false
         if (repairProblems != other.repairProblems) return false
         if (car != other.car) return false
-        if (mechanics != other.mechanics) return false
         if (engineer != other.engineer) return false
 
         return true
@@ -64,7 +64,6 @@ open class CarRepairState(
         result = 31 * result + (repairParts?.hashCode() ?: 0)
         result = 31 * result + (repairProblems?.hashCode() ?: 0)
         result = 31 * result + (car?.hashCode() ?: 0)
-        result = 31 * result + (mechanics?.hashCode() ?: 0)
         result = 31 * result + (engineer?.hashCode() ?: 0)
         return result
     }

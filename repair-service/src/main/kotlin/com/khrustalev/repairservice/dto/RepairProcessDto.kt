@@ -6,13 +6,21 @@ import com.khrustalev.repairservice.dto.enums.RepairState
 import java.time.LocalDateTime
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-class RepairProcessDto {
+open class RepairProcessDto {
     @JsonProperty(value = "carArrivalTime")
     open var carArrivalTime: LocalDateTime? = null
+    @JsonProperty(value = "endRepair")
     open var endRepair: LocalDateTime? = null
-    open var repairState: RepairState? = RepairState.NONE
-    open var repairRequestId: Long? = null
+    @JsonProperty(value = "repairState")
+    open var repairState: RepairState? = RepairState.NEW
+    @JsonProperty(value = "repairRequestId")
+    open var repairRequestIds: MutableList<Long>? = null
+    @JsonProperty(value = "carId")
     open var carId: Long? = null
+    @JsonProperty(value = "createTime")
     open var createTime: LocalDateTime? = null
-    open var carRepairStateDtoList: MutableList<CarRepairStateDto>? = mutableListOf()
+    @JsonProperty(value = "carRepairState")
+    open var carRepairStatesIds: MutableList<Long>? = mutableListOf()
+    @JsonProperty(value = "actual")
+    open var actual: Boolean? = null
 }

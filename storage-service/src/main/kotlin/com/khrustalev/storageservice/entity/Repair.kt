@@ -21,6 +21,9 @@ open class Repair {
     @OneToOne
     open var repairRequest:RepairRequest? = null
 
+    @OneToMany(mappedBy = "repair")
+    open var carRepairState: MutableList<CarRepairState>? = null
+
     @OneToOne
     open var car: Car? = null
 

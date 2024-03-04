@@ -15,6 +15,12 @@ open class Mechanic {
 
     @Enumerated(EnumType.ORDINAL)
     open var employeePosition: EmployeePosition = EmployeePosition.MECHANIC
+
+    @ManyToOne
+    open var carRepairState: CarRepairState? = null
+
+
+
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
         if (javaClass != other?.javaClass) return false

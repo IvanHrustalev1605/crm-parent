@@ -8,8 +8,13 @@ open class RepairRequest {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     open var id: Long? = null
+    @Column
+    open var requestDescription: String? = null
 
-    @OneToOne
+    @ManyToOne
+    open var engineer: Engineer? = null
+
+    @ManyToOne
     open var car:Car? = null
 
     @OneToOne(mappedBy = "repairRequest")

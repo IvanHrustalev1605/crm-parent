@@ -13,4 +13,7 @@ open class Security {
     open var personInfo: PersonInfo? = null
     @Enumerated
     open var employeePosition: EmployeePosition = EmployeePosition.SECURITY
+    @OneToMany(mappedBy = "receivingSecurity")
+    open var carArrivalStates: MutableList<CarArrivalState>? = null
+
 }

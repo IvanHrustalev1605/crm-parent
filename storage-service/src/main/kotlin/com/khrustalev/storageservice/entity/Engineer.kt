@@ -12,6 +12,10 @@ open class Engineer {
 
     @Embedded
     open var personInfo:PersonInfo? = null
+
     @Enumerated(EnumType.ORDINAL)
     open val employeePosition: EmployeePosition = EmployeePosition.ENGINEER
+
+    @OneToMany(mappedBy = "engineer")
+    open var repairRequests: MutableList<RepairRequest>? = null
 }

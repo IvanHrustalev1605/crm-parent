@@ -24,6 +24,10 @@ open class Car() {
 
     @OneToMany(mappedBy = "car")
     open var tracks: MutableList<Track>? = null
+    @OneToMany(mappedBy = "car")
+    open var carArrivalState: MutableList<CarArrivalState>? = null
+
+
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
         if (javaClass != other?.javaClass) return false

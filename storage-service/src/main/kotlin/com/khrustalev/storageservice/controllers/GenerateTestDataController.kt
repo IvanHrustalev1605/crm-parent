@@ -10,15 +10,10 @@ import org.springframework.web.bind.annotation.RestController
 
 @RestController
 @RequestMapping("/test-data")
-class GenerateTestDataController(private val generateValueService: GenerateValueService,
-                                 private val driverService: DriverService
+class GenerateTestDataController(private val generateValueService: GenerateValueService
 ) {
     @GetMapping
     fun generate() : ResponseEntity<Boolean> {
         return ResponseEntity(generateValueService.generateDbValues(), HttpStatus.CREATED)
     }
-//    @GetMapping("/byId")
-//    fun findById(@RequestParam("id") id: Long) : ResponseEntity<DriverDto> {
-//        return ResponseEntity, HttpStatus.OK)
-//    }
 }

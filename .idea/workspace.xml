@@ -5,11 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a8831c50-c17b-4626-9402-a365a662022b" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources/d6bb1a80-6065-44ba-9b9b-2c9d22a22183.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/d6bb1a80-6065-44ba-9b9b-2c9d22a22183.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/d6bb1a80-6065-44ba-9b9b-2c9d22a22183/storage_v2/_src_/database/storage-service.Y0EIeg/schema/public.abK9xQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/d6bb1a80-6065-44ba-9b9b-2c9d22a22183/storage_v2/_src_/database/storage-service.Y0EIeg/schema/public.abK9xQ.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_04_03_2024_11_03__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_04_03_2024_11_03__Changes_.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -56,39 +52,39 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "DtoCreateDialog.IS_JSON_IGNORE_UNKNOWN_PROPERTIES": "true",
-    "RequestMappingsPanelOrder0": "0",
-    "RequestMappingsPanelOrder1": "1",
-    "RequestMappingsPanelWidth0": "75",
-    "RequestMappingsPanelWidth1": "75",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "com.google.cloudcode.ide_session_index": "20240304_0000",
-    "git-widget-placeholder": "master",
-    "jdk.selected.JAVA_MODULE": "openjdk-19",
-    "last_opened_file_path": "C:/IdeaProjects/crm-parent",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "SDKs",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.36206895",
-    "settings.editor.selected.configurable": "com.haulmont.jpb.databaseVersioning",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;DtoCreateDialog.IS_JSON_IGNORE_UNKNOWN_PROPERTIES&quot;: &quot;true&quot;,
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;com.google.cloudcode.ide_session_index&quot;: &quot;20240304_0000&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;openjdk-19&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/IdeaProjects/crm-parent&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;SDKs&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.36206895&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;com.haulmont.jpb.databaseVersioning&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "postgresql"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;postgresql&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CreateKotlinClassDialog.RecentsKey">
       <recent name="com.khrustalev.repairservice.dto" />
@@ -148,7 +144,8 @@
       <workItem from="1709294860644" duration="17005000" />
       <workItem from="1709392878862" duration="2100000" />
       <workItem from="1709450203244" duration="13480000" />
-      <workItem from="1709631557725" duration="15347000" />
+      <workItem from="1709631557725" duration="15599000" />
+      <workItem from="1709666976164" duration="307000" />
     </task>
     <servers />
   </component>
@@ -199,5 +196,10 @@
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
+    <watches-manager>
+      <configuration name="SpringBootApplicationConfigurationType">
+        <watch expression="((java.util.ArrayList)((Repair)toEntity).repairRequests).get(0)" custom="com.khrustalev.storageservice.entity.Repair,java.util.ArrayList" />
+      </configuration>
+    </watches-manager>
   </component>
 </project>

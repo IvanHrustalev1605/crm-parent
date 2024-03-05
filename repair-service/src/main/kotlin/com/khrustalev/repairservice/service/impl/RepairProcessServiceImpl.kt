@@ -45,8 +45,7 @@ class RepairProcessServiceImpl(private val storageFeignClient: StorageFeignClien
         repairRequestList: MutableList<Long>?,
         newRepairProcessState: Int): Boolean {
         val repairProcess = storageFeignClient.getRepairProcessById(repairProcessId)
-        repairProcess.repairRequestIds = mutableListOf()
-        repairProcess.carRepairStatesIds = mutableListOf(carRepairStateService.changeRepairState(repairInfoDto))
+        repairProcess.carRepairStatesIds!!.add(carRepairStateService.changeRepairState(repairInfoDto))
         if (!CollectionUtils.isEmpty(repairRequestList)) repairRequestList?.stream()?.forEach { repairProcess.repairRequestIds?.add(it) }
         repairProcess.repairProcessState = RepairProcessState.entries[newRepairProcessState]
         return storageFeignClient.saveRepairProcess(repairProcess)

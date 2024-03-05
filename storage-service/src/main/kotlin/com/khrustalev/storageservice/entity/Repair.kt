@@ -23,7 +23,7 @@ open class Repair {
     @OneToMany(targetEntity = RepairRequest::class)
     open var repairRequests:MutableList<RepairRequest> = mutableListOf()
 
-    @OneToMany
+    @OneToMany(cascade = [CascadeType.PERSIST, CascadeType.MERGE])
     open var carRepairState: MutableList<CarRepairState>? = null
 
     @ManyToOne(cascade = [CascadeType.ALL])

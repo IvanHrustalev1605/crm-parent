@@ -9,4 +9,6 @@ interface RepairRequestService {
     fun getAllRepairRequestByCarNumber(carNumber: String) : MutableList<RepairRequestDto>?
     fun getAllByIds(ids: MutableList<Long>) : MutableList<RepairRequest>
     fun getActualForRepairProcess(actualDate: LocalDateTime, carNumber: String) : MutableList<Long>
+    fun takeAgreed(id: Long) : RepairRequestDto?
+    fun getByRepairRequestNumber(number: Long): RepairRequestDto
 }

@@ -8,6 +8,7 @@ open class RepairRequestDto {
     open var engineerId: Long? = null
     open var carId: Long? = null
     open var repairId: Long? = null
+    open var agreed: Boolean? = null
     var createDate: LocalDateTime? = null
     var requestNumber: Long? = null
 

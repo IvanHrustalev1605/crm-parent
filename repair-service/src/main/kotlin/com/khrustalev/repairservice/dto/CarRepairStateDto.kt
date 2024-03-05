@@ -7,6 +7,8 @@ import java.time.LocalDateTime
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 class CarRepairStateDto {
+    @JsonProperty(value = "id")
+    var id: Long? = null
     @JsonProperty(value = "repairState")
     var repairState: RepairState? = null
     @JsonProperty(value = "stateChangeTime")

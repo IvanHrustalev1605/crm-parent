@@ -15,13 +15,12 @@ open class RepairRequest {
     open var createDate: LocalDateTime? = null
     @Column(unique = true)
     open var requestNumber: Long? = null
+    @Column
+    open var agreed: Boolean? = false
+
     @ManyToOne
     open var engineer: Engineer? = null
 
     @ManyToOne
     open var car:Car? = null
-
-    @ManyToOne
-    open var repair: Repair? = null
-
 }

@@ -33,10 +33,7 @@ open class CarRepairState(
     open var mechanics: MutableList<Mechanic>? = null,
 
     @ManyToOne
-    open var engineer: Engineer? = null,
-    @ManyToOne(cascade = [CascadeType.ALL])
-    open var repair: Repair? = null
-
+    open var engineer: Engineer? = null
 ) {
     override fun equals(other: Any?): Boolean {
         if (this === other) return true

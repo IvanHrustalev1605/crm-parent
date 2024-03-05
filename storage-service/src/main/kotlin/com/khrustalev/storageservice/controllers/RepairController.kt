@@ -19,6 +19,10 @@ class RepairController(private val repairService: RepairService) {
     fun getByCarNumberAndActualTrue(@RequestParam("carNumber") carNumber: String): ResponseEntity<RepairDto> {
         return ResponseEntity(repairService.findRepairByCarNumberAndActualTrue(carNumber), HttpStatus.OK)
     }
+    @GetMapping("/find-by-id")
+    fun getRepairProcessById(@RequestParam repairProcessId: Long) : ResponseEntity<RepairDto> {
+        return ResponseEntity(repairService.findRepairById(repairProcessId), HttpStatus.OK)
+    }
     @PostMapping("/save")
     fun create(@RequestBody repairDto: RepairDto) : ResponseEntity<Boolean> {
         return ResponseEntity(repairService.save(repairDto), HttpStatus.OK)

@@ -29,4 +29,12 @@ class RepairRequestController(private val repairRequestService: RepairRequestSer
                                                @RequestParam("carNumber") carNumber: String) : ResponseEntity<MutableList<Long>> {
         return ResponseEntity(repairRequestService.getActualForRepairProcess(actualDate, carNumber), HttpStatus.OK)
     }
+    @PostMapping("/agreed")
+    fun agreedRequest(@RequestParam("repairRequestId") id: Long) : ResponseEntity<RepairRequestDto?> {
+        return ResponseEntity(repairRequestService.takeAgreed(id), HttpStatus.CREATED)
+    }
+    @GetMapping("/find-by-number")
+    fun getByRequestNumber(@RequestParam("repairRequestNumber") number: Long) : ResponseEntity<RepairRequestDto> {
+        return ResponseEntity(repairRequestService.getByRepairRequestNumber(number), HttpStatus.OK)
+    }
 }

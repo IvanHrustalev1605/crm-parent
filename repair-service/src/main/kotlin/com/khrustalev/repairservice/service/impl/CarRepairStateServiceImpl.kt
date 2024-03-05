@@ -18,10 +18,10 @@ class CarRepairStateServiceImpl(private val storageFeignClient: StorageFeignClie
 /**
  * Если машина приехала на базу и сразу становится на ремонт
  * */
-    override fun createNewRepairState(carNumber: String, repairInfoDto: RepairInfoDto): CarRepairStateDto {
+    override fun createNewRepairState(repairInfoDto: RepairInfoDto): Long {
         val carRepairState = CarRepairStateDto()
 
-        val arrivalState = storageFeignClient.getLastArrivalStateByCarNumber(carNumber)
+        val arrivalState = storageFeignClient.getLastArrivalStateByCarNumber(repairInfoDto.carNumber!!)
         if (arrivalState != null) {
             carRepairState.carId = arrivalState.carId
             carRepairState.engineerId = arrivalState.engineerId
@@ -32,15 +32,14 @@ class CarRepairStateServiceImpl(private val storageFeignClient: StorageFeignClie
             carRepairState.mechanicIds = repairInfoDto.mechanicIds
             carRepairState.repairProblems = repairInfoDto.repairProblems
             LOGGER.info("Новая state создана. Начинаем сохранение... $carRepairState")
-            storageFeignClient.saveCarRepairState(carRepairState)
+            return storageFeignClient.saveCarRepairState(carRepairState)
         } else {
             throw SomethingGoWrongException("Возможно эта машина еще не заехала на базу или какая то неточность в переданной информации!")
         }
-        return carRepairState
     }
 
 
-    override fun createChangeRepairState(repairInfoDto: RepairInfoDto): CarRepairStateDto {
+    override fun changeRepairState(repairInfoDto: RepairInfoDto): Long {
         val carRepairState = CarRepairStateDto()
         carRepairState.repairState = RepairState.entries[repairInfoDto.repairStateNumber]
         carRepairState.repairProblems = repairInfoDto.repairProblems
@@ -48,10 +47,9 @@ class CarRepairStateServiceImpl(private val storageFeignClient: StorageFeignClie
         carRepairState.application = repairInfoDto.application
         carRepairState.mechanicIds = repairInfoDto.mechanicIds
         carRepairState.engineerId = repairInfoDto.engineerId
-        carRepairState.carId = repairInfoDto.carId
         carRepairState.repairParts = repairInfoDto.repairParts
+        carRepairState.carId = repairInfoDto.carId
         LOGGER.info("State изменения информации о ремонте создана. Начинаем сохранение... $carRepairState")
-        storageFeignClient.saveCarRepairState(carRepairState)
-        return carRepairState
+        return storageFeignClient.saveCarRepairState(carRepairState)
     }
 }

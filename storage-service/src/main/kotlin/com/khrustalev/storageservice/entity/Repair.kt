@@ -20,7 +20,7 @@ open class Repair {
     @Enumerated(EnumType.ORDINAL)
     open var repairState: RepairState? = RepairState.NEW
 
-    @OneToMany(mappedBy = "repair")
+    @OneToMany(targetEntity = RepairRequest::class)
     open var repairRequests:MutableList<RepairRequest> = mutableListOf()
 
     @OneToMany

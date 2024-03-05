@@ -29,7 +29,8 @@ interface StorageFeignClient {
     @GetMapping("/carState/arrival/get-by-carNumber")
     fun getLastArrivalStateByCarNumber(@RequestParam("carNumber") carNumber: String): CarArrivalStateDto?
     @PostMapping("/carState/repair/save")
-    fun saveCarRepairState(@RequestBody(required = true) car: CarRepairStateDto) : Boolean
+    fun saveCarRepairState(@RequestBody(required = true) car: CarRepairStateDto) : Long
+
     /*Engineer*/
     @GetMapping("/engineer/find-id-by-name")
     fun getEngineerId(@RequestParam("name") engineerName: String): Long
@@ -39,6 +40,8 @@ interface StorageFeignClient {
     fun getRepairProcessByCarNumberAndActualTrue(@RequestParam("carNumber") carNumber: String) : RepairProcessDto?
     @PostMapping("/repairProcess/save")
     fun saveRepairProcess(@RequestBody(required = true) repairProcess: RepairProcessDto) : Boolean
+    @GetMapping("/repairProcess/find-by-id")
+    fun getRepairProcessById(@RequestParam repairProcessId: Long) : RepairProcessDto
 
     /*RepairRequest*/
     @GetMapping("/repairRequest/find-all-by-car-number")
@@ -48,6 +51,15 @@ interface StorageFeignClient {
     @GetMapping("/repairRequest/actual-repair-request/by-car-number")
     fun findRepairRequestForActualRepairProcess(@RequestParam("actualDate") actualDate: LocalDateTime,
                                                 @RequestParam("carNumber") carNumber: String): MutableList<Long>
+    @PostMapping("/repairRequest/agreed")
+    fun agreedRequest(@RequestParam("repairRequestId") id: Long) : RepairRequestDto
+    @GetMapping("/find-by-number")
+    fun getByRequestNumber(@RequestParam("repairRequestNumber") number: Long) : RepairRequestDto
+
+    /*Drivers*/
+    @GetMapping("/driver/find-by-car-id")
+    fun findByCarId(@RequestParam carId: Long) : DriverDto
+
 
 
 }

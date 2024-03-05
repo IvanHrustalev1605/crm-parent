@@ -17,7 +17,10 @@ open class Driver {
     open var license: String? = null
 
     @Enumerated(EnumType.ORDINAL)
-    open val position:EmployeePosition = EmployeePosition.DRIVER
+    open var position:EmployeePosition = EmployeePosition.DRIVER
+
+    @OneToOne(mappedBy = "driver")
+    open var car: Car? = null
 
     @Column
     open var timeToMakeRequestStart: LocalDateTime? = null

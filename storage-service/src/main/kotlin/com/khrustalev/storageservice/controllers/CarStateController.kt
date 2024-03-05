@@ -20,7 +20,7 @@ class CarStateController(private val carStateService: CarStateService) {
         return ResponseEntity(carStateService.saveArrivalState(carArrivalStateDto), HttpStatus.CREATED)
     }
     @PostMapping("/repair/save")
-    fun saveRepairCarState(@RequestBody(required = true) carRepairStateDto: CarRepairStateDto) : ResponseEntity<Boolean> {
+    fun saveRepairCarState(@RequestBody(required = true) carRepairStateDto: CarRepairStateDto) : ResponseEntity<Long> {
         return ResponseEntity(carStateService.saveRepairState(carRepairStateDto), HttpStatus.CREATED)
     }
     @GetMapping("/arrival/get-by-carNumber")

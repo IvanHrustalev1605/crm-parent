@@ -1,7 +1,6 @@
 package com.khrustalev.storageservice.service.impl
 
 import com.khrustalev.storageservice.dto.RepairDto
-import com.khrustalev.storageservice.entity.Repair
 import com.khrustalev.storageservice.exception.NotFoundEntityException
 import com.khrustalev.storageservice.mappers.RepairMapper
 import com.khrustalev.storageservice.repository.RepairRepository
@@ -12,8 +11,12 @@ import org.springframework.stereotype.Service
 class RepairServiceImpl(private val repairRepository: RepairRepository,
                         private val repairMapper: RepairMapper
 ) : RepairService {
-    override fun findRepairById(id: Long): Repair? {
-        return repairRepository.findById(id).orElseThrow { NotFoundEntityException("Repair by id $id not found") }
+
+    override fun findRepairById(id: Long): RepairDto? {
+        val repair =
+            repairRepository.findById(id).orElseThrow { NotFoundEntityException("Repair by id $id not found") }
+        val toDto = repairMapper.toDto(repair)
+        return toDto
     }
 
     override fun findRepairByCarNumberAndActualTrue(carNumber: String): RepairDto? {

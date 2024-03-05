@@ -61,30 +61,35 @@ class MainController(private val securityService: SecurityService,
         ApiResponse(responseCode = "200", description = "Успешно!"),
         ApiResponse(responseCode = "500", description = "Ошибка!")
     ])
-    @PostMapping("/create-repair-request")
-    fun createRepairRequest(@RequestParam carNumber: String,
-                            @RequestBody repairInfoDto: RepairInfoDto,
+    @PostMapping("/create-repair-process")
+    fun createRepairRequest(@RequestBody repairInfoDto: RepairInfoDto,
                             @RequestParam repairRequestList: MutableList<Long>) : ResponseEntity<RepairProcessDto> {
-        return ResponseEntity(repairProcessService.createRepairProcess(carNumber, repairInfoDto, repairRequestList), HttpStatus.OK)
+        return ResponseEntity(repairProcessService.createNewRepairProcess(repairInfoDto, repairRequestList), HttpStatus.OK)
     }
-    @Operation(summary = "Добавление стадии ремонта")
+    @Operation(summary = "Обновление процесса ремонта")
     @ApiResponses(value = [
         ApiResponse(responseCode = "200", description = "Успешно!"),
         ApiResponse(responseCode = "500", description = "Ошибка!")
     ])
-    @PostMapping("/create-repair-car-state/change")
-    fun createRepairCarStateChange(@RequestBody repairInfoDto: RepairInfoDto) : ResponseEntity<CarRepairStateDto> {
-        return ResponseEntity(carRepairStateService.createChangeRepairState(repairInfoDto), HttpStatus.OK)
+    @PostMapping("/update-repair-process")
+    fun updateRepairRequest(
+                            @Parameter(description = "Информация об изменении в ремонте")
+                            @RequestBody repairInfoDto: RepairInfoDto,
+                            @RequestParam(required = false) repairRequestList: MutableList<Long>?,
+                            @Parameter(description = "Какой процесс ремонта изменяем")
+                            @RequestParam repairProcessId: Long,
+                            @Parameter(description = "Новое состояние процесса ремонта")
+                            @RequestParam newRepairProcessState: Int) : ResponseEntity<Boolean> {
+        return ResponseEntity(repairProcessService.updateRepairProcess(repairProcessId, repairInfoDto, repairRequestList, newRepairProcessState), HttpStatus.OK)
     }
-    @Operation(summary = "Создание новой стадии ремонта при первоначальном становлении на ремонт")
+    @Operation(summary = "Согласование заявки на ремонт")
     @ApiResponses(value = [
         ApiResponse(responseCode = "200", description = "Успешно!"),
         ApiResponse(responseCode = "500", description = "Ошибка!")
     ])
-    @PostMapping("/create-repair-car-state/new")
-    fun createRepairCarStateNew(@RequestBody repairInfoDto: RepairInfoDto,
-                                @RequestParam carNumber: String) : ResponseEntity<CarRepairStateDto> {
-        return ResponseEntity(carRepairStateService.createNewRepairState(carNumber, repairInfoDto), HttpStatus.OK)
+    @GetMapping("/agreed-repair-request")
+    fun agreedRepairRequest(@RequestParam("repairRequestId") id: Long) : ResponseEntity<Boolean> {
+        return ResponseEntity(repairRequestService.agreedRepairRequest(id), HttpStatus.OK)
     }
 
 }

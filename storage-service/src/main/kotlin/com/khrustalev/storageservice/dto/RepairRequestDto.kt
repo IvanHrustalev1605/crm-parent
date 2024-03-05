@@ -13,5 +13,6 @@ data class RepairRequestDto(
     var carId: Long? = null,
     var repairId: Long? = null,
     var createDate: LocalDateTime? = null,
-    var requestNumber: Long? = null
+    var requestNumber: Long? = null,
+    var agreed: Boolean? = false,
 ) : Serializable

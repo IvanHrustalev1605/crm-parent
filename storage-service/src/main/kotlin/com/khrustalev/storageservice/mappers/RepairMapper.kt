@@ -18,6 +18,7 @@ class RepairMapper(private val carService: CarService,
         it.repairRequestIds = repair.repairRequests.stream().map { rd -> rd.id!! }
             .toList()
             .toMutableList()
+        it.carRepairState = repair.carRepairState?.stream()?.map { crs -> crs.id!!}?.toList()?.toMutableList()
         it.endRepair = repair.endRepair
         it.repairState = repair.repairState
         it.carArrivalTime = repair.carArrivalTime

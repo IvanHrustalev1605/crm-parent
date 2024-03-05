@@ -12,4 +12,5 @@ interface RepairRequestRepository : JpaRepository<RepairRequest, Long> {
 
     @Query(value = "select rr from RepairRequest rr where rr.car.number = :carNumber and rr.createDate > :actualDate")
     fun getActual(@Param("actualDate") actualDate: LocalDateTime, @Param("carNumber") carNumber: String) : MutableList<RepairRequest>
+    fun findByRequestNumber(requestNumber: Long) : RepairRequest
 }

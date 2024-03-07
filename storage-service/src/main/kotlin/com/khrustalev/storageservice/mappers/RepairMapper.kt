@@ -20,16 +20,20 @@ class RepairMapper(private val carService: CarService,
             .toMutableList()
         it.carRepairState = repair.carRepairState?.stream()?.map { crs -> crs.id!!}?.toList()?.toMutableList()
         it.endRepair = repair.endRepair
-        it.repairState = repair.repairState
+        it.repairProcessState = repair.repairProcessState
         it.carArrivalTime = repair.carArrivalTime
         it.actual = repair.actual
+        it.differenceWorkTime = repair.differenceWorkTime
+        it.actualCompletionTime = repair.actualCompletionTime
     }
     fun toEntity(repairDto: RepairDto) : Repair = Repair().also {
         it.id = repairDto.id
         it.actual = repairDto.actual
         it.carArrivalTime = repairDto.carArrivalTime
-        it.repairState = repairDto.repairState
+        it.repairProcessState = repairDto.repairProcessState
         it.endRepair = repairDto.endRepair
+        it.differenceWorkTime = repairDto.differenceWorkTime
+        it.actualCompletionTime = repairDto.actualCompletionTime
         it.car = if (repairDto.carId != null) carService.findById(repairDto.carId!!) else null
         it.carRepairState = if (!CollectionUtils.isEmpty(repairDto.carRepairState)) repairDto.carRepairState?.let { it1 ->
             carRepairStateService.getDtoById(

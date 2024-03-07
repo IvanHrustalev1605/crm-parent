@@ -39,9 +39,12 @@ interface StorageFeignClient {
     @GetMapping("/repairProcess/find-by-car-number-actual-true")
     fun getRepairProcessByCarNumberAndActualTrue(@RequestParam("carNumber") carNumber: String) : RepairProcessDto?
     @PostMapping("/repairProcess/save")
-    fun saveRepairProcess(@RequestBody(required = true) repairProcess: RepairProcessDto) : Boolean
+    fun saveRepairProcess(@RequestBody(required = true) repairProcess: RepairProcessDto) : Long
+
     @GetMapping("/repairProcess/find-by-id")
     fun getRepairProcessById(@RequestParam repairProcessId: Long) : RepairProcessDto
+    @GetMapping("/repairProcess/repair-parts")
+    fun getRepairPartsByRepairId(@RequestParam repairId: Long) : ResponseEntity<List<String>>
 
     /*RepairRequest*/
     @GetMapping("/repairRequest/find-all-by-car-number")

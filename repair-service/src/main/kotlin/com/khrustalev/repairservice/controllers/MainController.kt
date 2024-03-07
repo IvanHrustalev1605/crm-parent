@@ -66,6 +66,16 @@ class MainController(private val securityService: SecurityService,
                             @RequestParam repairRequestList: MutableList<Long>) : ResponseEntity<RepairProcessDto> {
         return ResponseEntity(repairProcessService.createNewRepairProcess(repairInfoDto, repairRequestList), HttpStatus.OK)
     }
+    @Operation(summary = "Взятие машины в ремонт")
+    @ApiResponses(value = [
+        ApiResponse(responseCode = "200", description = "Успешно!"),
+        ApiResponse(responseCode = "500", description = "Ошибка!")
+    ])
+    @PostMapping("/take-to-repair-process")
+    fun takeToRepairRequest(@Parameter(description = "Какой процесс ремонта изменяем")
+                            @RequestParam repairProcessId: Long) : ResponseEntity<Boolean> {
+        return ResponseEntity(repairProcessService.takeRepairToWork(repairProcessId), HttpStatus.OK)
+    }
     @Operation(summary = "Обновление процесса ремонта")
     @ApiResponses(value = [
         ApiResponse(responseCode = "200", description = "Успешно!"),
@@ -81,6 +91,19 @@ class MainController(private val securityService: SecurityService,
                             @Parameter(description = "Новое состояние процесса ремонта")
                             @RequestParam newRepairProcessState: Int) : ResponseEntity<Boolean> {
         return ResponseEntity(repairProcessService.updateRepairProcess(repairProcessId, repairInfoDto, repairRequestList, newRepairProcessState), HttpStatus.OK)
+    }
+    @Operation(summary = "Завершение процесса ремонта")
+    @ApiResponses(value = [
+        ApiResponse(responseCode = "200", description = "Успешно!"),
+        ApiResponse(responseCode = "500", description = "Ошибка!")
+    ])
+    @PostMapping("/end-repair-process")
+    fun endRepairRequest(
+        @Parameter(description = "Информация об изменении в ремонте")
+        @RequestBody repairInfoDto: RepairInfoDto,
+        @Parameter(description = "Какой процесс ремонта изменяем")
+        @RequestParam repairProcessId: Long) : ResponseEntity<Boolean> {
+        return ResponseEntity(repairProcessService.closeRepairProcess(repairProcessId, repairInfoDto), HttpStatus.OK)
     }
     @Operation(summary = "Согласование заявки на ремонт")
     @ApiResponses(value = [

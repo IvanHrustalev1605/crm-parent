@@ -28,7 +28,7 @@ open class CarArrivalState(
     open var stateChangeTime: LocalDateTime = LocalDateTime.now(),
     @ManyToOne
     open var receivingSecurity: Security? = null,
-    @OneToOne
+    @ManyToOne
     open var engineer: Engineer? = null,
     @ManyToOne
     open var car: Car? = null

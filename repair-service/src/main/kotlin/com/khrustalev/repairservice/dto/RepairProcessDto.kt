@@ -26,4 +26,8 @@ open class RepairProcessDto {
     open var carRepairStatesIds: MutableList<Long>? = mutableListOf()
     @JsonProperty(value = "actual")
     open var actual: Boolean? = null
+    @JsonProperty(value = "actualCompletionTime")
+    open  var actualCompletionTime : LocalDateTime? = null
+    @JsonProperty(value = "differenceWorkTime")
+    open  var differenceWorkTime : Long? = null
 }

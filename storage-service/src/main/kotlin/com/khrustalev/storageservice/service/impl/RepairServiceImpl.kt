@@ -13,19 +13,23 @@ class RepairServiceImpl(private val repairRepository: RepairRepository,
 ) : RepairService {
 
     override fun findRepairById(id: Long): RepairDto? {
-        val repair =
-            repairRepository.findById(id).orElseThrow { NotFoundEntityException("Repair by id $id not found") }
-        val toDto = repairMapper.toDto(repair)
-        return toDto
+        return repairMapper.toDto(repairRepository.findById(id).orElseThrow { NotFoundEntityException("Repair by id $id not found") })
     }
 
     override fun findRepairByCarNumberAndActualTrue(carNumber: String): RepairDto? {
         return repairMapper.toDto(repairRepository.findByCar_NumberAndActualIsTrue(carNumber)!!)
     }
 
-    override fun save(repairDto: RepairDto): Boolean {
-        val toEntity = repairMapper.toEntity(repairDto)
-        repairRepository.save(toEntity)
-        return true
+    override fun save(repairDto: RepairDto): Long {
+        return repairRepository.save(repairMapper.toEntity(repairDto)).id!!
+    }
+
+    override fun getAllRepairParts(repairId: Long): List<String> {
+        val result =
+            repairRepository.findById(repairId).get().carRepairState!!
+                .stream()
+                .map { it.repairParts!! }
+                .toList()
+        return result
     }
 }

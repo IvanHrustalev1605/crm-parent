@@ -52,4 +52,43 @@ class CarRepairStateServiceImpl(private val storageFeignClient: StorageFeignClie
         LOGGER.info("State изменения информации о ремонте создана. Начинаем сохранение... $carRepairState")
         return storageFeignClient.saveCarRepairState(carRepairState)
     }
+
+    override fun createEndRepairState(repairProcessId: Long, repairInfoDto: RepairInfoDto): Long {
+        val carRepairState = CarRepairStateDto()
+        val repairProcessDto = storageFeignClient.getRepairProcessById(repairProcessId)
+
+        carRepairState.carId = repairProcessDto.carId
+        carRepairState.engineerId = repairInfoDto.engineerId
+        carRepairState.repairParts = repairInfoDto.repairParts
+        carRepairState.application = repairInfoDto.application
+        carRepairState.mechanicIds = repairInfoDto.mechanicIds
+        carRepairState.repairState = RepairState.DONE
+        carRepairState.stateChangeTime = LocalDateTime.now()
+        carRepairState.repairProblems = repairInfoDto.repairProblems
+        LOGGER.info("State окончания работ. Начинаем сохранение... $carRepairState")
+        return storageFeignClient.saveCarRepairState(carRepairState)
+    }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

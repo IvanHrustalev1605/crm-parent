@@ -1,5 +1,7 @@
 package com.khrustalev.repairservice.dto
 
+import java.time.LocalDateTime
+
 class RepairInfoDto {
     val mechanicIds: MutableList<Long>? = null
     val repairStateNumber: Int = 0
@@ -9,6 +11,5 @@ class RepairInfoDto {
     val repairProblems: String = ""
     val engineerId: Long? = null
     val carNumber: String? = null
-    val repairStateIds: List<Long>? = null
     val carId: Long? = null
 }

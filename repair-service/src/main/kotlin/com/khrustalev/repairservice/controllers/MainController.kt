@@ -1,10 +1,7 @@
 package com.khrustalev.repairservice.controllers
 
 import com.khrustalev.repairservice.dto.*
-import com.khrustalev.repairservice.service.CarRepairStateService
-import com.khrustalev.repairservice.service.RepairProcessService
-import com.khrustalev.repairservice.service.RepairRequestService
-import com.khrustalev.repairservice.service.SecurityService
+import com.khrustalev.repairservice.service.*
 import io.swagger.v3.oas.annotations.Operation
 import io.swagger.v3.oas.annotations.Parameter
 import io.swagger.v3.oas.annotations.media.Schema
@@ -24,7 +21,7 @@ import org.springframework.web.bind.annotation.RestController
 @Schema(description = "Контроллер который будет имитировать работу сервиса, пока нет разграничения по ролям и авторизаций")
 class MainController(private val securityService: SecurityService,
                      private val repairProcessService: RepairProcessService,
-                     private val carRepairStateService: CarRepairStateService,
+                     private val repairPartsService: RepairPartsService,
                      private val repairRequestService: RepairRequestService) {
 
     @Operation(summary = "Охранник на въезде отмечает прибывшею машину. " +
@@ -113,6 +110,15 @@ class MainController(private val securityService: SecurityService,
     @GetMapping("/agreed-repair-request")
     fun agreedRepairRequest(@RequestParam("repairRequestId") id: Long) : ResponseEntity<Boolean> {
         return ResponseEntity(repairRequestService.agreedRepairRequest(id), HttpStatus.OK)
+    }
+    @Operation(summary = "Остатки запчастей на складе")
+    @ApiResponses(value = [
+        ApiResponse(responseCode = "200", description = "Успешно!"),
+        ApiResponse(responseCode = "500", description = "Ошибка!")
+    ])
+    @GetMapping("/repair-parts-stocks")
+    fun countRepairPArts() : ResponseEntity<MutableMap<String, Long>> {
+        return ResponseEntity(repairPartsService.countPartStocks(), HttpStatus.OK)
     }
 
 }

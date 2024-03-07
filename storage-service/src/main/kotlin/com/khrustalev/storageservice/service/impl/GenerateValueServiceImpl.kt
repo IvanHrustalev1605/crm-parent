@@ -1,11 +1,13 @@
 package com.khrustalev.storageservice.service.impl
 
 import com.khrustalev.storageservice.entity.*
+import com.khrustalev.storageservice.entity.enums.RepairPartsCategory
 import com.khrustalev.storageservice.repository.*
 import com.khrustalev.storageservice.service.abstracts.GenerateValueService
 import com.khrustalev.storageservice.utils.GeneratorUtils
 import org.springframework.stereotype.Service
 import kotlin.random.Random
+import kotlin.random.nextInt
 
 @Service
 class GenerateValueServiceImpl(private val carRepository: CarRepository,
@@ -13,7 +15,10 @@ class GenerateValueServiceImpl(private val carRepository: CarRepository,
                                private val driverRepository: DriverRepository,
                                private val mechanicRepository: MechanicRepository,
                                private val securityRepository: SecurityRepository,
-                               private val engineerRepository: EngineerRepository) : GenerateValueService {
+                               private val engineerRepository: EngineerRepository,
+                               private val repairPartsRepository: RepairPartsRepository,
+                               private val repairPartsGroupRepository: RepairPartsGroupRepository
+) : GenerateValueService {
     override fun generateDbValues(): Boolean {
         for (i in 1..50) {
             val driver = Driver().also {
@@ -52,6 +57,7 @@ class GenerateValueServiceImpl(private val carRepository: CarRepository,
             }
             securityRepository.save(security)
         }
+        generateRepairParts()
         return true
     }
     private fun generatePersonInfo() : PersonInfo {
@@ -61,6 +67,24 @@ class GenerateValueServiceImpl(private val carRepository: CarRepository,
             it.middleName = GeneratorUtils.generateRandomMiddleName()
             it.lastName = GeneratorUtils.generateRandomSecondName()
             it.email = GeneratorUtils.generateRandomString(6) + "@mail.ru"
+        }
+    }
+    override fun generateRepairParts() : Boolean {
+        for (i in 1..1500) {
+            val also = RepairParts().also {
+                it.name = GeneratorUtils.generateRandomString(Random.nextInt(5, 8))
+                it.mileageResource = Random.nextInt(10000, 100000).toLong()
+                it.category = RepairPartsCategory.entries[Random.nextInt(0, RepairPartsCategory.entries.size)]
+            }
+            repairPartsRepository.save(also)
+        }
+        return true
+    }
+
+    override fun setRepairPartGroup() {
+        repairPartsRepository.findAll().forEach {
+            it.repairPartsGroup = repairPartsGroupRepository.findById(Random.nextLong(1, 6)).get()
+            repairPartsRepository.save(it)
         }
     }
 }

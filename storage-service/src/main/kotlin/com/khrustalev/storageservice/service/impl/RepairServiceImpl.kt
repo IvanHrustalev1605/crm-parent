@@ -30,6 +30,6 @@ class RepairServiceImpl(private val repairRepository: RepairRepository,
                 .stream()
                 .map { it.repairParts!! }
                 .toList()
-        return result
+        return emptyList()
     }
 }

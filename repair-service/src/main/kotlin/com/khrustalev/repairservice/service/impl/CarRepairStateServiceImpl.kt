@@ -6,13 +6,15 @@ import com.khrustalev.repairservice.dto.enums.RepairState
 import com.khrustalev.repairservice.exceptions.SomethingGoWrongException
 import com.khrustalev.repairservice.feign.StorageFeignClient
 import com.khrustalev.repairservice.service.CarRepairStateService
+import com.khrustalev.repairservice.service.RepairPartsService
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 import org.springframework.stereotype.Service
 import java.time.LocalDateTime
 
 @Service
-class CarRepairStateServiceImpl(private val storageFeignClient: StorageFeignClient) : CarRepairStateService {
+class CarRepairStateServiceImpl(private val storageFeignClient: StorageFeignClient,
+                                private val repairPartsService: RepairPartsService) : CarRepairStateService {
     private val LOGGER: Logger = LoggerFactory.getLogger(CarRepairStateServiceImpl::class.java)
 
 /**
@@ -27,7 +29,7 @@ class CarRepairStateServiceImpl(private val storageFeignClient: StorageFeignClie
             carRepairState.engineerId = arrivalState.engineerId
             carRepairState.stateChangeTime = LocalDateTime.now()
             carRepairState.repairState = RepairState.NEW
-            carRepairState.repairParts = repairInfoDto.repairParts
+            carRepairState.repairParts = repairPartsService.install(repairInfoDto.repairParts, arrivalState.carId!!)
             carRepairState.application = repairInfoDto.application
             carRepairState.mechanicIds = repairInfoDto.mechanicIds
             carRepairState.repairProblems = repairInfoDto.repairProblems
@@ -47,7 +49,7 @@ class CarRepairStateServiceImpl(private val storageFeignClient: StorageFeignClie
         carRepairState.application = repairInfoDto.application
         carRepairState.mechanicIds = repairInfoDto.mechanicIds
         carRepairState.engineerId = repairInfoDto.engineerId
-        carRepairState.repairParts = repairInfoDto.repairParts
+        carRepairState.repairParts.addAll(repairPartsService.install(repairInfoDto.repairParts, repairInfoDto.carId!!))
         carRepairState.carId = repairInfoDto.carId
         LOGGER.info("State изменения информации о ремонте создана. Начинаем сохранение... $carRepairState")
         return storageFeignClient.saveCarRepairState(carRepairState)
@@ -59,7 +61,7 @@ class CarRepairStateServiceImpl(private val storageFeignClient: StorageFeignClie
 
         carRepairState.carId = repairProcessDto.carId
         carRepairState.engineerId = repairInfoDto.engineerId
-        carRepairState.repairParts = repairInfoDto.repairParts
+        carRepairState.repairParts!!.addAll(repairPartsService.install(repairInfoDto.repairParts, repairProcessDto.carId!!))
         carRepairState.application = repairInfoDto.application
         carRepairState.mechanicIds = repairInfoDto.mechanicIds
         carRepairState.repairState = RepairState.DONE

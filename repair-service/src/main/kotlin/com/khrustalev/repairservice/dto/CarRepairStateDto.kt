@@ -16,7 +16,7 @@ class CarRepairStateDto {
     @JsonProperty(value = "application")
     var application: String? = null
     @JsonProperty(value = "repairParts")
-    var repairParts: String? = null
+    var repairParts: MutableList<Long> = mutableListOf()
     @JsonProperty(value = "repairProblems")
     var repairProblems: String? = null
     @JsonProperty(value = "carId")

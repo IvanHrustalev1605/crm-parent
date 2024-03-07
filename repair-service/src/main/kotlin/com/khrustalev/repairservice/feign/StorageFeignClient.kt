@@ -63,6 +63,18 @@ interface StorageFeignClient {
     @GetMapping("/driver/find-by-car-id")
     fun findByCarId(@RequestParam carId: Long) : DriverDto
 
+    /*RepairParts*/
+    @GetMapping("/repairParts/find-by-id")
+    fun findById(@RequestParam id: Long) : ResponseEntity<RepairPartsDto>
+    @PostMapping("/repairParts/save")
+    fun save(@RequestBody repairPartsDto: RepairPartsDto) : ResponseEntity<RepairPartsDto>
+    @GetMapping("/repairParts/partsStocks")
+    fun countPartsStocks() : ResponseEntity<MutableMap<String, Long>>
 
+    /*RepairPartsGroup*/
+    @GetMapping("/repairPartsGroup/find-by-id")
+    fun getRepairPartsGroupById(@RequestParam id: Long) : RepairPartGroupDto
+    @PostMapping("/repairPartsGroup/save")
+    fun saveRepairPartGroup(repairPartsGroupDto: RepairPartGroupDto)
 
 }

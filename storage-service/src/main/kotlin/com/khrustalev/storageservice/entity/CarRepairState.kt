@@ -18,9 +18,6 @@ open class CarRepairState(
     //ну какая то типа заявка или письмо
     @Column
     open var application:String? = null,
-    //для простоты пока что просто список запчастей, в дальнейшем уже будет полноценная сущность со своими полями
-    @Column
-    open var repairParts: String? = null,
     //какие то проблемы возникшие при ремонте на этом state
     @Column
     open var repairProblems: String? = null,
@@ -33,7 +30,13 @@ open class CarRepairState(
     open var mechanics: MutableList<Mechanic>? = null,
 
     @ManyToOne
-    open var engineer: Engineer? = null
+    open var engineer: Engineer? = null,
+
+    @ManyToMany
+    @JoinTable
+    open var repairParts: MutableList<RepairParts>? = null
+
+
 ) {
     override fun equals(other: Any?): Boolean {
         if (this === other) return true

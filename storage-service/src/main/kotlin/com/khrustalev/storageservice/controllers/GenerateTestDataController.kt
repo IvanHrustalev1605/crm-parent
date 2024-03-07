@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController
 class GenerateTestDataController(private val generateValueService: GenerateValueService
 ) {
     @GetMapping("/test-data")
-    fun generate() : ResponseEntity<Boolean> {
-        return ResponseEntity(generateValueService.generateDbValues(), HttpStatus.CREATED)
+    fun generate() : ResponseEntity<Any> {
+        return ResponseEntity(generateValueService.setRepairPartGroup(), HttpStatus.CREATED)
     }
 }

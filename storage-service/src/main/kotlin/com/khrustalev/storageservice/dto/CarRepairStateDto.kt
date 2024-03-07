@@ -12,7 +12,7 @@ data class CarRepairStateDto(
     val repairState: RepairState? = null,
     val stateChangeTime: LocalDateTime = LocalDateTime.now(),
     val application: String? = null,
-    val repairParts: String? = null,
+    val repairParts: List<Long>? = null,
     val repairProblems: String? = null,
     val carId: Long? = null,
     val mechanicIds: MutableList<Long>?,

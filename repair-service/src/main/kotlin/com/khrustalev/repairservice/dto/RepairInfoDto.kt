@@ -7,7 +7,7 @@ class RepairInfoDto {
     val repairStateNumber: Int = 0
     val repairProcessStateNumber: Int = 0
     val application: String = ""
-    val repairParts: String = ""
+    val repairParts: MutableList<Long> = mutableListOf()
     val repairProblems: String = ""
     val engineerId: Long? = null
     val carNumber: String? = null

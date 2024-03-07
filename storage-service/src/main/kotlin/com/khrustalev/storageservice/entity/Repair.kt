@@ -33,6 +33,8 @@ open class Repair {
 
     @ManyToOne(cascade = [CascadeType.ALL])
     open var car: Car? = null
+
+
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
         if (javaClass != other?.javaClass) return false

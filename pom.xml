@@ -12,6 +12,8 @@
     <name>consoleApp</name>
 <modules>
     <module>storage-service</module>
+    <module>repair-service</module>
+    <module>document-service</module>
 </modules>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

@@ -5,11 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a8831c50-c17b-4626-9402-a365a662022b" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/d6bb1a80-6065-44ba-9b9b-2c9d22a22183.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/d6bb1a80-6065-44ba-9b9b-2c9d22a22183.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_06_03_2024_10_37__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_06_03_2024_10_37__Changes_.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/document-service/HELP.md" beforeDir="false" afterPath="$PROJECT_DIR$/document-service/HELP.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,9 +19,9 @@
         <option value="com.haulmont.jpb.AbstractClassKotlin" />
         <option value="com.haulmont.jpb.JpaRepository" />
         <option value="com.haulmont.jpb.NewDataClass" />
+        <option value="Kotlin Enum" />
         <option value="Kotlin Interface" />
         <option value="Kotlin Class" />
-        <option value="Kotlin Enum" />
       </list>
     </option>
   </component>
@@ -90,11 +86,11 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CreateKotlinClassDialog.RecentsKey">
+      <recent name="com.khrustalev.storageservice.service.impl" />
+      <recent name="org.khrustalev.documentservice.service.impl" />
       <recent name="com.khrustalev.repairservice.dto" />
       <recent name="com.khrustalev.storageservice.mappers" />
       <recent name="com.khrustalev.repairservice.service.impl" />
-      <recent name="com.khrustalev.storageservice.service.impl" />
-      <recent name="com.khrustalev.storageservice.service.abstracts" />
     </key>
     <key name="MoveKotlinTopLevelDeclarationsDialog.RECENTS_KEY">
       <recent name="com.khrustalev.storageservice.dto" />
@@ -114,7 +110,7 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.RepairServiceApplication">
+  <component name="RunManager" selected="Spring Boot.StorageServiceApplication">
     <configuration name="DocumentServiceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <module name="document-service" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="org.khrustalev.documentservice.DocumentServiceApplication" />
@@ -157,6 +153,7 @@
       <workItem from="1709450203244" duration="13480000" />
       <workItem from="1709631557725" duration="15599000" />
       <workItem from="1709666976164" duration="307000" />
+      <workItem from="1709889825781" duration="5760000" />
     </task>
     <servers />
   </component>

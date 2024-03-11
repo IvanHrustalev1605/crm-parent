@@ -2,6 +2,7 @@ package com.khrustalev.storageservice.service.impl
 
 import com.khrustalev.storageservice.dto.RepairRequestDto
 import com.khrustalev.storageservice.entity.RepairRequest
+import com.khrustalev.storageservice.exception.NotFoundEntityException
 import com.khrustalev.storageservice.mappers.RepairRequestMapper
 import com.khrustalev.storageservice.repository.RepairRequestRepository
 import com.khrustalev.storageservice.service.abstracts.RepairRequestService
@@ -51,5 +52,9 @@ class RepairRequestServiceImpl(private val repairRequestRepository: RepairReques
 
     override fun getByRepairRequestNumber(number: Long): RepairRequestDto {
         return repairRequestMapper.toDto(repairRequestRepository.findByRequestNumber(number))
+    }
+
+    override fun getById(id: Long): RepairRequestDto {
+        return repairRequestMapper.toDto(repairRequestRepository.findById(id).orElseThrow { NotFoundEntityException("RepairRequest by ID $id not found!") })
     }
 }

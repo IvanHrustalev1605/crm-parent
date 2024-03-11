@@ -22,7 +22,8 @@ import org.springframework.web.bind.annotation.RestController
 class MainController(private val securityService: SecurityService,
                      private val repairProcessService: RepairProcessService,
                      private val repairPartsService: RepairPartsService,
-                     private val repairRequestService: RepairRequestService) {
+                     private val repairRequestService: RepairRequestService,
+                     private val documentService: DocumentService) {
 
     @Operation(summary = "Охранник на въезде отмечает прибывшею машину. " +
             "В случае необходимости ремонта, назначается инженер, который будет ответственен за процесс ремонта")
@@ -120,5 +121,13 @@ class MainController(private val securityService: SecurityService,
     fun countRepairPArts() : ResponseEntity<MutableMap<String, Long>> {
         return ResponseEntity(repairPartsService.countPartStocks(), HttpStatus.OK)
     }
-
+    @Operation(summary = "Получить отчет по ремонту")
+    @ApiResponses(value = [
+        ApiResponse(responseCode = "200", description = "Успешно!"),
+        ApiResponse(responseCode = "500", description = "Ошибка!")
+    ])
+    @GetMapping("/get-repair-report")
+    fun getRepairReport(@RequestParam repairId: Long) : ResponseEntity<Boolean> {
+        return ResponseEntity(documentService.generateRepairReport(repairId), HttpStatus.OK)
+    }
 }

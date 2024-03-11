@@ -1,5 +1,6 @@
 package com.khrustalev.storageservice.controllers
 
+import com.khrustalev.storageservice.dto.CarRepairStateDto
 import com.khrustalev.storageservice.dto.RepairDto
 import com.khrustalev.storageservice.service.abstracts.RepairService
 import org.springframework.http.HttpStatus
@@ -30,5 +31,9 @@ class RepairController(private val repairService: RepairService) {
     @GetMapping("/repair-parts")
     fun getRepairPartsByRepairId(@RequestParam repairId: Long) : ResponseEntity<List<String>> {
         return ResponseEntity(repairService.getAllRepairParts(repairId), HttpStatus.OK)
+    }
+    @GetMapping("/repair-state/by-id")
+    fun getRepairStatesForRepairByRepairId(@RequestParam repairId: Long) : ResponseEntity<MutableList<CarRepairStateDto>> {
+        return ResponseEntity(repairService.findAllRepairStates(repairId), HttpStatus.OK)
     }
 }

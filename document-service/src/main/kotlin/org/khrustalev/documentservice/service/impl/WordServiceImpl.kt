@@ -1,9 +1,14 @@
 package org.khrustalev.documentservice.service.impl
 
+import org.apache.poi.ss.usermodel.FontFamily
 import org.apache.poi.wp.usermodel.HeaderFooterType
 import org.apache.poi.xwpf.usermodel.XWPFDocument
+import org.khrustalev.documentservice.dto.CarRepairStateDto
+import org.khrustalev.documentservice.dto.RepairRequestDto
 import org.khrustalev.documentservice.feign.StorageFeignClient
 import org.khrustalev.documentservice.service.WordService
+import org.slf4j.Logger
+import org.slf4j.LoggerFactory
 import org.springframework.core.io.FileSystemResource
 import org.springframework.http.HttpEntity
 import org.springframework.http.HttpHeaders
@@ -14,52 +19,51 @@ import org.springframework.util.LinkedMultiValueMap
 import org.springframework.web.client.RestTemplate
 import java.io.ByteArrayOutputStream
 import java.io.File
+import java.io.IOException
+import java.util.UUID
 
 @Service
 class WordServiceImpl(private val storageFeignClient: StorageFeignClient) : WordService {
-    override fun generateWordDocument(): Boolean {
-        try  {
-            var document = XWPFDocument()
-            var p = document.createParagraph()
-            var header = document.createHeader(HeaderFooterType.DEFAULT)
-            val pRun = p.createRun()
-            pRun.setText("Тестовый текст")
-            pRun.setFontSize(36.0)
-            pRun.addBreak()
-            pRun.addBreak()
+    private val LOGGER: Logger = LoggerFactory.getLogger(WordServiceImpl::class.java)
 
-            val hp = header.createParagraph()
-            val hpRun = hp.createRun()
-            hpRun.setText("Тестовый текст заголовка")
-            hpRun.setFontSize(26.0)
-            hpRun.addBreak()
+    override fun generateRepairReport(repairId: Long): Boolean {
+        val repairReportDto = storageFeignClient.generateRepairReport(repairId).body
+        val repairRequestList = mutableListOf<RepairRequestDto>()
+        val repairStatesList = mutableListOf<CarRepairStateDto>()
+        repairReportDto!!.repairRequestIds.forEach { repairRequestList.add(storageFeignClient.getByRepairRequestId(it).body!!)  }
+        repairReportDto.carRepairStatesIds.forEach { _ -> repairStatesList.addAll(storageFeignClient.getRepairStatesForRepairByRepairId(repairId).body!!) }
 
+        val document = XWPFDocument()
+        val file = File("Repair-Report # " + UUID.randomUUID().toString().substring(0, 8) + ".doc")
+        val r1 = document.createParagraph().createRun()
+        val r2 = document.createParagraph().createRun()
+        val r3 = document.createParagraph().createRun()
+
+        r1.setFontSize(15.0)
+        repairRequestList.forEach { r1.setText("Основанием для ремонта являлся ${it.requestNumber} - ${it.requestDescription}") }
+        r1.addBreak()
+        r1.addBreak()
+
+        r2.setShadow(true)
+        r2.fontFamily = FontFamily.MODERN.name
+        r2.fontSize = 12
+        r2.setText("В ходе ремонта было задействовано ${repairStatesList.size} стадий")
+        r2.addBreak()
+        repairStatesList.forEach { r2.setText("На стадии ${it.id} , было задействованы механики ${it.mechanicIds} и установлены запчасти \n " +
+                "${it.repairParts}") }
+        try {
             val byteArrayOutputStream = ByteArrayOutputStream()
             document.write(byteArrayOutputStream)
-
-            val file = File("test.doc")
+            document.close()
             file.writeBytes(byteArrayOutputStream.toByteArray())
             byteArrayOutputStream.close()
             sendFile(file)
-            return true
-
         } catch (e: Exception) {
-            println(e)
+            LOGGER.info(e.stackTrace.toString())
+        } catch (e1: IOException) {
+            LOGGER.info(e1.stackTrace.toString())
         }
-        return false
-    }
-
-    override fun generateRepairRequest(repairId: Long): Boolean {
-        val repairReportDto = storageFeignClient.generateRepairReport(repairId).body
-        val document = XWPFDocument()
-        val file = File("repair-report.doc")
-        val p1 = document.createParagraph()
-        val p2 = document.createParagraph()
-        val p3 = document.createParagraph()
-        val r1 = p1.createRun()
-        val r2 = p2.createRun()
-        val r3 = p3.createRun()
-        return false
+        return true
     }
 
     private fun sendFile(file: File) {

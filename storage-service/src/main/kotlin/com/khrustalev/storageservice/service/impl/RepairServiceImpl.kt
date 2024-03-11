@@ -1,15 +1,19 @@
 package com.khrustalev.storageservice.service.impl
 
+import com.khrustalev.storageservice.dto.CarRepairStateDto
 import com.khrustalev.storageservice.dto.RepairDto
 import com.khrustalev.storageservice.exception.NotFoundEntityException
+import com.khrustalev.storageservice.mappers.CarRepairStateMapper
 import com.khrustalev.storageservice.mappers.RepairMapper
 import com.khrustalev.storageservice.repository.RepairRepository
 import com.khrustalev.storageservice.service.abstracts.RepairService
+import org.springframework.context.annotation.Lazy
 import org.springframework.stereotype.Service
 
 @Service("repair-service")
 class RepairServiceImpl(private val repairRepository: RepairRepository,
-                        private val repairMapper: RepairMapper
+                        private val repairMapper: RepairMapper,
+                        @Lazy private val carRepairStateMapper: CarRepairStateMapper
 ) : RepairService {
 
     override fun findRepairById(id: Long): RepairDto? {
@@ -31,5 +35,12 @@ class RepairServiceImpl(private val repairRepository: RepairRepository,
                 .map { it.repairParts!! }
                 .toList()
         return emptyList()
+    }
+
+    override fun findAllRepairStates(repairId: Long): MutableList<CarRepairStateDto>? {
+        return repairRepository.findById(repairId).get().carRepairState?.stream()
+            ?.map { carRepairStateMapper.toDto(it) }
+            ?.toList()
+            ?.toMutableList()
     }
 }

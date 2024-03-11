@@ -17,9 +17,6 @@ class CarRepairStateServiceImpl(private val storageFeignClient: StorageFeignClie
                                 private val repairPartsService: RepairPartsService) : CarRepairStateService {
     private val LOGGER: Logger = LoggerFactory.getLogger(CarRepairStateServiceImpl::class.java)
 
-/**
- * Если машина приехала на базу и сразу становится на ремонт
- * */
     override fun createNewRepairState(repairInfoDto: RepairInfoDto): Long {
         val carRepairState = CarRepairStateDto()
 
@@ -29,7 +26,6 @@ class CarRepairStateServiceImpl(private val storageFeignClient: StorageFeignClie
             carRepairState.engineerId = arrivalState.engineerId
             carRepairState.stateChangeTime = LocalDateTime.now()
             carRepairState.repairState = RepairState.NEW
-            carRepairState.repairParts = repairPartsService.install(repairInfoDto.repairParts, arrivalState.carId!!)
             carRepairState.application = repairInfoDto.application
             carRepairState.mechanicIds = repairInfoDto.mechanicIds
             carRepairState.repairProblems = repairInfoDto.repairProblems
@@ -39,7 +35,6 @@ class CarRepairStateServiceImpl(private val storageFeignClient: StorageFeignClie
             throw SomethingGoWrongException("Возможно эта машина еще не заехала на базу или какая то неточность в переданной информации!")
         }
     }
-
 
     override fun changeRepairState(repairInfoDto: RepairInfoDto): Long {
         val carRepairState = CarRepairStateDto()

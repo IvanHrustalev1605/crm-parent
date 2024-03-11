@@ -10,11 +10,12 @@ open class RepairPartsGroup {
     open var id: Long? = null
     @Column
     open var groupName: String? = null
+
     //остаток на складе
     @Column
     open var stockBalance: Int? = null
 
-    @OneToMany
-    @JoinTable
-    open var repairPartsList: MutableList<RepairParts> = mutableListOf()
+    @ManyToMany(mappedBy = "repairPartGroups")
+    open var repairPartsLargeGroup: MutableList<RepairPartsLargeGroup> = mutableListOf()
+
 }

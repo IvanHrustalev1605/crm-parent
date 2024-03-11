@@ -15,6 +15,10 @@ import java.time.LocalDateTime
 @RestController
 @RequestMapping("/api/storage/repairRequest")
 class RepairRequestController(private val repairRequestService: RepairRequestService) {
+    @GetMapping("/by-id")
+    fun findById(@RequestParam id: Long) : ResponseEntity<RepairRequestDto> {
+        return ResponseEntity(repairRequestService.getById(id), HttpStatus.OK)
+    }
 
     @GetMapping("/find-all-by-car-number")
     fun getAllRepairRequestByCarNumber(@RequestParam("carNumber") carNumber: String) : ResponseEntity<MutableList<RepairRequestDto>?> {

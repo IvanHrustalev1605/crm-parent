@@ -1,10 +1,9 @@
 package com.khrustalev.storageservice.dto
 
 import java.io.Serializable
-import java.time.LocalDateTime
 
 /**
- * DTO for {@link com.khrustalev.storageservice.entity.Car}
+ * DTO for {@link com.khrustalev.storageservice.entity.schems.storage.Car}
  */
 data class CarDto(
     val id: Long? = null,
@@ -12,6 +11,6 @@ data class CarDto(
     val number: String? = null,
     val vinNumber: String? = null,
     val mileage: Int? = null,
-    val needRepair: Boolean?,
-    val arrivalTime: LocalDateTime? = null
+    val carClassification: Int? = null,
+    val driverId: Long? = null
 ) : Serializable

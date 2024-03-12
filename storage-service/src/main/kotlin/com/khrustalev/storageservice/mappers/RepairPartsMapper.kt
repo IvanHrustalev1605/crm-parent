@@ -1,7 +1,7 @@
 package com.khrustalev.storageservice.mappers
 
 import com.khrustalev.storageservice.dto.RepairPartsDto
-import com.khrustalev.storageservice.entity.RepairParts
+import com.khrustalev.storageservice.entity.schems.storage.RepairParts
 import com.khrustalev.storageservice.entity.enums.RepairPartsCategory
 import com.khrustalev.storageservice.service.CarService
 import com.khrustalev.storageservice.service.abstracts.RepairPartGroupService

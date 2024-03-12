@@ -18,14 +18,14 @@ data class CarArrivalStateDto(
     var needRepair: Boolean? = null,
     @JsonProperty(value = "descriptionProblems")
     var descriptionProblems: String? = null,
-    @JsonProperty(value = "mileage")
-    var mileage: Int? = null,
-    @JsonProperty(value = "checkUp")
-    var checkUp: Boolean? = null,
     @JsonProperty(value = "engineerId")
     var engineerId: Long? = null,
     @JsonProperty(value = "carId")
     var carId: Long? = null,
     @JsonProperty(value = "receivingSecurity")
-    var securityId: Long? = null
+    var securityId: Long? = null,
+    @JsonProperty(value = "repairRequestWriteUpTo")
+    var repairRequestWriteUpTo: LocalDateTime? = null,
+    @JsonProperty(value = "stateChangeTime")
+    var stateChangeTime: LocalDateTime? = null
 ) : Serializable

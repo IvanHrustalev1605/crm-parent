@@ -27,4 +27,8 @@ class CarStateController(private val carStateService: CarStateService) {
     fun getLastCarArrivalStateByCarNumber(@RequestParam("carNumber") carNumber: String) : ResponseEntity<CarArrivalStateDto> {
         return ResponseEntity(carStateService.getCarArrivalStateByCarNumber(carNumber), HttpStatus.OK)
     }
+    @GetMapping("/arrival/get-not-written-repair-requests")
+    fun getCarArrivalStatesWithNoRepairRequests() : ResponseEntity<MutableList<CarArrivalStateDto>> {
+        return ResponseEntity(carStateService.getArrivalStatesWithoutRepairRequest(), HttpStatus.OK)
+    }
 }

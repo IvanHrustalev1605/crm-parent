@@ -1,7 +1,7 @@
 package com.khrustalev.storageservice.mappers
 
 import com.khrustalev.storageservice.dto.CarRepairStateDto
-import com.khrustalev.storageservice.entity.CarRepairState
+import com.khrustalev.storageservice.entity.schems.storage.CarRepairState
 import com.khrustalev.storageservice.service.CarService
 import com.khrustalev.storageservice.service.abstracts.EngineerService
 import com.khrustalev.storageservice.service.abstracts.MechanicService

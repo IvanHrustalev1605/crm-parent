@@ -8,6 +8,4 @@ open class ArrivalQuestionnaire {
  open var engineerName: String? = null
  open var carDescriptionProblems: String? = null
  open var arrivalTime: LocalDateTime? = null
- open var carCheckUp: Boolean? = null
- open var mileage: Int? = null
 }

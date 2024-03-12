@@ -1,4 +1,4 @@
-package com.khrustalev.storageservice.entity
+package com.khrustalev.storageservice.entity.schems.storage
 
 import com.khrustalev.storageservice.entity.enums.RepairPartsCategory
 import jakarta.persistence.*
@@ -6,6 +6,7 @@ import java.time.LocalDateTime
 import java.util.UUID
 
 @Entity
+@Table(schema = "storage")
 open class RepairParts {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

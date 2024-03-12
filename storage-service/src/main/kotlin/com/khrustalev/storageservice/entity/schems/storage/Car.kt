@@ -1,9 +1,10 @@
-package com.khrustalev.storageservice.entity
+package com.khrustalev.storageservice.entity.schems.storage
 
+import com.khrustalev.storageservice.entity.enums.CarClassification
 import jakarta.persistence.*
 
 @Entity(name = "car")
-@Table(name = "car")
+@Table(name = "car", schema = "storage")
 open class Car() {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -11,16 +12,19 @@ open class Car() {
     open var id: Long? = null
     @Column
     open var model: String? = null
-    @Column
+    @Column(unique = true)
     open var number: String? = null
-    @Column
+    @Column(unique = true)
     open var vinNumber: String? = null
     @Column
     open var mileage: Int? = null
 
+    @Enumerated(EnumType.ORDINAL)
+    open var carClassification: CarClassification? = null
+
     @OneToOne
     @JoinColumn
-    open var driver:Driver? = null
+    open var driver: Driver? = null
 
     @OneToMany(mappedBy = "car")
     open var tracks: MutableList<Track>? = null
@@ -28,7 +32,7 @@ open class Car() {
     @OneToMany(mappedBy = "car")
     open var carArrivalState: MutableList<CarArrivalState>? = null
 
-    @OneToMany(mappedBy = "car", cascade = [CascadeType.REMOVE])
+    @OneToMany(mappedBy = "car")
     open var repairs: MutableList<Repair>? = null
 
 

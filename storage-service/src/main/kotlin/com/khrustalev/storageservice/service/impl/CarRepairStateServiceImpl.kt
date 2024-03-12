@@ -1,8 +1,7 @@
 package com.khrustalev.storageservice.service.impl
 
-import com.khrustalev.storageservice.entity.CarRepairState
+import com.khrustalev.storageservice.entity.schems.storage.CarRepairState
 import com.khrustalev.storageservice.exception.NotFoundEntityException
-import com.khrustalev.storageservice.mappers.CarRepairStateMapper
 import com.khrustalev.storageservice.repository.CarRepairStateRepository
 import com.khrustalev.storageservice.service.abstracts.CarRepairStateService
 import org.springframework.stereotype.Service

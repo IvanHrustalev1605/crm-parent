@@ -1,7 +1,7 @@
 package com.khrustalev.storageservice.service.abstracts
 
 import com.khrustalev.storageservice.dto.RepairPartsDto
-import com.khrustalev.storageservice.entity.RepairParts
+import com.khrustalev.storageservice.entity.schems.storage.RepairParts
 
 interface RepairPartsService {
     fun getById(id: Long) : RepairPartsDto

@@ -9,11 +9,15 @@ import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
 
 @RestController
-@RequestMapping("/api/storage/")
+@RequestMapping("/api/storage/test-data")
 class GenerateTestDataController(private val generateValueService: GenerateValueService
 ) {
-    @GetMapping("/test-data")
+    @GetMapping("/generate")
     fun generate() : ResponseEntity<Any> {
         return ResponseEntity(generateValueService.setRepairPartGroup(), HttpStatus.CREATED)
+    }
+    @GetMapping("/dictionary/save")
+    fun save() : ResponseEntity<Boolean> {
+        return ResponseEntity(generateValueService.generateDictionary(), HttpStatus.CREATED)
     }
 }

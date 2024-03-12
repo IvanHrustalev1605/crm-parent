@@ -30,6 +30,8 @@ interface StorageFeignClient {
     fun getLastArrivalStateByCarNumber(@RequestParam("carNumber") carNumber: String): CarArrivalStateDto?
     @PostMapping("/carState/repair/save")
     fun saveCarRepairState(@RequestBody(required = true) car: CarRepairStateDto) : Long
+    @GetMapping("carState/arrival/get-not-written-repair-requests")
+    fun getCarArrivalStatesWithNoRepairRequests() : MutableList<CarArrivalStateDto>
 
     /*Engineer*/
     @GetMapping("/engineer/find-id-by-name")

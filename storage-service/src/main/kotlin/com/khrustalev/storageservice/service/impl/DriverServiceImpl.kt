@@ -1,7 +1,7 @@
 package com.khrustalev.storageservice.service.impl
 
 import com.khrustalev.storageservice.dto.DriverDto
-import com.khrustalev.storageservice.entity.Driver
+import com.khrustalev.storageservice.entity.schems.storage.Driver
 import com.khrustalev.storageservice.mappers.DriverMapper
 import com.khrustalev.storageservice.repository.DriverRepository
 import com.khrustalev.storageservice.service.abstracts.DriverService

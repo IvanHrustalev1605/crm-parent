@@ -1,8 +1,10 @@
-package com.khrustalev.storageservice.entity
+package com.khrustalev.storageservice.entity.schems.storage
 
+import com.khrustalev.storageservice.entity.schems.dictionary.RepairPartsLargeGroup
 import jakarta.persistence.*
 
 @Entity
+@Table(schema = "storage")
 open class RepairPartsGroup {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -15,7 +17,8 @@ open class RepairPartsGroup {
     @Column
     open var stockBalance: Int? = null
 
-    @ManyToMany(mappedBy = "repairPartGroups")
+    @ManyToMany
+    @JoinTable(schema = "storage")
     open var repairPartsLargeGroup: MutableList<RepairPartsLargeGroup> = mutableListOf()
 
 }

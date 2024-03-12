@@ -1,40 +1,36 @@
-package com.khrustalev.storageservice.entity
+package com.khrustalev.storageservice.entity.schems.storage
 
 import com.khrustalev.storageservice.entity.enums.EmployeePosition
 import jakarta.persistence.*
-import java.time.LocalDateTime
 
-@Entity(name = "driver")
-@Table(name = "driver")
-open class Driver {
+@Entity
+@Table(schema = "storage")
+open class Mechanic {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     open var id: Long? = null
+
     @Embedded
-    open var personInfo:PersonInfo? = null
-    @Column
-    open var license: String? = null
+    open var personInfo: PersonInfo? = null
 
     @Enumerated(EnumType.ORDINAL)
-    open var position:EmployeePosition = EmployeePosition.DRIVER
+    open var employeePosition: EmployeePosition = EmployeePosition.MECHANIC
 
-    @OneToOne(mappedBy = "driver")
-    open var car: Car? = null
+    @ManyToMany(mappedBy = "mechanics")
+    open var carRepairState: MutableList<CarRepairState>? = null
 
-    @Column
-    open var timeToMakeRequestStart: LocalDateTime? = null
-    @Column
-    open var timeToMakeRequestEnd: LocalDateTime? = null
+
+
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
         if (javaClass != other?.javaClass) return false
 
-        other as Driver
+        other as Mechanic
 
         if (id != other.id) return false
         if (personInfo != other.personInfo) return false
-        if (license != other.license) return false
+        if (employeePosition != other.employeePosition) return false
 
         return true
     }
@@ -42,7 +38,7 @@ open class Driver {
     override fun hashCode(): Int {
         var result = id?.hashCode() ?: 0
         result = 31 * result + (personInfo?.hashCode() ?: 0)
-        result = 31 * result + (license?.hashCode() ?: 0)
+        result = 31 * result + employeePosition.hashCode()
         return result
     }
 

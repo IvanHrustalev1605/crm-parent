@@ -3,7 +3,7 @@ package com.khrustalev.storageservice.dto
 import java.io.Serializable
 
 /**
- * DTO for {@link com.khrustalev.storageservice.entity.PersonInfo}
+ * DTO for {@link com.khrustalev.storageservice.entity.schems.storage.PersonInfo}
  */
 data class PersonInfoDto(
     val firstName: String? = null,

@@ -4,7 +4,7 @@ import java.io.Serializable
 import java.time.LocalDateTime
 
 /**
- * DTO for {@link com.khrustalev.storageservice.entity.RepairRequest}
+ * DTO for {@link com.khrustalev.storageservice.entity.schems.storage.RepairRequest}
  */
 data class RepairRequestDto(
     var id: Long? = null,

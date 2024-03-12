@@ -1,9 +1,10 @@
-package com.khrustalev.storageservice.entity
+package com.khrustalev.storageservice.entity.schems.storage
 
 import com.khrustalev.storageservice.entity.enums.EmployeePosition
 import jakarta.persistence.*
 
 @Entity
+@Table(schema = "storage")
 open class Security {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

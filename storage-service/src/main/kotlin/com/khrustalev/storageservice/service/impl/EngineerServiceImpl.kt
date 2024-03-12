@@ -1,10 +1,9 @@
 package com.khrustalev.storageservice.service.impl
 
-import com.khrustalev.storageservice.entity.Engineer
+import com.khrustalev.storageservice.entity.schems.storage.Engineer
 import com.khrustalev.storageservice.exception.NotFoundEntityException
 import com.khrustalev.storageservice.repository.EngineerRepository
 import com.khrustalev.storageservice.service.abstracts.EngineerService
-import org.springframework.data.crossstore.ChangeSetPersister.NotFoundException
 import org.springframework.stereotype.Service
 
 @Service

@@ -4,4 +4,5 @@ interface GenerateValueService {
     fun generateDbValues() : Boolean
     fun generateRepairParts() : Boolean
     fun setRepairPartGroup()
+    fun generateDictionary() : Boolean
 }

@@ -1,19 +1,16 @@
-package com.khrustalev.storageservice.entity
+package com.khrustalev.storageservice.entity.schems.dictionary
 
 import jakarta.persistence.*
 
 @Entity
+@Table(schema = "dictionary")
 open class RepairPartsLargeGroup(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     open var id: Long? = null,
     @Column
-    open var name: String,
-
-    @ManyToMany
-    @JoinTable
-    open var repairPartGroups: MutableList<RepairPartsGroup>) {
+    open var name: String) {
 
     override fun equals(other: Any?): Boolean {
         if (this === other) return true

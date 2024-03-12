@@ -6,7 +6,7 @@ import java.io.Serializable
 import java.time.LocalDateTime
 
 /**
- * DTO for {@link com.khrustalev.storageservice.entity.Repair}
+ * DTO for {@link com.khrustalev.storageservice.entity.schems.storage.Repair}
  */
 data class RepairDto(
     var id: Long? = null,

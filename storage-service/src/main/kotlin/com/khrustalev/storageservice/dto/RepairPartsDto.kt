@@ -6,7 +6,7 @@ import java.time.LocalDateTime
 import java.util.*
 
 /**
- * DTO for {@link com.khrustalev.storageservice.entity.RepairParts}
+ * DTO for {@link com.khrustalev.storageservice.entity.schems.storage.RepairParts}
  */
 data class RepairPartsDto(
     var id: Long? = null,

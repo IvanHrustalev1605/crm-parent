@@ -1,7 +1,7 @@
 package com.khrustalev.storageservice.service.impl
 
 import com.khrustalev.storageservice.dto.RepairRequestDto
-import com.khrustalev.storageservice.entity.RepairRequest
+import com.khrustalev.storageservice.entity.schems.storage.RepairRequest
 import com.khrustalev.storageservice.exception.NotFoundEntityException
 import com.khrustalev.storageservice.mappers.RepairRequestMapper
 import com.khrustalev.storageservice.repository.RepairRequestRepository

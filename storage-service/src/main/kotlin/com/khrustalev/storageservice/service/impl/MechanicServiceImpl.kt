@@ -1,6 +1,6 @@
 package com.khrustalev.storageservice.service.impl
 
-import com.khrustalev.storageservice.entity.Mechanic
+import com.khrustalev.storageservice.entity.schems.storage.Mechanic
 import com.khrustalev.storageservice.repository.MechanicRepository
 import com.khrustalev.storageservice.service.abstracts.MechanicService
 import org.springframework.stereotype.Service

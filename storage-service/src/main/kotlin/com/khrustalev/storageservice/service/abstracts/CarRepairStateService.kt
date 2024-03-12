@@ -1,6 +1,6 @@
 package com.khrustalev.storageservice.service.abstracts
 
-import com.khrustalev.storageservice.entity.CarRepairState
+import com.khrustalev.storageservice.entity.schems.storage.CarRepairState
 
 interface CarRepairStateService {
     fun findById(id: Long) : CarRepairState

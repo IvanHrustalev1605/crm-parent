@@ -1,7 +1,7 @@
 package com.khrustalev.storageservice.service.abstracts
 
 import com.khrustalev.storageservice.dto.RepairRequestDto
-import com.khrustalev.storageservice.entity.RepairRequest
+import com.khrustalev.storageservice.entity.schems.storage.RepairRequest
 import java.time.LocalDateTime
 
 interface RepairRequestService {

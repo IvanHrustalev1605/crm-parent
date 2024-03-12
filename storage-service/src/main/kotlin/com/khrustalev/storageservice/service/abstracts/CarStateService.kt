@@ -7,4 +7,5 @@ interface CarStateService {
     fun saveArrivalState(carArrivalStateDto: CarArrivalStateDto): Boolean
     fun saveRepairState(carRepairStateDto: CarRepairStateDto): Long
     fun getCarArrivalStateByCarNumber(carNumber: String): CarArrivalStateDto
+    fun getArrivalStatesWithoutRepairRequest(): MutableList<CarArrivalStateDto>
 }

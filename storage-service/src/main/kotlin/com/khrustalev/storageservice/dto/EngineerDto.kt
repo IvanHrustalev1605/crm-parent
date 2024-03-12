@@ -4,7 +4,7 @@ import com.khrustalev.storageservice.entity.enums.EmployeePosition
 import java.io.Serializable
 
 /**
- * DTO for {@link com.khrustalev.storageservice.entity.Engineer}
+ * DTO for {@link com.khrustalev.storageservice.entity.schems.storage.Engineer}
  */
 data class EngineerDto(
     val id: Long? = null,

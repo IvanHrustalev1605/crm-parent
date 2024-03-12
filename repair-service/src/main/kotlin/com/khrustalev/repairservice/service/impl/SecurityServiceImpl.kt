@@ -14,13 +14,7 @@ import java.time.LocalDateTime
 class SecurityServiceImpl(private val storageFeignClient: StorageFeignClient,
                           private val telegramService: TelegramService) : SecurityService {
     private val LOGGER: Logger = LoggerFactory.getLogger(SecurityServiceImpl::class.java)
-    /*
-    * -Логика метода-
-    * Машина заезжает на базу
-    * Охранник встречает, отмечает время прибытия
-    * Ставит отметку нужен ли ремонт
-    * Сущность *CarState* сохраняется в БД
-    * */
+
     override fun checkArrivalCar(arrivalQuestionnaire: ArrivalQuestionnaire, securityId: Long): Boolean {
         val carState = CarArrivalStateDto()
         val carId = storageFeignClient.findCarByCarNumber(arrivalQuestionnaire.carNumber!!)
@@ -28,14 +22,13 @@ class SecurityServiceImpl(private val storageFeignClient: StorageFeignClient,
 
         carState.needRepair = arrivalQuestionnaire.needRepair!!
         carState.arrivalTime = LocalDateTime.now()
-        carState.mileage = arrivalQuestionnaire.mileage
         carState.carId = carId
+        carState.stateChangeTime = LocalDateTime.now()
         if (arrivalQuestionnaire.needRepair!!) {
             carState.engineerId = engineerId
             telegramService.sendMessage("Братишкааа! Там тачка ${arrivalQuestionnaire.carNumber} в ремонт приехала, заебал, работай давай \uD83D\uDE18")
         }
         carState.descriptionProblems = arrivalQuestionnaire.carDescriptionProblems!!
-        carState.checkUp = arrivalQuestionnaire.carCheckUp
         carState.receivingSecurity = securityId
         LOGGER.info("Сохраняем carState $carState...")
         if (storageFeignClient.saveCarArrivalState(carState)) {

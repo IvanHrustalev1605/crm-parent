@@ -1,7 +1,7 @@
 package com.khrustalev.storageservice.service.abstracts
 
 import com.khrustalev.storageservice.dto.RepairPartsGroupDto
-import com.khrustalev.storageservice.entity.RepairPartsGroup
+import com.khrustalev.storageservice.entity.schems.storage.RepairPartsGroup
 
 interface RepairPartGroupService {
     fun findAllGroups() : MutableList<RepairPartsGroup>

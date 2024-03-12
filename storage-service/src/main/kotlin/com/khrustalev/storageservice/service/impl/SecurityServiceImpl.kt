@@ -1,6 +1,6 @@
 package com.khrustalev.storageservice.service.impl
 
-import com.khrustalev.storageservice.entity.Security
+import com.khrustalev.storageservice.entity.schems.storage.Security
 import com.khrustalev.storageservice.exception.NotFoundEntityException
 import com.khrustalev.storageservice.repository.SecurityRepository
 import com.khrustalev.storageservice.service.abstracts.SecurityService

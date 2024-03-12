@@ -5,7 +5,7 @@ import java.io.Serializable
 import java.time.LocalDateTime
 
 /**
- * DTO for {@link com.khrustalev.storageservice.entity.CarRepairState}
+ * DTO for {@link com.khrustalev.storageservice.entity.schems.storage.CarRepairState}
  */
 data class CarRepairStateDto(
     val id: Long? = null,

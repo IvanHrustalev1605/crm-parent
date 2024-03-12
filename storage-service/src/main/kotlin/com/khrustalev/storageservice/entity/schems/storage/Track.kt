@@ -1,9 +1,9 @@
-package com.khrustalev.storageservice.entity
+package com.khrustalev.storageservice.entity.schems.storage
 
 import jakarta.persistence.*
 
 @Entity(name = "track")
-@Table(name = "track")
+@Table(name = "track", schema = "storage")
 open class Track {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -15,7 +15,7 @@ open class Track {
     open var vinNumber: String? = null
 
     @ManyToOne
-    open var car:Car? = null
+    open var car: Car? = null
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
         if (javaClass != other?.javaClass) return false

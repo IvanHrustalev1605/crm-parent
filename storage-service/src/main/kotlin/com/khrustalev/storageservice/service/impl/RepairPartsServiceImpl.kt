@@ -1,10 +1,9 @@
 package com.khrustalev.storageservice.service.impl
 
 import com.khrustalev.storageservice.dto.RepairPartsDto
-import com.khrustalev.storageservice.entity.RepairParts
+import com.khrustalev.storageservice.entity.schems.storage.RepairParts
 import com.khrustalev.storageservice.exception.NotFoundEntityException
 import com.khrustalev.storageservice.mappers.RepairPartsMapper
-import com.khrustalev.storageservice.repository.RepairPartsGroupRepository
 import com.khrustalev.storageservice.repository.RepairPartsRepository
 import com.khrustalev.storageservice.service.abstracts.RepairPartGroupService
 import com.khrustalev.storageservice.service.abstracts.RepairPartsService

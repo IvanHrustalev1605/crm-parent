@@ -1,4 +1,4 @@
-package com.khrustalev.storageservice.entity
+package com.khrustalev.storageservice.entity.schems.storage
 
 import jakarta.persistence.Embeddable
 

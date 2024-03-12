@@ -1,11 +1,11 @@
-package com.khrustalev.storageservice.entity
+package com.khrustalev.storageservice.entity.schems.storage
 
 import com.khrustalev.storageservice.entity.enums.RepairState
 import jakarta.persistence.*
 import java.time.LocalDateTime
 
 @Entity
-@Table(name = "car_repair_state")
+@Table(name = "car_repair_state", schema = "storage")
 open class CarRepairState(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

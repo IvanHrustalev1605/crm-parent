@@ -1,9 +1,10 @@
-package com.khrustalev.storageservice.entity
+package com.khrustalev.storageservice.entity.schems.storage
 
 import jakarta.persistence.*
 import java.time.LocalDateTime
 
 @Entity
+@Table(schema = "storage")
 open class RepairRequest {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,5 +23,5 @@ open class RepairRequest {
     open var engineer: Engineer? = null
 
     @ManyToOne
-    open var car:Car? = null
+    open var car: Car? = null
 }

@@ -1,8 +1,7 @@
 package com.khrustalev.storageservice.service.abstracts
 
-import com.fasterxml.jackson.annotation.JsonTypeInfo.Id
 import com.khrustalev.storageservice.dto.DriverDto
-import com.khrustalev.storageservice.entity.Driver
+import com.khrustalev.storageservice.entity.schems.storage.Driver
 
 interface DriverService {
     fun findById(id : Long?) : Driver

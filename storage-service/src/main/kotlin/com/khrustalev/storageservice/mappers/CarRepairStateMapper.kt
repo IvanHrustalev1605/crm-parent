@@ -2,9 +2,10 @@ package com.khrustalev.storageservice.mappers
 
 import com.khrustalev.storageservice.dto.CarRepairStateDto
 import com.khrustalev.storageservice.entity.schems.storage.CarRepairState
-import com.khrustalev.storageservice.service.CarService
+import com.khrustalev.storageservice.service.abstracts.CarService
 import com.khrustalev.storageservice.service.abstracts.EngineerService
 import com.khrustalev.storageservice.service.abstracts.MechanicService
+import com.khrustalev.storageservice.service.abstracts.RepairBoxService
 import com.khrustalev.storageservice.service.abstracts.RepairPartsService
 import org.springframework.context.annotation.Lazy
 import org.springframework.stereotype.Component
@@ -15,7 +16,9 @@ import kotlin.streams.toList
 class CarRepairStateMapper(@Lazy private val carService: CarService,
                            @Lazy private val engineerService: EngineerService,
                            @Lazy private val mechanicService: MechanicService,
-                           @Lazy private val repairPartsService: RepairPartsService
+                           @Lazy private val repairPartsService: RepairPartsService,
+                           @Lazy private val repairBoxService: RepairBoxService,
+                           @Lazy private val repairBoxMapper: RepairBoxMapper
 ) {
     fun toDto(carRepairState: CarRepairState) : CarRepairStateDto = CarRepairStateDto(
         id = carRepairState.id,
@@ -26,7 +29,8 @@ class CarRepairStateMapper(@Lazy private val carService: CarService,
         repairProblems = carRepairState.repairProblems,
         carId = carRepairState.car!!.id,
         mechanicIds = carRepairState.mechanics?.stream()?.map { it.id!! }?.toList(),
-        engineerId = carRepairState.engineer!!.id
+        engineerId = carRepairState.engineer!!.id,
+        repairBoxId = carRepairState.repairBox?.id
     )
     fun toEntity(carRepairStateDto: CarRepairStateDto): CarRepairState = CarRepairState(
         id = carRepairStateDto.id,
@@ -41,6 +45,7 @@ class CarRepairStateMapper(@Lazy private val carService: CarService,
         mechanics = if (!CollectionUtils.isEmpty(carRepairStateDto.mechanicIds))
             carRepairStateDto.mechanicIds?.let {
             mechanicService.getByIds(it)
-        } else null
+        } else null,
+        repairBox = if (carRepairStateDto.repairBoxId != null) repairBoxMapper.toEntity(repairBoxService.getById(carRepairStateDto.repairBoxId)) else null
     )
 }

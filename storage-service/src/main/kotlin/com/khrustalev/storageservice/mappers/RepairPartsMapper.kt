@@ -3,7 +3,7 @@ package com.khrustalev.storageservice.mappers
 import com.khrustalev.storageservice.dto.RepairPartsDto
 import com.khrustalev.storageservice.entity.schems.storage.RepairParts
 import com.khrustalev.storageservice.entity.enums.RepairPartsCategory
-import com.khrustalev.storageservice.service.CarService
+import com.khrustalev.storageservice.service.abstracts.CarService
 import com.khrustalev.storageservice.service.abstracts.RepairPartGroupService
 import org.springframework.context.annotation.Lazy
 import org.springframework.stereotype.Component

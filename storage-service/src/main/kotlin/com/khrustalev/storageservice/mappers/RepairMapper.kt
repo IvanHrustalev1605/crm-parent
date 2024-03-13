@@ -2,7 +2,7 @@ package com.khrustalev.storageservice.mappers
 
 import com.khrustalev.storageservice.dto.RepairDto
 import com.khrustalev.storageservice.entity.schems.storage.Repair
-import com.khrustalev.storageservice.service.CarService
+import com.khrustalev.storageservice.service.abstracts.CarService
 import com.khrustalev.storageservice.service.abstracts.CarRepairStateService
 import com.khrustalev.storageservice.service.abstracts.RepairRequestService
 import org.springframework.stereotype.Component

@@ -2,7 +2,7 @@ package com.khrustalev.storageservice.mappers
 
 import com.khrustalev.storageservice.dto.DriverDto
 import com.khrustalev.storageservice.entity.schems.storage.Driver
-import com.khrustalev.storageservice.service.CarService
+import com.khrustalev.storageservice.service.abstracts.CarService
 import org.springframework.context.annotation.Lazy
 import org.springframework.stereotype.Component
 

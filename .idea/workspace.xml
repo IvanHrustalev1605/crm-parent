@@ -7,13 +7,10 @@
     <list default="true" id="a8831c50-c17b-4626-9402-a365a662022b" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources/d6bb1a80-6065-44ba-9b9b-2c9d22a22183.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/d6bb1a80-6065-44ba-9b9b-2c9d22a22183.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/d6bb1a80-6065-44ba-9b9b-2c9d22a22183/storage_v2/_src_/database/storage-service.Y0EIeg/schema/public.abK9xQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/d6bb1a80-6065-44ba-9b9b-2c9d22a22183/storage_v2/_src_/database/storage-service.Y0EIeg/schema/public.abK9xQ.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/kotlinc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/kotlinc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_03_2024_11_07__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_03_2024_11_07__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_06_03_2024_10_37_[Changes]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_06_03_2024_10_37__Changes_.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_03_2024_20_38__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_03_2024_20_38__Changes_.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Repair-Report № 2727d32d-6f9a-46d8-8f98-05dbb242a78e.doc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Repair-Report № ec819d07-d306-4ae0-8a9c-9a029788e76a.doc" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,10 +22,10 @@
       <list>
         <option value="Kotlin Data Class" />
         <option value="com.haulmont.jpb.AbstractClassKotlin" />
-        <option value="com.haulmont.jpb.NewDataClass" />
         <option value="Kotlin Enum" />
-        <option value="com.haulmont.jpb.JpaRepository" />
         <option value="Kotlin Interface" />
+        <option value="com.haulmont.jpb.JpaRepository" />
+        <option value="com.haulmont.jpb.NewDataClass" />
         <option value="Kotlin Class" />
       </list>
     </option>
@@ -59,56 +56,56 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;DtoCreateDialog.IS_JSON_IGNORE_UNKNOWN_PROPERTIES&quot;: &quot;true&quot;,
-    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
-    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
-    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
-    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;com.google.cloudcode.ide_session_index&quot;: &quot;20240304_0000&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;develop&quot;,
-    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;openjdk-19&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/IdeaProjects/crm-parent&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;SDKs&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.36206895&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;com.haulmont.jpb.databaseVersioning&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "DtoCreateDialog.IS_JSON_IGNORE_UNKNOWN_PROPERTIES": "true",
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "com.google.cloudcode.ide_session_index": "20240313_0000",
+    "git-widget-placeholder": "develop",
+    "jdk.selected.JAVA_MODULE": "openjdk-19",
+    "last_opened_file_path": "C:/IdeaProjects/demo4",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.36206895",
+    "settings.editor.selected.configurable": "com.haulmont.jpb.databaseVersioning",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;DatabaseDriversLRU&quot;: [
-      &quot;postgresql&quot;
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "postgresql"
     ]
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CreateKotlinClassDialog.RecentsKey">
       <recent name="com.khrustalev.repairservice.service.impl" />
       <recent name="com.khrustalev.repairservice.service" />
-      <recent name="com.khrustalev.storageservice.mappers" />
+      <recent name="com.khrustalev.repairservice.dto" />
       <recent name="com.khrustalev.storageservice.service.impl" />
-      <recent name="org.khrustalev.documentservice.service.impl" />
+      <recent name="com.khrustalev.storageservice.service.abstracts" />
     </key>
     <key name="MoveKotlinTopLevelDeclarationsDialog.RECENTS_KEY">
-      <recent name="com.khrustalev.storageservice.entity.schems.dictionary" />
-      <recent name="com.khrustalev.storageservice.entity.schems.storage" />
+      <recent name="com.khrustalev.storageservice.service.abstracts" />
       <recent name="com.khrustalev.storageservice.dto" />
       <recent name="com.khrustalev.storageservice.mappers" />
       <recent name="com.khrustalev.storageservice.entity" />
     </key>
     <key name="CopyKotlinDeclarationDialog.RECENTS_KEY">
       <recent name="com.khrustalev.repairservice.dto" />
+      <recent name="com.khrustalev.storageservice.entity.enums" />
       <recent name="com.khrustalev.repairservice.dto.enums" />
       <recent name="com.khrustalev.storageservice.utils" />
     </key>
@@ -124,6 +121,13 @@
     <configuration name="DocumentServiceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <module name="document-service" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="org.khrustalev.documentservice.DocumentServiceApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="RepairPertsServiceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="repair-parts-service" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.khrustalev.repairpertsservice.RepairPertsServiceApplication" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -144,6 +148,7 @@
     </configuration>
     <list>
       <item itemvalue="Spring Boot.DocumentServiceApplication" />
+      <item itemvalue="Spring Boot.RepairPertsServiceApplication" />
       <item itemvalue="Spring Boot.RepairServiceApplication" />
       <item itemvalue="Spring Boot.StorageServiceApplication" />
     </list>
@@ -161,9 +166,10 @@
       <workItem from="1709294860644" duration="17005000" />
       <workItem from="1709392878862" duration="2100000" />
       <workItem from="1709450203244" duration="13480000" />
-      <workItem from="1709631557725" duration="15599000" />
-      <workItem from="1709666976164" duration="307000" />
-      <workItem from="1709889825781" duration="5760000" />
+      <workItem from="1709710610835" duration="11016000" />
+      <workItem from="1709731334352" duration="22000" />
+      <workItem from="1709799503801" duration="20580000" />
+      <workItem from="1710316958868" duration="13358000" />
     </task>
     <servers />
   </component>
@@ -188,41 +194,26 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="kotlin-line">
-          <url>file://$PROJECT_DIR$/repair-service/src/main/kotlin/com/khrustalev/repairservice/service/impl/RepairProcessServiceImpl.kt</url>
-          <line>50</line>
-          <option name="timeStamp" value="65" />
+          <url>file://$PROJECT_DIR$/repair-service/src/main/kotlin/com/khrustalev/repairservice/service/impl/RepairPartGroupServiceImpl.kt</url>
+          <line>10</line>
+          <option name="timeStamp" value="7" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="kotlin-line">
-          <url>file://$PROJECT_DIR$/repair-service/src/main/kotlin/com/khrustalev/repairservice/controllers/MainController.kt</url>
-          <line>83</line>
-          <option name="timeStamp" value="76" />
+          <url>file://$PROJECT_DIR$/repair-service/src/main/kotlin/com/khrustalev/repairservice/service/impl/RepairPartGroupServiceImpl.kt</url>
+          <line>11</line>
+          <option name="timeStamp" value="8" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="kotlin-line">
-          <url>file://$PROJECT_DIR$/storage-service/src/main/kotlin/com/khrustalev/storageservice/service/impl/RepairServiceImpl.kt</url>
-          <line>31</line>
-          <option name="timeStamp" value="77" />
+          <url>file://$PROJECT_DIR$/repair-service/src/main/kotlin/com/khrustalev/repairservice/service/impl/RepairPartGroupServiceImpl.kt</url>
+          <line>12</line>
+          <option name="timeStamp" value="9" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="kotlin-line">
-          <url>file://$PROJECT_DIR$/storage-service/src/main/kotlin/com/khrustalev/storageservice/service/impl/RepairServiceImpl.kt</url>
-          <line>32</line>
-          <option name="timeStamp" value="78" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="kotlin-line">
-          <url>file://$PROJECT_DIR$/storage-service/src/main/kotlin/com/khrustalev/storageservice/mappers/CarArrivalStateMapper.kt</url>
-          <line>26</line>
-          <option name="timeStamp" value="80" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="kotlin-line">
-          <url>file://$PROJECT_DIR$/storage-service/src/main/kotlin/com/khrustalev/storageservice/mappers/CarArrivalStateMapper.kt</url>
-          <line>34</line>
-          <option name="timeStamp" value="81" />
+          <url>file://$PROJECT_DIR$/repair-service/src/main/kotlin/com/khrustalev/repairservice/service/impl/RepairPartGroupServiceImpl.kt</url>
+          <line>13</line>
+          <option name="timeStamp" value="10" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
-    <watches-manager>
-      <configuration name="SpringBootApplicationConfigurationType">
-        <watch expression="((java.util.ArrayList)((Repair)toEntity).repairRequests).get(0)" custom="com.khrustalev.storageservice.entity.Repair,java.util.ArrayList" />
-      </configuration>
-    </watches-manager>
   </component>
 </project>

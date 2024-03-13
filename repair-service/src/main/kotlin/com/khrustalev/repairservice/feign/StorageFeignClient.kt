@@ -2,6 +2,7 @@ package com.khrustalev.repairservice.feign
 
 import com.khrustalev.repairservice.dto.*
 import org.springframework.cloud.openfeign.FeignClient
+import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PostMapping
@@ -22,6 +23,8 @@ interface StorageFeignClient {
     /*Cars*/
     @GetMapping("/car/find-by-number")
     fun findCarByCarNumber(@RequestParam("carNumber") carNumber: String) : Long
+    @GetMapping("/car/by-id")
+    fun getCarById(@RequestParam carId: Long) : CarDto
 
     /*CarStates*/
     @PostMapping("/carState/arrival/save")
@@ -78,5 +81,17 @@ interface StorageFeignClient {
     fun getRepairPartsGroupById(@RequestParam id: Long) : RepairPartGroupDto
     @PostMapping("/repairPartsGroup/save")
     fun saveRepairPartGroup(repairPartsGroupDto: RepairPartGroupDto)
+
+    /*RepairBox*/
+    @GetMapping("/repairBox/all-by-ids")
+    fun getAllByIds(@RequestParam ids: MutableList<Long>) : ResponseEntity<MutableList<RepairBoxDto>>
+    @GetMapping("/repairBox/free")
+    fun getFreeBox() : ResponseEntity<MutableList<RepairBoxDto>>
+    @GetMapping("/repairBox/by-box-number")
+    fun getBoxByNumber(@RequestParam boxNumber: Int) : ResponseEntity<RepairBoxDto>
+    @GetMapping("/repairBox/by-box-id")
+    fun getBoxById(@RequestParam id: Long) : ResponseEntity<RepairBoxDto>
+    @PostMapping("/repairBox/save")
+    fun saveBox(@RequestBody repairBoxDto: RepairBoxDto) : ResponseEntity<RepairBoxDto>
 
 }

@@ -16,5 +16,7 @@ data class CarRepairStateDto(
     val repairProblems: String? = null,
     val carId: Long? = null,
     val mechanicIds: MutableList<Long>?,
-    val engineerId: Long? = null
+    val engineerId: Long? = null,
+    val repairBoxId: Long? = null
+
 ) : Serializable

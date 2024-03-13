@@ -2,6 +2,7 @@ package com.khrustalev.repairservice.service.impl
 
 import com.khrustalev.repairservice.dto.RepairRequestDto
 import com.khrustalev.repairservice.feign.StorageFeignClient
+import com.khrustalev.repairservice.service.CarArrivalStateService
 import com.khrustalev.repairservice.service.RepairRequestService
 import com.khrustalev.repairservice.service.TelegramService
 import org.slf4j.Logger
@@ -11,7 +12,8 @@ import java.time.LocalDateTime
 
 @Service
 class RepairRequestServiceImpl(private val storageFeignClient: StorageFeignClient,
-                               private val telegramService: TelegramService) : RepairRequestService {
+                               private val telegramService: TelegramService,
+                               private val carArrivalStateService: CarArrivalStateService) : RepairRequestService {
     private val LOGGER: Logger = LoggerFactory.getLogger(RepairRequestServiceImpl::class.java)
 
     override fun createRepairRequest(
@@ -50,6 +52,7 @@ class RepairRequestServiceImpl(private val storageFeignClient: StorageFeignClien
             telegramService.sendMessage("ВОДИТЕЛЮ с \'ЛИЦЕНЗИЕЙ\' ${driver.license}: Заявка № ${result.requestNumber} согласованна. \n" +
                     "Пожалуйста, заполните бланк ремонта по ссылке *место для ссылки* " +
                     "И можете проезжать в зону ремонта!")
+            carArrivalStateService.setRepairRequest(storageFeignClient.getCarById(result.carId!!).number!!)
         return true
         }
         return false

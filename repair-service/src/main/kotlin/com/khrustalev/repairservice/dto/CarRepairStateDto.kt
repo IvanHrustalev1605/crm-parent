@@ -25,4 +25,6 @@ class CarRepairStateDto {
     var mechanicIds: MutableList<Long>? = null
     @JsonProperty(value = "engineerId")
     var engineerId: Long? = null
+    @JsonProperty(value = "engineerId")
+    var repairBoxId: Long? = null
 }

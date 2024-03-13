@@ -12,4 +12,5 @@ class RepairInfoDto {
     val engineerId: Long? = null
     val carNumber: String? = null
     val carId: Long? = null
+    val repairBoxNumber: Int = 0
 }

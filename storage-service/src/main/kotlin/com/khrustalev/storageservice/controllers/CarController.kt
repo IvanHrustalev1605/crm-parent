@@ -1,7 +1,7 @@
 package com.khrustalev.storageservice.controllers
 
 import com.khrustalev.storageservice.dto.CarDto
-import com.khrustalev.storageservice.service.CarService
+import com.khrustalev.storageservice.service.abstracts.CarService
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.GetMapping
@@ -21,5 +21,8 @@ class CarController(private val carService: CarService) {
     fun getByVin(@RequestParam vin: String) : ResponseEntity<CarDto> {
         return ResponseEntity(carService.findByVin(vin), HttpStatus.OK)
     }
-
+    @GetMapping("/by-id")
+    fun getCarById(@RequestParam carId: Long) : ResponseEntity<CarDto> {
+        return ResponseEntity(carService.mapFromEntityToDto(carService.findById(carId)), HttpStatus.OK)
+    }
 }

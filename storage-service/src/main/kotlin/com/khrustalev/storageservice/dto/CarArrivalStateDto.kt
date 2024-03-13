@@ -27,5 +27,9 @@ data class CarArrivalStateDto(
     @JsonProperty(value = "repairRequestWriteUpTo")
     var repairRequestWriteUpTo: LocalDateTime? = null,
     @JsonProperty(value = "stateChangeTime")
-    var stateChangeTime: LocalDateTime? = null
+    var stateChangeTime: LocalDateTime? = null,
+    @JsonProperty(value = "repairRequestWritten")
+    var repairRequestWritten: Boolean = false,
+    @JsonProperty(value = "repairRequestWrittenIn")
+    var repairRequestWrittenIn: LocalDateTime? = null
 ) : Serializable

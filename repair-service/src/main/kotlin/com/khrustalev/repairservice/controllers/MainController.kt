@@ -23,7 +23,8 @@ class MainController(private val securityService: SecurityService,
                      private val repairProcessService: RepairProcessService,
                      private val repairPartsService: RepairPartsService,
                      private val repairRequestService: RepairRequestService,
-                     private val documentService: DocumentService) {
+                     private val documentService: DocumentService, private val repairBoxService: RepairBoxService
+) {
 
     @Operation(summary = "Охранник на въезде отмечает прибывшею машину. " +
             "В случае необходимости ремонта, назначается инженер, который будет ответственен за процесс ремонта")
@@ -129,5 +130,14 @@ class MainController(private val securityService: SecurityService,
     @GetMapping("/get-repair-report")
     fun getRepairReport(@RequestParam repairId: Long) : ResponseEntity<Boolean> {
         return ResponseEntity(documentService.generateRepairReport(repairId), HttpStatus.OK)
+    }
+    @Operation(summary = "Получить список свободных боксов")
+    @ApiResponses(value = [
+        ApiResponse(responseCode = "200", description = "Успешно!"),
+        ApiResponse(responseCode = "500", description = "Ошибка!")
+    ])
+    @GetMapping("/free-boxes")
+    fun getFreeBoxes() : ResponseEntity<MutableList<RepairBoxDto>> {
+        return ResponseEntity(repairBoxService.getFreeBoxes(), HttpStatus.OK)
     }
 }

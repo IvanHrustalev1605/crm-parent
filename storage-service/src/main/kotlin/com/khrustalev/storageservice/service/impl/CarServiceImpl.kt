@@ -5,9 +5,8 @@ import com.khrustalev.storageservice.entity.schems.storage.Car
 import com.khrustalev.storageservice.exception.NotFoundEntityException
 import com.khrustalev.storageservice.mappers.CarMapper
 import com.khrustalev.storageservice.repository.CarRepository
-import com.khrustalev.storageservice.service.CarService
+import com.khrustalev.storageservice.service.abstracts.CarService
 import org.springframework.stereotype.Service
-import java.util.*
 
 @Service
 class CarServiceImpl(private val carRepository: CarRepository, private val carMapper: CarMapper) : CarService {
@@ -21,5 +20,9 @@ class CarServiceImpl(private val carRepository: CarRepository, private val carMa
 
     override fun findByVin(vin: String): CarDto {
         return carMapper.toDto(carRepository.findByVinNumber(vin).orElseThrow { NotFoundEntityException("Car by VIN: $vin not found!") })
+    }
+
+    override fun mapFromEntityToDto(car: Car?): CarDto? {
+        return carMapper.toDto(car!!)
     }
 }

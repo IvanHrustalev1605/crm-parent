@@ -24,4 +24,9 @@ open class CarArrivalStateDto {
     var repairRequestWriteUpTo: LocalDateTime? = null
     @JsonProperty(value = "stateChangeTime")
     var stateChangeTime: LocalDateTime? = null
+    @JsonProperty(value = "repairRequestWritten")
+    var repairRequestWritten: Boolean = false
+    @JsonProperty(value = "repairRequestWrittenIn")
+    var repairRequestWrittenIn: LocalDateTime? = null
+
 }

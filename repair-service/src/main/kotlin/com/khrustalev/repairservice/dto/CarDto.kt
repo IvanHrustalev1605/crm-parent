@@ -6,5 +6,18 @@ import com.fasterxml.jackson.annotation.JsonProperty
 @JsonIgnoreProperties(ignoreUnknown = true)
 class CarDto {
     @JsonProperty(value = "id")
-    open var id: Long? = null
+    val id: Long? = null
+    @JsonProperty(value = "model")
+    val model: String? = null
+    @JsonProperty(value = "number")
+    val number: String? = null
+    @JsonProperty(value = "vinNumber")
+    val vinNumber: String? = null
+    @JsonProperty(value = "mileage")
+    val mileage: Int? = null
+    @JsonProperty(value = "carClassification")
+    val carClassification: Int? = null
+    @JsonProperty(value = "driverId")
+    val driverId: Long? = null
+
 }

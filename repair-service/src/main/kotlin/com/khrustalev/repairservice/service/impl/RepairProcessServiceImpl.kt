@@ -4,6 +4,7 @@ import com.khrustalev.repairservice.dto.RepairInfoDto
 import com.khrustalev.repairservice.dto.RepairProcessDto
 import com.khrustalev.repairservice.dto.enums.RepairProcessState
 import com.khrustalev.repairservice.feign.StorageFeignClient
+import com.khrustalev.repairservice.service.CarArrivalStateService
 import com.khrustalev.repairservice.service.CarRepairStateService
 import com.khrustalev.repairservice.service.RepairProcessService
 import com.khrustalev.repairservice.service.TelegramService
@@ -20,13 +21,18 @@ import java.time.temporal.ChronoUnit
 @Service
 class RepairProcessServiceImpl(private val storageFeignClient: StorageFeignClient,
                                private val carRepairStateService: CarRepairStateService,
-                               private val telegramService: TelegramService) : RepairProcessService {
+                               private val telegramService: TelegramService,
+                               private val carArrivalStateService: CarArrivalStateService) : RepairProcessService {
     private val LOGGER: Logger = LoggerFactory.getLogger(RepairProcessServiceImpl::class.java)
 
     override fun createNewRepairProcess(
         repairInfoDto: RepairInfoDto,
         repairRequestList: MutableList<Long>
     ): RepairProcessDto? {
+        val arrivalStateDto = carArrivalStateService.getStateByCarNumber(repairInfoDto.carNumber!!)
+        if (arrivalStateDto?.repairRequestWritten == false) {
+                throw Exception("Заявка на ремонт не написана или не согласована. Нельзя приступить к ремонту!")
+            }
             val repairProcessDto = RepairProcessDto()
             repairProcessDto.carId = repairInfoDto.carId
             repairProcessDto.createTime = LocalDateTime.now()

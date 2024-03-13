@@ -24,15 +24,18 @@ class SecurityServiceImpl(private val storageFeignClient: StorageFeignClient,
         carState.arrivalTime = LocalDateTime.now()
         carState.carId = carId
         carState.stateChangeTime = LocalDateTime.now()
+        carState.receivingSecurity = securityId
+
         if (arrivalQuestionnaire.needRepair!!) {
             carState.engineerId = engineerId
-            telegramService.sendMessage("Братишкааа! Там тачка ${arrivalQuestionnaire.carNumber} в ремонт приехала, заебал, работай давай \uD83D\uDE18")
+            carState.descriptionProblems = arrivalQuestionnaire.carDescriptionProblems!!
         }
-        carState.descriptionProblems = arrivalQuestionnaire.carDescriptionProblems!!
-        carState.receivingSecurity = securityId
         LOGGER.info("Сохраняем carState $carState...")
         if (storageFeignClient.saveCarArrivalState(carState)) {
             LOGGER.info("CarState успешно сохранен!")
+            if (carState.needRepair!!) {
+                telegramService.sendMessage("Братишкааа! Там тачка ${arrivalQuestionnaire.carNumber} в ремонт приехала, заебал, работай давай \uD83D\uDE18")
+            }
             return true
         }
         LOGGER.info("При сохранение CarState произошла ошибка")

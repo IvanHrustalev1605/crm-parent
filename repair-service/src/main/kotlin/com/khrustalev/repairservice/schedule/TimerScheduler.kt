@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component
 class TimerScheduler(private val timerService: TimerService,
                      private val carArrivalStateService: CarArrivalStateService
 ) {
-    @Scheduled(fixedDelay = 2000)
+//    @Scheduled(fixedDelay = 2000)
     fun checkTime() {
         carArrivalStateService.getArrivalStatesWithNoRepairRequest().forEach {
             timerService.createRepairRequestTimer(it.key, it.value)

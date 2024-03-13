@@ -15,10 +15,8 @@ open class CarRepairState(
     open var repairState: RepairState? = null,
     @Column
     open var stateChangeTime: LocalDateTime = LocalDateTime.now(),
-    //ну какая то типа заявка или письмо
     @Column
     open var application:String? = null,
-    //какие то проблемы возникшие при ремонте на этом state
     @Column
     open var repairProblems: String? = null,
 
@@ -26,15 +24,18 @@ open class CarRepairState(
     open var car: Car? = null,
 
     @ManyToMany
-    @JoinTable
+    @JoinTable(schema = "storage")
     open var mechanics: MutableList<Mechanic>? = null,
 
     @ManyToOne
     open var engineer: Engineer? = null,
 
     @ManyToMany
-    @JoinTable
-    open var repairParts: MutableList<RepairParts>? = null
+    @JoinTable(schema = "storage")
+    open var repairParts: MutableList<RepairParts>? = null,
+
+    @ManyToOne
+    open var repairBox: RepairBox?
 
 
 ) {

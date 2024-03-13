@@ -21,6 +21,8 @@ open class CarArrivalState(
     @Column
     open var repairRequestWriteUpTo: LocalDateTime = arrivalTime.plusHours(1),
     @Column
+    open var repairRequestWrittenIn: LocalDateTime? = null,
+    @Column
     open var repairRequestWritten: Boolean = false,
     @Column
     open var stateChangeTime: LocalDateTime = LocalDateTime.now(),

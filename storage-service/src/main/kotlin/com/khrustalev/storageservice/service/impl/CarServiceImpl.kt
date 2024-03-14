@@ -15,7 +15,7 @@ class CarServiceImpl(private val carRepository: CarRepository, private val carMa
     }
 
     override fun findCarIdByCarNumber(carNumber: String): Long {
-        return carRepository.customFindCarByNumber(carNumber)
+        return carRepository.customFindCarIdByNumber(carNumber)
     }
 
     override fun findByVin(vin: String): CarDto {
@@ -24,5 +24,43 @@ class CarServiceImpl(private val carRepository: CarRepository, private val carMa
 
     override fun mapFromEntityToDto(car: Car?): CarDto? {
         return carMapper.toDto(car!!)
+    }
+
+    override fun getCarsInRepair(): MutableList<CarDto> {
+        return carRepository.getCarInRepair().stream()
+            .map { carMapper.toDto(it) }
+            .toList().toMutableList()
+    }
+
+    override fun getAllCars(): MutableList<CarDto> {
+        return carRepository.findAll().stream()
+            .map { carMapper.toDto(it) }
+            .toList()
+            .toMutableList()
+    }
+
+    override fun deleteCarByNumberOrVin(v: String): Boolean {
+        return if (v.length < 10) {
+            carRepository.deleteByNumber(v)
+            true
+        } else if (v.length  == 17) {
+            carRepository.deleteByVinNumber(v)
+            true
+        } else return false
+    }
+
+    override fun saveCar(carDto: CarDto): CarDto {
+       return carMapper.toDto(carRepository.save(carMapper.toEntity(carDto)))
+    }
+
+    override fun getCarByNumber(number: String): CarDto {
+        return carMapper.toDto(carRepository.findByNumber(number).orElseThrow { Exception("") })
+    }
+
+    override fun getCarsInBase(): MutableList<CarDto> {
+        return carRepository.getCarsInBase().stream()
+            .map { carMapper.toDto(it) }
+            .toList()
+            .toMutableList()
     }
 }

@@ -19,7 +19,7 @@ class SecurityServiceImpl(private val storageFeignClient: StorageFeignClient,
         val carState = CarArrivalStateDto()
         val carId = storageFeignClient.findCarByCarNumber(arrivalQuestionnaire.carNumber!!)
         val engineerId: Long = storageFeignClient.getEngineerId(arrivalQuestionnaire.engineerName!!)
-
+        carState.inBase = true
         carState.needRepair = arrivalQuestionnaire.needRepair!!
         carState.arrivalTime = LocalDateTime.now()
         carState.carId = carId

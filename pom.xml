@@ -11,6 +11,7 @@
 
     <name>consoleApp</name>
 <modules>
+    <module>administration-service</module>
     <module>storage-service</module>
     <module>repair-service</module>
     <module>document-service</module>

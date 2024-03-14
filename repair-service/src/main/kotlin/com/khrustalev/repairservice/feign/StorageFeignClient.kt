@@ -28,7 +28,7 @@ interface StorageFeignClient {
 
     /*CarStates*/
     @PostMapping("/carState/arrival/save")
-    fun saveCarArrivalState(@RequestBody(required = true) car: CarArrivalStateDto) : Boolean
+    fun saveCarArrivalState(@RequestBody(required = true) carArrivalStateDto: CarArrivalStateDto) : Boolean
     @GetMapping("/carState/arrival/get-by-carNumber")
     fun getLastArrivalStateByCarNumber(@RequestParam("carNumber") carNumber: String): CarArrivalStateDto?
     @PostMapping("/carState/repair/save")

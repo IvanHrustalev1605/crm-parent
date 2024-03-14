@@ -1,4 +1,4 @@
-package com.khrustalev.storageservice.dto
+package com.khrustalev.administrationservice.dto
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties
 import com.fasterxml.jackson.annotation.JsonProperty
@@ -31,7 +31,5 @@ data class CarArrivalStateDto(
     @JsonProperty(value = "repairRequestWritten")
     var repairRequestWritten: Boolean = false,
     @JsonProperty(value = "repairRequestWrittenIn")
-    var repairRequestWrittenIn: LocalDateTime? = null,
-    @JsonProperty(value = "inBase")
-    var inBase: Boolean? = null
+    var repairRequestWrittenIn: LocalDateTime? = null
 ) : Serializable

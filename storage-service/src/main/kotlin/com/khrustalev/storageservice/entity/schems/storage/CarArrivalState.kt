@@ -26,6 +26,8 @@ open class CarArrivalState(
     open var repairRequestWritten: Boolean = false,
     @Column
     open var stateChangeTime: LocalDateTime = LocalDateTime.now(),
+    @Column
+    open var inBase: Boolean = true,
 
     @ManyToOne
     open var receivingSecurity: Security? = null,

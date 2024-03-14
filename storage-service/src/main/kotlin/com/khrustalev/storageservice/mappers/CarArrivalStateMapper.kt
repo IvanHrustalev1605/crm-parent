@@ -23,7 +23,8 @@ class CarArrivalStateMapper(private val engineerService: EngineerService,
         repairRequestWriteUpTo = carArrivalState.repairRequestWriteUpTo,
         stateChangeTime = carArrivalState.stateChangeTime,
         repairRequestWritten = carArrivalState.repairRequestWritten,
-        repairRequestWrittenIn = carArrivalState.repairRequestWrittenIn
+        repairRequestWrittenIn = carArrivalState.repairRequestWrittenIn,
+        inBase = carArrivalState.inBase
     )
     fun toEntity(carArrivalStateDto: CarArrivalStateDto) : CarArrivalState = CarArrivalState(
         id = carArrivalStateDto.id,
@@ -36,6 +37,7 @@ class CarArrivalStateMapper(private val engineerService: EngineerService,
         repairRequestWriteUpTo = carArrivalStateDto.arrivalTime!!.plusHours(1),
         stateChangeTime = carArrivalStateDto.stateChangeTime!!,
         repairRequestWritten = carArrivalStateDto.repairRequestWritten,
-        repairRequestWrittenIn = carArrivalStateDto.repairRequestWrittenIn
+        repairRequestWrittenIn = carArrivalStateDto.repairRequestWrittenIn,
+        inBase = carArrivalStateDto.inBase!!
     )
 }

@@ -7,10 +7,12 @@
     <list default="true" id="a8831c50-c17b-4626-9402-a365a662022b" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources/d6bb1a80-6065-44ba-9b9b-2c9d22a22183.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/d6bb1a80-6065-44ba-9b9b-2c9d22a22183.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_06_03_2024_10_37_[Changes]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_06_03_2024_10_37__Changes_.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_03_2024_20_38__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_03_2024_20_38__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_13_03_2024_11_03__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_13_03_2024_11_03__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,9 +25,9 @@
         <option value="Kotlin Data Class" />
         <option value="com.haulmont.jpb.AbstractClassKotlin" />
         <option value="Kotlin Enum" />
-        <option value="Kotlin Interface" />
         <option value="com.haulmont.jpb.JpaRepository" />
         <option value="com.haulmont.jpb.NewDataClass" />
+        <option value="Kotlin Interface" />
         <option value="Kotlin Class" />
       </list>
     </option>
@@ -36,8 +38,11 @@
         <entry key="$PROJECT_DIR$" value="main" />
       </map>
     </option>
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
     <option name="ROOT_SYNC" value="DONT_SYNC" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/administration-service/src/main/kotlin/com/khrustalev/administrationservice/feign/StorageFeignClient.kt" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="JpbToolWindowState">
     <option name="isToolWindowVisible" value="false" />
@@ -69,9 +74,9 @@
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
     "com.google.cloudcode.ide_session_index": "20240313_0000",
-    "git-widget-placeholder": "develop",
+    "git-widget-placeholder": "master",
     "jdk.selected.JAVA_MODULE": "openjdk-19",
-    "last_opened_file_path": "C:/IdeaProjects/demo4",
+    "last_opened_file_path": "D:/IdeaProjects/crm-parent/administration-service/src/main/kotlin/com/khrustalev/administrationservice/dto",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -90,12 +95,15 @@
   }
 }]]></component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\IdeaProjects\crm-parent\administration-service\src\main\kotlin\com\khrustalev\administrationservice\dto" />
+    </key>
     <key name="CreateKotlinClassDialog.RecentsKey">
+      <recent name="com.khrustalev.administrationservice.service.impl" />
+      <recent name="com.khrustalev.administrationservice.service" />
       <recent name="com.khrustalev.repairservice.service.impl" />
       <recent name="com.khrustalev.repairservice.service" />
       <recent name="com.khrustalev.repairservice.dto" />
-      <recent name="com.khrustalev.storageservice.service.impl" />
-      <recent name="com.khrustalev.storageservice.service.abstracts" />
     </key>
     <key name="MoveKotlinTopLevelDeclarationsDialog.RECENTS_KEY">
       <recent name="com.khrustalev.storageservice.service.abstracts" />
@@ -118,6 +126,13 @@
     </option>
   </component>
   <component name="RunManager" selected="Spring Boot.StorageServiceApplication">
+    <configuration name="AdministrationServiceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="administration-service" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.khrustalev.administrationservice.AdministrationServiceApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="DocumentServiceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <module name="document-service" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="org.khrustalev.documentservice.DocumentServiceApplication" />
@@ -147,6 +162,7 @@
       </method>
     </configuration>
     <list>
+      <item itemvalue="Spring Boot.AdministrationServiceApplication" />
       <item itemvalue="Spring Boot.DocumentServiceApplication" />
       <item itemvalue="Spring Boot.RepairPertsServiceApplication" />
       <item itemvalue="Spring Boot.RepairServiceApplication" />
@@ -170,6 +186,7 @@
       <workItem from="1709731334352" duration="22000" />
       <workItem from="1709799503801" duration="20580000" />
       <workItem from="1710316958868" duration="13358000" />
+      <workItem from="1710424306079" duration="6080000" />
     </task>
     <servers />
   </component>

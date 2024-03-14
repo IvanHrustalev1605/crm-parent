@@ -27,4 +27,14 @@ class CarArrivalStateServiceImpl(private val storageFeignClient: StorageFeignCli
     override fun getStateByCarNumber(carNumber: String): CarArrivalStateDto? {
         return storageFeignClient.getLastArrivalStateByCarNumber(carNumber)
     }
+
+    override fun carGetAway(carNumber: String): Boolean {
+        val stateDto = getStateByCarNumber(carNumber)
+        stateDto?.inBase = false
+        if (stateDto != null) {
+            storageFeignClient.saveCarArrivalState(stateDto)
+            return true
+        }
+        return false
+    }
 }

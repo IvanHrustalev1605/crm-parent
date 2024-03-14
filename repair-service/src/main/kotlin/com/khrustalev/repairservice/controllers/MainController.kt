@@ -23,7 +23,9 @@ class MainController(private val securityService: SecurityService,
                      private val repairProcessService: RepairProcessService,
                      private val repairPartsService: RepairPartsService,
                      private val repairRequestService: RepairRequestService,
-                     private val documentService: DocumentService, private val repairBoxService: RepairBoxService
+                     private val documentService: DocumentService,
+                     private val repairBoxService: RepairBoxService,
+                     private val carArrivalStateService: CarArrivalStateService
 ) {
 
     @Operation(summary = "Охранник на въезде отмечает прибывшею машину. " +
@@ -139,5 +141,14 @@ class MainController(private val securityService: SecurityService,
     @GetMapping("/free-boxes")
     fun getFreeBoxes() : ResponseEntity<MutableList<RepairBoxDto>> {
         return ResponseEntity(repairBoxService.getFreeBoxes(), HttpStatus.OK)
+    }
+    @Operation(summary = "Машина уезжает с базы")
+    @ApiResponses(value = [
+        ApiResponse(responseCode = "200", description = "Успешно!"),
+        ApiResponse(responseCode = "500", description = "Ошибка!")
+    ])
+    @GetMapping("/car-get-away")
+    fun carGetAway(@RequestParam carNumber: String) : ResponseEntity<Boolean> {
+        return ResponseEntity(carArrivalStateService.carGetAway(carNumber), HttpStatus.OK)
     }
 }

@@ -7,4 +7,5 @@ interface CarArrivalStateService {
     fun getArrivalStatesWithNoRepairRequest() : MutableMap<String, LocalDateTime>
     fun setRepairRequest(carNumber: String) : Boolean
     fun getStateByCarNumber(carNumber: String) : CarArrivalStateDto?
+    fun carGetAway(carNumber: String) : Boolean
 }

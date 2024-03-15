@@ -17,5 +17,4 @@ data class RepairPartsDto(
     var installed: Boolean = false,
     var category: Int? = null,
     var carId: Long? = null,
-    var repairPartGroupId: Long? = null
 ) : Serializable

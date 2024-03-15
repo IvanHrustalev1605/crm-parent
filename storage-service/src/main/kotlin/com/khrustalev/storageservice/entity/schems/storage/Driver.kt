@@ -22,10 +22,6 @@ open class Driver {
     @OneToOne(mappedBy = "driver")
     open var car: Car? = null
 
-    @Column
-    open var timeToMakeRequestStart: LocalDateTime? = null
-    @Column
-    open var timeToMakeRequestEnd: LocalDateTime? = null
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
         if (javaClass != other?.javaClass) return false
@@ -41,7 +37,6 @@ open class Driver {
 
     override fun hashCode(): Int {
         var result = id?.hashCode() ?: 0
-        result = 31 * result + (personInfo?.hashCode() ?: 0)
         result = 31 * result + (license?.hashCode() ?: 0)
         return result
     }

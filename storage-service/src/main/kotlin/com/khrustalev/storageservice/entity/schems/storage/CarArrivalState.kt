@@ -28,6 +28,14 @@ open class CarArrivalState(
     open var stateChangeTime: LocalDateTime = LocalDateTime.now(),
     @Column
     open var inBase: Boolean = true,
+    @Column
+    open var timeToMakeRequestStart: LocalDateTime? = null,
+    @Column
+    open var timeToMakeRequestEnd: LocalDateTime? = null,
+    @Column
+    open var is15Notificate: Boolean? = null,
+    @Column
+    open var is30Notificate: Boolean? = null,
 
     @ManyToOne
     open var receivingSecurity: Security? = null,

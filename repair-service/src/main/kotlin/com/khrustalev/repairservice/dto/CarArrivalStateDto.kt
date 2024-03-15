@@ -30,5 +30,11 @@ open class CarArrivalStateDto {
     var repairRequestWrittenIn: LocalDateTime? = null
     @JsonProperty(value = "inBase")
     var inBase: Boolean? = null
-
+    @JsonProperty(value = "timeToMakeRequestStart")
+    var timeToMakeRequestStart: LocalDateTime? = null
+    @JsonProperty(value = "timeToMakeRequestEnd")
+    var timeToMakeRequestEnd: LocalDateTime? = null
+    var is15Notificate: Boolean? = null
+    @JsonProperty(value = "is30Notificate")
+    var is30Notificate: Boolean? = null
 }

@@ -13,7 +13,5 @@ data class DriverDto(
     val carId: Long? = null,
     val personInfo: PersonInfo? = null,
     val license: String? = null,
-    val position: EmployeePosition? = null,
-    val timeToMakeRequestStart: LocalDateTime? = null,
-    val timeToMakeRequestEnd: LocalDateTime? = null
+    val position: EmployeePosition? = null
 ) : Serializable

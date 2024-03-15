@@ -25,8 +25,13 @@ class SecurityServiceImpl(private val storageFeignClient: StorageFeignClient,
         carState.carId = carId
         carState.stateChangeTime = LocalDateTime.now()
         carState.receivingSecurity = securityId
+        carState.is30Notificate = false
+        carState.is15Notificate = false
+
 
         if (arrivalQuestionnaire.needRepair!!) {
+            carState.timeToMakeRequestStart = LocalDateTime.now()
+            carState.timeToMakeRequestEnd = LocalDateTime.now().plusHours(1)
             carState.engineerId = engineerId
             carState.descriptionProblems = arrivalQuestionnaire.carDescriptionProblems!!
         }

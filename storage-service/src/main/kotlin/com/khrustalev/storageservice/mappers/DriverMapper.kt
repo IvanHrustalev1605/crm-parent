@@ -13,16 +13,12 @@ class DriverMapper(@Lazy private val carService: CarService) {
         personInfo = driver.personInfo,
         license = driver.license,
         position = driver.position,
-        timeToMakeRequestStart = driver.timeToMakeRequestEnd,
-        timeToMakeRequestEnd = driver.timeToMakeRequestEnd,
         carId = driver.car?.id
     )
     fun toEntity(driverDto: DriverDto) : Driver = Driver().also {
         it.id = driverDto.id
         it.personInfo = driverDto.personInfo
         it.license = driverDto.license
-        it.timeToMakeRequestEnd = driverDto.timeToMakeRequestEnd
-        it.timeToMakeRequestStart = driverDto.timeToMakeRequestStart
         it.position = driverDto.position!!
         it.car = if (driverDto.carId != null) carService.findById(driverDto.carId) else null
     }

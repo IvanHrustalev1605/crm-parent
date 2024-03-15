@@ -11,6 +11,6 @@ data class CarDto(
     val number: String? = null,
     val vinNumber: String? = null,
     val mileage: Int? = null,
-    val carClassification: Int? = null,
+    val carClassificationId: Long? = null,
     val driverId: Long? = null
 ) : Serializable

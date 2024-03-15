@@ -29,6 +29,5 @@ open class RepairParts {
 
     @ManyToOne
     open var car: Car? = null
-    @ManyToOne
-    open var repairPartsGroup: RepairPartsGroup? = null
+
 }

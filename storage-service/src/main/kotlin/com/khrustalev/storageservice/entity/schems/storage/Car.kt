@@ -1,6 +1,6 @@
 package com.khrustalev.storageservice.entity.schems.storage
 
-import com.khrustalev.storageservice.entity.enums.CarClassification
+import com.khrustalev.storageservice.entity.schems.dictionary.CarClassification
 import jakarta.persistence.*
 
 @Entity(name = "car")
@@ -19,7 +19,8 @@ open class Car() {
     @Column
     open var mileage: Int? = null
 
-    @Enumerated(EnumType.ORDINAL)
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn
     open var carClassification: CarClassification? = null
 
     @OneToOne

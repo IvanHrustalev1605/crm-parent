@@ -7,5 +7,4 @@ open class ArrivalQuestionnaire {
  open var needRepair: Boolean? = null
  open var engineerName: String? = null
  open var carDescriptionProblems: String? = null
- open var arrivalTime: LocalDateTime? = null
 }

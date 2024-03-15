@@ -15,8 +15,8 @@ class CarDto {
     val vinNumber: String? = null
     @JsonProperty(value = "mileage")
     val mileage: Int? = null
-    @JsonProperty(value = "carClassification")
-    val carClassification: Int? = null
+    @JsonProperty(value = "carClassificationId")
+    val carClassificationId: Long? = null
     @JsonProperty(value = "driverId")
     val driverId: Long? = null
 

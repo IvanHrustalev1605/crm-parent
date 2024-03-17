@@ -14,7 +14,7 @@ class GenerateTestDataController(private val generateValueService: GenerateValue
 ) {
     @GetMapping("/generate")
     fun generate() : ResponseEntity<Any> {
-        return ResponseEntity(generateValueService.generateRandomStocks(), HttpStatus.CREATED)
+        return ResponseEntity(generateValueService.generateRepairParts(), HttpStatus.CREATED)
     }
     @GetMapping("/dictionary/save")
     fun save() : ResponseEntity<Boolean> {

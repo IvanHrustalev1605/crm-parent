@@ -9,6 +9,7 @@ import com.khrustalev.storageservice.service.abstracts.GenerateValueService
 import com.khrustalev.storageservice.utils.ExelParser
 import com.khrustalev.storageservice.utils.GeneratorUtils
 import org.springframework.stereotype.Service
+import java.time.LocalDateTime
 import kotlin.random.Random
 
 @Service
@@ -20,8 +21,8 @@ class GenerateValueServiceImpl(private val carRepository: CarRepository,
                                private val engineerRepository: EngineerRepository,
                                private val repairPartsRepository: RepairPartsRepository,
                                private val etalonPartsDictionaryRepository: EtalonPartsDictionaryRepository,
-                               private val etalonPartsStocksRepository: EtalonPartsStocksRepository
-) : GenerateValueService {
+                               private val etalonPartsStocksRepository: EtalonPartsStocksRepository,
+                               private val repairPartsLargeGroupRepository: RepairPartsLargeGroupRepository) : GenerateValueService {
     override fun generateDbValues(): Boolean {
         for (i in 1..50) {
             val driver = Driver().also {
@@ -73,11 +74,18 @@ class GenerateValueServiceImpl(private val carRepository: CarRepository,
         }
     }
     override fun generateRepairParts() : Boolean {
+        val list1 = repairPartsLargeGroupRepository.findAll().size.toLong()
+        val list2 = etalonPartsDictionaryRepository.findAll().size.toLong()
         for (i in 1..1500) {
             val also = RepairParts().also {
                 it.name = GeneratorUtils.generateRandomString(Random.nextInt(5, 8))
                 it.mileageResource = Random.nextInt(10000, 100000).toLong()
-                it.category = RepairPartsCategory.entries[Random.nextInt(0, RepairPartsCategory.entries.size)]
+                it.repairPartsLargeGroup = repairPartsLargeGroupRepository.findById(Random.nextLong(1, list1)).get()
+                it.vendorArt = GeneratorUtils.generateRandomString(10)
+                it.isOrigin = Random.nextBoolean()
+                it.installed = false
+                it.etalonPartsDictionary = etalonPartsDictionaryRepository.findById(Random.nextLong(2, list2)).get()
+                it.car = null
             }
             repairPartsRepository.save(also)
         }

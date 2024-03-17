@@ -37,8 +37,8 @@ class CarRepairStateMapper(@Lazy private val carService: CarService,
         repairState = carRepairStateDto.repairState,
         stateChangeTime = carRepairStateDto.stateChangeTime,
         application = carRepairStateDto.application,
-        repairParts = if (!CollectionUtils.isEmpty(carRepairStateDto.repairParts))
-            carRepairStateDto.repairParts?.let { repairPartsService.getByIds(it.toMutableList()) } else null,
+//        repairParts = if (!CollectionUtils.isEmpty(carRepairStateDto.repairParts))
+//            carRepairStateDto.repairParts?.let { repairPartsService.getByIds(it.toMutableList()) } else null,
         repairProblems = carRepairStateDto.repairProblems,
         car = if (carRepairStateDto.carId != null) carService.findById(carRepairStateDto.carId) else null,
         engineer = if (carRepairStateDto.engineerId != null) engineerService.findById(carRepairStateDto.engineerId) else null,

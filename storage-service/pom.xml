@@ -10,7 +10,6 @@
     </parent>
     <groupId>com.khrustalev</groupId>
     <artifactId>storage-service</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
     <name>storage-service</name>
     <description>storage-service</description>
     <properties>
@@ -78,6 +77,7 @@
     </dependencyManagement>
 
     <build>
+        <finalName>storage-service</finalName>
         <sourceDirectory>${project.basedir}/src/main/kotlin</sourceDirectory>
         <plugins>
             <plugin>

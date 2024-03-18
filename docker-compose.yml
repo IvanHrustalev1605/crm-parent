@@ -1,0 +1,32 @@
+version: '3'
+services:
+  storage-service:
+    build:
+      context: storage-service
+      dockerfile: Dockerfile
+    ports:
+      - "8888:8888"
+  adminstration-service:
+    build:
+      context: administration-service
+      dockerfile: Dockerfile
+    ports:
+      - "8181:8181"
+    depends_on:
+          - "storage-service"
+  repair-service:
+    build:
+      context: repair-service
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    depends_on:
+      - "storage-service"
+  repair-parts-service:
+    build:
+      context: repair-parts-service
+      dockerfile: Dockerfile
+    ports:
+      - "8182:8182"
+    depends_on:
+      - "storage-service"

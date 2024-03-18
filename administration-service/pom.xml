@@ -10,7 +10,6 @@
     </parent>
     <groupId>com.khrustalev</groupId>
     <artifactId>administration-service</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
     <name>administration-service</name>
     <description>administration-service</description>
     <properties>
@@ -71,6 +70,7 @@
     </dependencyManagement>
 
     <build>
+        <finalName>administration-service</finalName>
         <sourceDirectory>src/main/kotlin</sourceDirectory>
         <plugins>
             <plugin>
@@ -104,7 +104,7 @@
                     <compilerPlugins>
                         <plugin>spring</plugin>
                     </compilerPlugins>
-                    <jvmTarget>1.8</jvmTarget>
+                    <jvmTarget>17</jvmTarget>
                 </configuration>
                 <dependencies>
                     <dependency>

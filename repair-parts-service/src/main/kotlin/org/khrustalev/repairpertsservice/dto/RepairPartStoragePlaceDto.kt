@@ -1,4 +1,4 @@
-package com.khrustalev.storageservice.dto
+package org.khrustalev.repairpertsservice.dto
 
 import java.io.Serializable
 import java.time.LocalDateTime

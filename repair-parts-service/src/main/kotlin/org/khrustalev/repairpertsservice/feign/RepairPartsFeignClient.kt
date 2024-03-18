@@ -3,15 +3,17 @@ package org.khrustalev.repairpertsservice.feign
 import org.khrustalev.repairpertsservice.dto.RepairPartsDto
 import org.springframework.cloud.openfeign.FeignClient
 import org.springframework.web.bind.annotation.GetMapping
+import org.springframework.web.bind.annotation.PostMapping
+import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestParam
 import java.util.*
 
 @FeignClient(name = "storage-feign-client", url = "http://localhost:8888/api/storage/repairParts")
-interface StorageFeignClient {
+interface RepairPartsFeignClient {
     @GetMapping("/by-id")
     fun findById(@RequestParam id: Long) : RepairPartsDto 
     @GetMapping("/all-by-ids")
-    fun findByNumber(@RequestParam ids: MutableList<Long>) : MutableList<RepairPartsDto>
+    fun findByIds(@RequestParam ids: MutableList<Long>) : MutableList<RepairPartsDto>
     @GetMapping("/all-by-parts-numbers")
     fun getByNumberList(@RequestParam partsNumberList: MutableList<UUID>) : MutableList<RepairPartsDto>
     @GetMapping("all-by-car-number")
@@ -32,4 +34,12 @@ interface StorageFeignClient {
     fun countByEtalonArt(@RequestParam etalonArt: String) : Long 
     @GetMapping("/all-by-dict-art")
     fun getByEtalonArt(@RequestParam dictArt: String) : MutableList<RepairPartsDto>
+    @PostMapping("/save")
+    fun save(@RequestBody repairPartsDto: RepairPartsDto) : RepairPartsDto?
+
+    @PostMapping()
+    fun putPartsToStorage(@RequestBody repairPartsList: MutableList<RepairPartsDto>,
+                          @RequestBody storagePlaceIdList: MutableList<Long>) : Boolean
+
+
 }

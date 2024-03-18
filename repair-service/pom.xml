@@ -10,7 +10,6 @@
     </parent>
     <groupId>com.khrustalev</groupId>
     <artifactId>repair-service</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
     <name>repair-service</name>
     <description>repair-service</description>
     <properties>
@@ -69,6 +68,7 @@
     </dependencyManagement>
 
     <build>
+        <finalName>repair-service</finalName>
         <sourceDirectory>${project.basedir}/src/main/kotlin</sourceDirectory>
         <plugins>
             <plugin>

@@ -12,25 +12,25 @@ import java.util.*
 @JsonIgnoreProperties(ignoreUnknown = true)
 data class RepairPartsDto(
     @JsonProperty(value = "id")
-    val id: Long? = null,
+    var id: Long? = null,
     @JsonProperty(value = "number")
-    val number: UUID = UUID.randomUUID(),
+    var number: UUID = UUID.randomUUID(),
     @JsonProperty(value = "name")
-    val name: String? = null,
+    var name: String? = null,
     @JsonProperty(value = "mileageResource")
-    val mileageResource: Long? = null,
+    var mileageResource: Long? = null,
     @JsonProperty(value = "installedAt")
-    val installedAt: LocalDateTime? = null,
+    var installedAt: LocalDateTime? = null,
     @JsonProperty(value = "isOrigin")
-    val isOrigin: Boolean? = null,
+    var isOrigin: Boolean? = null,
     @JsonProperty(value = "installed")
-    val installed: Boolean = false,
+    var installed: Boolean = false,
     @JsonProperty(value = "vendorArt")
-    val vendorArt: String = "",
+    var vendorArt: String = "",
     @JsonProperty(value = "repairPartsLargeGroupId")
-    val repairPartsLargeGroupId: Long? = null,
+    var repairPartsLargeGroupId: Long? = null,
     @JsonProperty(value = "etalonPartsDictionaryId")
-    val etalonPartsDictionaryId: Long? = null,
+    var etalonPartsDictionaryId: Long? = null,
     @JsonProperty(value = "carId")
-    val carId: Long? = null
+    var carId: Long? = null
 ) : Serializable

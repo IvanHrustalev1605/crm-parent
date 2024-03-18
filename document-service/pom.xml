@@ -10,7 +10,6 @@
     </parent>
     <groupId>org.khrustalev</groupId>
     <artifactId>document-service</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
     <name>document-service</name>
     <description>document-service</description>
     <properties>
@@ -76,6 +75,7 @@
     </dependencyManagement>
 
     <build>
+        <finalName>document-service</finalName>
         <sourceDirectory>src/main/kotlin</sourceDirectory>
         <plugins>
             <plugin>
@@ -109,7 +109,7 @@
                     <compilerPlugins>
                         <plugin>spring</plugin>
                     </compilerPlugins>
-                    <jvmTarget>1.8</jvmTarget>
+                    <jvmTarget>17</jvmTarget>
                 </configuration>
                 <dependencies>
                     <dependency>

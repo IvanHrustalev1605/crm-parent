@@ -1,15 +1,29 @@
 package com.khrustalev.repairservice.dto
 
+import com.fasterxml.jackson.annotation.JsonProperty
 import java.io.Serializable
 import java.time.LocalDateTime
 import java.util.*
 
-class RepairPartsDto(var id: Long? = null,
-                     var number: UUID = UUID.randomUUID(),
-                     var name: String? = null,
-                     var mileageResource: Long? = null,
-                     var installedAt: LocalDateTime? = null,
-                     var installed: Boolean = false,
-                     var category: Int? = null,
-                     var repairPartGroupId: Long? = null,
-                     var carId: Long? = null) : Serializable
+class RepairPartsDto(    @JsonProperty(value = "id")
+                         var id: Long? = null,
+                         @JsonProperty(value = "number")
+                         var number: UUID = UUID.randomUUID(),
+                         @JsonProperty(value = "name")
+                         var name: String? = null,
+                         @JsonProperty(value = "mileageResource")
+                         var mileageResource: Long? = null,
+                         @JsonProperty(value = "installedAt")
+                         var installedAt: LocalDateTime? = null,
+                         @JsonProperty(value = "isOrigin")
+                         var isOrigin: Boolean? = null,
+                         @JsonProperty(value = "installed")
+                         var installed: Boolean = false,
+                         @JsonProperty(value = "vendorArt")
+                         var vendorArt: String = "",
+                         @JsonProperty(value = "repairPartsLargeGroupId")
+                         var repairPartsLargeGroupId: Long? = null,
+                         @JsonProperty(value = "etalonPartsDictionaryId")
+                         var etalonPartsDictionaryId: Long? = null,
+                         @JsonProperty(value = "carId")
+                         var carId: Long? = null) : Serializable

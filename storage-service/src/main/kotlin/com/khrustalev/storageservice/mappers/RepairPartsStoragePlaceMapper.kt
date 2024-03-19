@@ -24,7 +24,7 @@ class RepairPartsStoragePlaceMapper(@Lazy private val mechanicService: MechanicS
     }
     fun toEntity(dto: RepairPartStoragePlaceDto) : RepairPartStoragePlace = RepairPartStoragePlace().also {
         it.id = dto.id
-        it.createdAt = dto.createdAt
+        it.createdAt = dto.createdAt!!
         it.updatedAt = dto.updatedAt
         it.inPlace = dto.inPlace
         it.takeAway = dto.takeAway

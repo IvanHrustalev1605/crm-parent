@@ -10,5 +10,6 @@ import org.springframework.web.bind.annotation.RequestBody
 interface RepairPartsServiceFeignClient {
     @PostMapping("/put-parts-to-storage-place")
     fun putPartsToStoragePlace(@RequestBody acceptablePartsDtoList: MutableList<AcceptablePartsDto>) : ResponseEntity<Boolean>
-
+    @PostMapping("/take-parts-away")
+    fun takePartsFromStoragePlace(@RequestBody map: MutableMap<Long, Long>) : Boolean
 }

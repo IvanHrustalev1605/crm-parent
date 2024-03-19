@@ -3,12 +3,15 @@ package com.khrustalev.storageservice.mappers
 import com.khrustalev.storageservice.dto.RepairBoxDto
 import com.khrustalev.storageservice.entity.schems.storage.RepairBox
 import com.khrustalev.storageservice.service.abstracts.CarRepairStateService
+import com.khrustalev.storageservice.service.abstracts.CarService
+import org.springframework.context.annotation.Lazy
 import org.springframework.stereotype.Component
 import org.springframework.util.CollectionUtils
 import kotlin.streams.toList
 
 @Component
-class RepairBoxMapper(private val repairStateService: CarRepairStateService) {
+class RepairBoxMapper(private val repairStateService: CarRepairStateService,
+                      @Lazy private val carService: CarService) {
     fun toDto(repairBox: RepairBox) : RepairBoxDto = RepairBoxDto(
         id = repairBox.id,
         boxNumber = repairBox.boxNumber,

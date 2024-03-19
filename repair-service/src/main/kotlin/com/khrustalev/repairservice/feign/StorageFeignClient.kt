@@ -2,13 +2,13 @@ package com.khrustalev.repairservice.feign
 
 import com.khrustalev.repairservice.dto.*
 import org.springframework.cloud.openfeign.FeignClient
-import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestParam
 import java.time.LocalDateTime
+import java.util.*
 
 @FeignClient(name = "storage-feign-client", url = "http://localhost:8888/api/storage")
 interface StorageFeignClient {
@@ -35,6 +35,8 @@ interface StorageFeignClient {
     fun saveCarRepairState(@RequestBody(required = true) car: CarRepairStateDto) : Long
     @GetMapping("carState/arrival/get-not-written-repair-requests")
     fun getCarArrivalStatesWithNoRepairRequests() : MutableList<CarArrivalStateDto>
+    @GetMapping("/carState/repair/get-previous-repair-state/by-car-id")
+    fun getPreviousRepairStateByCarId(@RequestParam carId: Long) : CarRepairStateDto
 
     /*Engineer*/
     @GetMapping("/engineer/find-id-by-name")
@@ -71,10 +73,8 @@ interface StorageFeignClient {
     /*RepairParts*/
     @GetMapping("/repairParts/find-by-id")
     fun findById(@RequestParam id: Long) : ResponseEntity<RepairPartsDto>
-    @PostMapping("/repairParts/save")
-    fun save(@RequestBody repairPartsDto: RepairPartsDto) : ResponseEntity<RepairPartsDto>
-    @GetMapping("/repairParts/partsStocks")
-    fun countPartsStocks() : ResponseEntity<MutableMap<String, Long>>
+    @GetMapping("/all-by-parts-numbers")
+    fun getRepairPartsByNumberList(@RequestParam partsNumberList: MutableList<UUID>) : MutableList<RepairPartsDto>
 
     /*RepairPartsGroup*/
     @GetMapping("/repairPartsGroup/find-by-id")

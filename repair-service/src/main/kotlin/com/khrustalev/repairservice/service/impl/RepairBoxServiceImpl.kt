@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service
 @Service
 class RepairBoxServiceImpl(private val storageFeignClient: StorageFeignClient) : RepairBoxService {
     private val LOGGER: Logger = LoggerFactory.getLogger(RepairBoxServiceImpl::class.java)
+
     override fun getFreeBoxes(): MutableList<RepairBoxDto> {
         return storageFeignClient.getFreeBox().body!!
     }

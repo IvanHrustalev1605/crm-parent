@@ -10,4 +10,8 @@ class RepairPartsServiceServiceImpl(private val repairPartsServiceFeignClient: R
     override fun putPartsToStoragePlace(acceptablePartsDtoList: MutableList<AcceptablePartsDto>): Boolean {
             return repairPartsServiceFeignClient.putPartsToStoragePlace(acceptablePartsDtoList).statusCode.is2xxSuccessful
     }
+
+    override fun takePartsFromStoragePlace(map: MutableMap<Long, Long>): Boolean {
+        return repairPartsServiceFeignClient.takePartsFromStoragePlace(map)
+    }
 }

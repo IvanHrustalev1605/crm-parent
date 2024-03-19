@@ -6,8 +6,8 @@ import org.springframework.cloud.openfeign.EnableFeignClients
 
 @SpringBootApplication
 @EnableFeignClients
-class RepairPertsServiceApplication
+class RepairPartsServiceApplication
 
 fun main(args: Array<String>) {
-    runApplication<RepairPertsServiceApplication>(*args)
+    runApplication<RepairPartsServiceApplication>(*args)
 }

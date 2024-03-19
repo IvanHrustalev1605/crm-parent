@@ -7,10 +7,9 @@ import org.springframework.data.jpa.repository.Query
 import org.springframework.data.repository.query.Param
 
 interface CarArrivalStateRepository : JpaRepository<CarArrivalState, Long> {
-    fun findFirstByCar_NumberOrderByArrivalTimeDesc(@Param("carNumber") carNumber: String) : CarArrivalState
+    fun findFirstByCar_NumberOrderByArrivalTimeDesc(carNumber: String) : CarArrivalState
 
     @Query(value = "select cas from CarArrivalState cas where cas.needRepair = true " +
-            "and cas.repairRequestWritten = false " +
-            "and cas.is15Notificate = false or cas.is30Notificate = false")
+            "and cas.repairRequestWritten = false")
     fun findAllWithoutRepairRequests() : MutableList<CarArrivalState>
 }

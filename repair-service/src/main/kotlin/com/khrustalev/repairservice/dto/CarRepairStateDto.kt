@@ -11,8 +11,8 @@ class CarRepairStateDto {
     var id: Long? = null
     @JsonProperty(value = "repairState")
     var repairState: RepairState? = null
-    @JsonProperty(value = "stateChangeTime")
-    var stateChangeTime: LocalDateTime = LocalDateTime.now()
+    @JsonProperty(value = "createdAt")
+    var createdAt: LocalDateTime = LocalDateTime.now()
     @JsonProperty(value = "application")
     var application: String? = null
     @JsonProperty(value = "repairParts")
@@ -25,6 +25,8 @@ class CarRepairStateDto {
     var mechanicIds: MutableList<Long>? = null
     @JsonProperty(value = "engineerId")
     var engineerId: Long? = null
-    @JsonProperty(value = "engineerId")
+    @JsonProperty(value = "repairBoxId")
     var repairBoxId: Long? = null
+    @JsonProperty(value = "carRepairStateParentId")
+    var carRepairStateParentId: Long? = null
 }

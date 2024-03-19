@@ -1,13 +1,13 @@
 package com.khrustalev.repairservice.dto
 
-import java.time.LocalDateTime
+import java.util.UUID
 
 class RepairInfoDto {
     val mechanicIds: MutableList<Long>? = null
     val repairStateNumber: Int = 0
     val repairProcessStateNumber: Int = 0
     val application: String = ""
-    val repairParts: MutableList<Long> = mutableListOf()
+    val repairPartsNumbers: MutableList<UUID> = mutableListOf()
     val repairProblems: String = ""
     val engineerId: Long? = null
     val carNumber: String? = null

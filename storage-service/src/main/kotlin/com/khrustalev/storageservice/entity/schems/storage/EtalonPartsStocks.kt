@@ -8,7 +8,7 @@ import jakarta.persistence.*
 @Table(schema = "storage")
 open class EtalonPartsStocks {
     @Id
-    open val id: Long = 0
+    open var id: Long = 0
 
     @OneToOne(fetch = FetchType.LAZY)
     @MapsId

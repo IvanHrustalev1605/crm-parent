@@ -39,5 +39,4 @@ open class RepairParts {
     @ManyToOne
     open var car: Car? = null
 
-
 }

@@ -8,6 +8,8 @@ import jakarta.persistence.JoinColumn
 import jakarta.persistence.ManyToOne
 import jakarta.persistence.MapsId
 import jakarta.persistence.OneToOne
+import jakarta.persistence.PrePersist
+import jakarta.persistence.PreUpdate
 import jakarta.persistence.Table
 import java.time.LocalDateTime
 
@@ -21,9 +23,9 @@ open class RepairPartStoragePlace {
     open var repairParts: RepairParts? = null
 
     @Column
-    open var createdAt: LocalDateTime? = null
+    open var createdAt: LocalDateTime = LocalDateTime.now()
     @Column
-    open var updatedAt: LocalDateTime? = null
+    open var updatedAt: LocalDateTime? = LocalDateTime.now()
     @Column
     open var inPlace: Boolean? = null
     @Column

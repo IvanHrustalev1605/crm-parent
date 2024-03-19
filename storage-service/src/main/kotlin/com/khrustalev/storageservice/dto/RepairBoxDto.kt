@@ -9,5 +9,5 @@ data class RepairBoxDto(
     val id: Long? = null,
     val boxNumber: Int? = null,
     val isFree: Boolean = false,
-    val carRepairStateIds: MutableList<Long>?
+    val carRepairStateIds: MutableList<Long>
 ) : Serializable

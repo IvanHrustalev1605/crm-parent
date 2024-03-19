@@ -8,4 +8,5 @@ interface CarStateService {
     fun saveRepairState(carRepairStateDto: CarRepairStateDto): Long
     fun getCarArrivalStateByCarNumber(carNumber: String): CarArrivalStateDto
     fun getArrivalStatesWithoutRepairRequest(): MutableList<CarArrivalStateDto>
+    fun getPreviousRepairStateByCarId(carId: Long): CarRepairStateDto
 }

@@ -1,18 +1,19 @@
 package com.khrustalev.storageservice.controllers
 
+import com.khrustalev.storageservice.dto.EtalonPartsStocksDto
 import com.khrustalev.storageservice.dto.RepairPartsDto
+import com.khrustalev.storageservice.entity.schems.storage.EtalonPartsStocks
+import com.khrustalev.storageservice.service.abstracts.EtalonRepairPartsService
 import com.khrustalev.storageservice.service.abstracts.RepairPartsService
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
-import org.springframework.web.bind.annotation.GetMapping
-import org.springframework.web.bind.annotation.RequestMapping
-import org.springframework.web.bind.annotation.RequestParam
-import org.springframework.web.bind.annotation.RestController
-import java.util.UUID
+import org.springframework.web.bind.annotation.*
+import java.util.*
 
 @RestController
 @RequestMapping("/api/storage/repairParts")
-class RepairPartsController(private val repairPartsService: RepairPartsService) {
+class RepairPartsController(private val repairPartsService: RepairPartsService,
+                            private val etalonRepairPartsService: EtalonRepairPartsService) {
 
     @GetMapping("/by-id")
     fun findById(@RequestParam id: Long) : ResponseEntity<RepairPartsDto> {
@@ -61,5 +62,17 @@ class RepairPartsController(private val repairPartsService: RepairPartsService) 
     @GetMapping("/all-by-dict-art")
     fun getByEtalonArt(@RequestParam dictArt: String) : ResponseEntity<MutableList<RepairPartsDto>> {
         return ResponseEntity(repairPartsService.getByEtalonArt(dictArt), HttpStatus.OK)
+    }
+    @GetMapping("/get-etalon-parts-by-id")
+    fun getEtalonPartsStocks(@RequestParam id: Long) : ResponseEntity<EtalonPartsStocksDto> {
+        return ResponseEntity(etalonRepairPartsService.getStocksByEtalonId(id), HttpStatus.OK)
+    }
+    @PostMapping("/update-etalon-parts-stocks")
+    fun updatePartsStocks(@RequestBody etalonPartsStocksDto: EtalonPartsStocksDto) : ResponseEntity<Boolean> {
+        return ResponseEntity(etalonRepairPartsService.updateEtalonStocks(etalonPartsStocksDto), HttpStatus.CREATED)
+    }
+    @PostMapping("/save")
+    fun saveRepairPart(@RequestBody repairPartsDto: RepairPartsDto) : ResponseEntity<RepairPartsDto> {
+        return ResponseEntity(repairPartsService.save(repairPartsDto), HttpStatus.CREATED)
     }
 }

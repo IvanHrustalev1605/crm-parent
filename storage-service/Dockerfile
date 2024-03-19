@@ -1,7 +1,7 @@
 FROM maven:3.8.4-openjdk-17 AS builder
 WORKDIR /src
 COPY . .
-RUN mvn clean install
+RUN mvn clean install -Dspring.profiles.active=docker
 
 FROM openjdk:17-oracle AS storage-service
 WORKDIR /app

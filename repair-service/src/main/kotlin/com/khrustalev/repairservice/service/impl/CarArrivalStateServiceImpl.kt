@@ -11,10 +11,8 @@ import java.time.LocalDateTime
 import java.time.temporal.ChronoUnit
 
 @Service
-@EnableAsync
 class CarArrivalStateServiceImpl(private val storageFeignClient: StorageFeignClient,
                                  private val telegramService: TelegramService) : CarArrivalStateService {
-    @Async
     override fun sendNotification15minutes() {
         storageFeignClient.getCarArrivalStatesWithNoRepairRequests()
             .filter { !it.is15Notificate!!}
@@ -27,7 +25,6 @@ class CarArrivalStateServiceImpl(private val storageFeignClient: StorageFeignCli
                 }
             }
     }
-    @Async
     override fun sendNotification30minutes() {
         storageFeignClient.getCarArrivalStatesWithNoRepairRequests()
             .filter { !it.is30Notificate!!}

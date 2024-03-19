@@ -14,11 +14,15 @@ open class CarRepairState(
     @Enumerated(EnumType.ORDINAL)
     open var repairState: RepairState? = null,
     @Column
-    open var stateChangeTime: LocalDateTime = LocalDateTime.now(),
+    open var createdAt: LocalDateTime = LocalDateTime.now(),
     @Column
     open var application:String? = null,
     @Column
     open var repairProblems: String? = null,
+
+    @OneToOne
+    @JoinColumn
+    open var carRepairStateParent: CarRepairState? = null,
 
     @ManyToOne
     open var car: Car? = null,
@@ -47,7 +51,7 @@ open class CarRepairState(
 
         if (id != other.id) return false
         if (repairState != other.repairState) return false
-        if (stateChangeTime != other.stateChangeTime) return false
+        if (createdAt != other.createdAt) return false
         if (application != other.application) return false
         if (repairParts != other.repairParts) return false
         if (repairProblems != other.repairProblems) return false
@@ -60,7 +64,7 @@ open class CarRepairState(
     override fun hashCode(): Int {
         var result = id?.hashCode() ?: 0
         result = 31 * result + (repairState?.hashCode() ?: 0)
-        result = 31 * result + stateChangeTime.hashCode()
+        result = 31 * result + createdAt.hashCode()
         result = 31 * result + (application?.hashCode() ?: 0)
         result = 31 * result + (repairParts?.hashCode() ?: 0)
         result = 31 * result + (repairProblems?.hashCode() ?: 0)

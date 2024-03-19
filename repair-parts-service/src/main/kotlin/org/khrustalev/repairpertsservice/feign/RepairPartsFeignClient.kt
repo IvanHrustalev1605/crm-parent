@@ -1,5 +1,6 @@
 package org.khrustalev.repairpertsservice.feign
 
+import org.khrustalev.repairpertsservice.dto.EtalonPartsStocksDto
 import org.khrustalev.repairpertsservice.dto.RepairPartsDto
 import org.springframework.cloud.openfeign.FeignClient
 import org.springframework.web.bind.annotation.GetMapping
@@ -8,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestParam
 import java.util.*
 
-@FeignClient(name = "storage-feign-client", url = "http://localhost:8888/api/storage/repairParts")
+@FeignClient(name = "storage-service-repair-parts-feign-client", url = "http://localhost:8888/api/storage/repairParts")
 interface RepairPartsFeignClient {
     @GetMapping("/by-id")
     fun findById(@RequestParam id: Long) : RepairPartsDto 
@@ -37,9 +38,10 @@ interface RepairPartsFeignClient {
     @PostMapping("/save")
     fun save(@RequestBody repairPartsDto: RepairPartsDto) : RepairPartsDto?
 
-    @PostMapping()
-    fun putPartsToStorage(@RequestBody repairPartsList: MutableList<RepairPartsDto>,
-                          @RequestBody storagePlaceIdList: MutableList<Long>) : Boolean
+    @GetMapping("/get-etalon-parts-by-id")
+    fun getEtalonPartsStocks(@RequestParam id: Long) : EtalonPartsStocksDto
+    @PostMapping("/update-etalon-parts-stocks")
+    fun updatePartsStocks(etalonPartsStocksDto: EtalonPartsStocksDto) : Boolean
 
 
 }

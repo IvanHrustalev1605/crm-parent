@@ -12,5 +12,5 @@ class RepairBoxDto {
     @JsonProperty(value = "isFree")
     var isFree: Boolean = false
     @JsonProperty(value = "carRepairStateIds")
-    val carRepairStateIds: MutableList<Long>? = null
+    val carRepairStateIds: MutableList<Long> = mutableListOf()
 }

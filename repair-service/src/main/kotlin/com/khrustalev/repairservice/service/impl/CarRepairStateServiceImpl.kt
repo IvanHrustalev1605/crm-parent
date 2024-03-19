@@ -3,20 +3,20 @@ package com.khrustalev.repairservice.service.impl
 import com.khrustalev.repairservice.dto.CarRepairStateDto
 import com.khrustalev.repairservice.dto.RepairInfoDto
 import com.khrustalev.repairservice.dto.enums.RepairState
-import com.khrustalev.repairservice.exceptions.SomethingGoWrongException
+import com.khrustalev.repairservice.feign.RepairPartsServiceFeignClient
 import com.khrustalev.repairservice.feign.StorageFeignClient
 import com.khrustalev.repairservice.service.CarRepairStateService
 import com.khrustalev.repairservice.service.RepairBoxService
-import com.khrustalev.repairservice.service.RepairPartsService
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 import org.springframework.stereotype.Service
+import org.springframework.util.CollectionUtils
 import java.time.LocalDateTime
-import kotlin.math.E
+import java.util.Objects
 
 @Service
 class CarRepairStateServiceImpl(private val storageFeignClient: StorageFeignClient,
-                                private val repairPartsService: RepairPartsService,
+                                private val repairPartsServiceFeignClient: RepairPartsServiceFeignClient,
                                 private val boxService: RepairBoxService) : CarRepairStateService {
     private val LOGGER: Logger = LoggerFactory.getLogger(CarRepairStateServiceImpl::class.java)
 
@@ -25,7 +25,7 @@ class CarRepairStateServiceImpl(private val storageFeignClient: StorageFeignClie
             carRepairState.repairBoxId = checkRepairBox(repairInfoDto.repairBoxNumber)
             carRepairState.carId = repairInfoDto.carId
             carRepairState.engineerId = repairInfoDto.engineerId
-            carRepairState.stateChangeTime = LocalDateTime.now()
+            carRepairState.createdAt = LocalDateTime.now()
             carRepairState.repairState = RepairState.NEW
             carRepairState.application = repairInfoDto.application
             carRepairState.mechanicIds = repairInfoDto.mechanicIds
@@ -34,34 +34,59 @@ class CarRepairStateServiceImpl(private val storageFeignClient: StorageFeignClie
             return storageFeignClient.saveCarRepairState(carRepairState)
     }
 
+    // TODO: доделать запчасти при стадиях ремонта!
     override fun changeRepairState(repairInfoDto: RepairInfoDto): Long {
+        val previousRepairStateByCarId = storageFeignClient.getPreviousRepairStateByCarId(repairInfoDto.carId!!)
+
         val carRepairState = CarRepairStateDto()
-        carRepairState.repairBoxId = checkRepairBox(repairInfoDto.repairBoxNumber)
+        carRepairState.carRepairStateParentId = previousRepairStateByCarId.id
+        carRepairState.repairBoxId = if (Objects.isNull(repairInfoDto.repairBoxNumber) || previousRepairStateByCarId.repairBoxId == storageFeignClient.getBoxByNumber(repairInfoDto.repairBoxNumber).body!!.id)
+            previousRepairStateByCarId.repairBoxId else {
+            boxService.setBoxFree(storageFeignClient.getBoxById(previousRepairStateByCarId.repairBoxId!!).body!!.boxNumber!!)
+            checkRepairBox(repairInfoDto.repairBoxNumber)
+            }
         carRepairState.repairState = RepairState.entries[repairInfoDto.repairStateNumber]
         carRepairState.repairProblems = repairInfoDto.repairProblems
-        carRepairState.stateChangeTime = LocalDateTime.now()
+        carRepairState.createdAt = LocalDateTime.now()
         carRepairState.application = repairInfoDto.application
-        carRepairState.mechanicIds = repairInfoDto.mechanicIds
-        carRepairState.engineerId = repairInfoDto.engineerId
-//        carRepairState.repairParts.addAll(repairPartsService.install(repairInfoDto.repairParts, repairInfoDto.carId!!))
-        carRepairState.carId = repairInfoDto.carId
+        carRepairState.mechanicIds = if (CollectionUtils.isEmpty(repairInfoDto.mechanicIds) || repairInfoDto.mechanicIds!!.containsAll(previousRepairStateByCarId.mechanicIds!!))
+            previousRepairStateByCarId.mechanicIds else repairInfoDto.mechanicIds
+        carRepairState.engineerId = if (Objects.isNull(repairInfoDto.engineerId) || repairInfoDto.engineerId!! == previousRepairStateByCarId.engineerId!!)
+            previousRepairStateByCarId.engineerId else repairInfoDto.engineerId
+        if (!CollectionUtils.isEmpty(repairInfoDto.repairPartsNumbers)) {
+            carRepairState.repairParts.addAll(repairPartsServiceFeignClient.installPartToCar(repairInfoDto.repairPartsNumbers, repairInfoDto.carId))
+        } else carRepairState.repairParts = mutableListOf()
+        carRepairState.carId = previousRepairStateByCarId.carId!!
         LOGGER.info("State изменения информации о ремонте создана. Начинаем сохранение... $carRepairState")
         return storageFeignClient.saveCarRepairState(carRepairState)
     }
 
     override fun createEndRepairState(repairProcessId: Long, repairInfoDto: RepairInfoDto): Long {
         val carRepairState = CarRepairStateDto()
-        val repairProcessDto = storageFeignClient.getRepairProcessById(repairProcessId)
-        if (boxService.setBoxFree(repairInfoDto.repairBoxNumber)) {
-            carRepairState.repairBoxId = boxService.getBoxByNumber(repairInfoDto.repairBoxNumber).id
+        val previousRepairStateByCarId = storageFeignClient.getPreviousRepairStateByCarId(repairInfoDto.carId!!)
+
+        val boxNumber = storageFeignClient.getBoxById(previousRepairStateByCarId.repairBoxId!!).body!!.boxNumber!!
+        if (boxService.setBoxFree(boxNumber)) {
+            carRepairState.repairBoxId = previousRepairStateByCarId.repairBoxId!!
         } else throw Exception("Не удалось освободить бокс!")
-        carRepairState.carId = repairProcessDto.carId
-        carRepairState.engineerId = repairInfoDto.engineerId
-//        carRepairState.repairParts!!.addAll(repairPartsService.install(repairInfoDto.repairParts, repairProcessDto.carId!!))
+
+        carRepairState.carRepairStateParentId = previousRepairStateByCarId.id
+        carRepairState.carId = previousRepairStateByCarId.carId!!
+
+        carRepairState.engineerId = if (Objects.isNull(repairInfoDto.engineerId) || repairInfoDto.engineerId!! == previousRepairStateByCarId.engineerId!!)
+            previousRepairStateByCarId.engineerId else repairInfoDto.engineerId
+
+        if (!CollectionUtils.isEmpty(repairInfoDto.repairPartsNumbers)) {
+            carRepairState.repairParts.addAll(repairPartsServiceFeignClient.installPartToCar(repairInfoDto.repairPartsNumbers, repairInfoDto.carId))
+        } else carRepairState.repairParts = mutableListOf()
+
         carRepairState.application = repairInfoDto.application
-        carRepairState.mechanicIds = repairInfoDto.mechanicIds
+
+        carRepairState.mechanicIds = if (CollectionUtils.isEmpty(repairInfoDto.mechanicIds) || repairInfoDto.mechanicIds!!.containsAll(previousRepairStateByCarId.mechanicIds!!))
+            previousRepairStateByCarId.mechanicIds else repairInfoDto.mechanicIds
+
         carRepairState.repairState = RepairState.DONE
-        carRepairState.stateChangeTime = LocalDateTime.now()
+        carRepairState.createdAt = LocalDateTime.now()
         carRepairState.repairProblems = repairInfoDto.repairProblems
         LOGGER.info("State окончания работ. Начинаем сохранение... $carRepairState")
         return storageFeignClient.saveCarRepairState(carRepairState)

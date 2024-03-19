@@ -35,4 +35,8 @@ class CarStateServiceImpl(private val carArrivalStateRepository: CarArrivalState
     override fun saveRepairState(carRepairStateDto: CarRepairStateDto): Long {
         return carRepairStateRepository.save(carRepairStateMapper.toEntity(carRepairStateDto)).id!!
     }
+
+    override fun getPreviousRepairStateByCarId(carId: Long): CarRepairStateDto {
+        return carRepairStateMapper.toDto(carRepairStateRepository.findPreviousRepairState(carId))
+    }
 }

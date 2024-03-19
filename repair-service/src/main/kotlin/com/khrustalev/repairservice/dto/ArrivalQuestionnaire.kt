@@ -1,7 +1,5 @@
 package com.khrustalev.repairservice.dto
 
-import java.time.LocalDateTime
-
 open class ArrivalQuestionnaire {
  open var carNumber: String? = null
  open var needRepair: Boolean? = null

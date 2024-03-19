@@ -12,10 +12,7 @@ import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 import org.springframework.stereotype.Service
 import org.springframework.util.CollectionUtils
-import java.time.Instant
 import java.time.LocalDateTime
-import java.time.ZoneId
-import java.time.ZoneOffset
 import java.time.temporal.ChronoUnit
 
 @Service
@@ -66,14 +63,14 @@ class RepairProcessServiceImpl(private val storageFeignClient: StorageFeignClien
     override fun updateRepairProcess(
         repairProcessId: Long,
         repairInfoDto: RepairInfoDto,
-        repairRequestList: MutableList<Long>?,
-        newRepairProcessState: Int): Boolean {
+        repairRequestList: MutableList<Long>?
+    ): Boolean {
 
         val repairProcess = storageFeignClient.getRepairProcessById(repairProcessId)
 
         repairProcess.carRepairStatesIds!!.add(carRepairStateService.changeRepairState(repairInfoDto))
         if (!CollectionUtils.isEmpty(repairRequestList)) repairRequestList?.stream()?.forEach { repairProcess.repairRequestIds?.add(it) }
-        repairProcess.repairProcessState = RepairProcessState.entries[newRepairProcessState]
+        repairProcess.repairProcessState = RepairProcessState.entries[repairInfoDto.repairProcessStateNumber]
         return if (storageFeignClient.saveRepairProcess(repairProcess) > 0) {
             LOGGER.info("Успешно обновили repairProcess")
             true
@@ -86,8 +83,6 @@ class RepairProcessServiceImpl(private val storageFeignClient: StorageFeignClien
     override fun closeRepairProcess(repairProcessId: Long, repairInfoDto: RepairInfoDto): Boolean {
 
         val repairProcess = storageFeignClient.getRepairProcessById(repairProcessId)
-
-        repairProcess.repairProcessState = RepairProcessState.entries[repairInfoDto.repairProcessStateNumber]
         repairProcess.actual = false
         repairProcess.actualCompletionTime = LocalDateTime.now()
         repairProcess.differenceWorkTime = ChronoUnit.MINUTES.between(LocalDateTime.now(), repairProcess.endRepair)

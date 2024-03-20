@@ -33,10 +33,12 @@ interface StorageFeignClient {
     fun getLastArrivalStateByCarNumber(@RequestParam("carNumber") carNumber: String): CarArrivalStateDto?
     @PostMapping("/carState/repair/save")
     fun saveCarRepairState(@RequestBody(required = true) car: CarRepairStateDto) : Long
-    @GetMapping("carState/arrival/get-not-written-repair-requests")
+    @GetMapping("/carState/arrival/get-not-written-repair-requests")
     fun getCarArrivalStatesWithNoRepairRequests() : MutableList<CarArrivalStateDto>
     @GetMapping("/carState/repair/get-previous-repair-state/by-car-id")
     fun getPreviousRepairStateByCarId(@RequestParam carId: Long) : CarRepairStateDto
+    @GetMapping("/carState/arrival/get-actual-by-car-id")
+    fun getLastArrivalStateByCarId(@RequestParam carId: Long) : CarArrivalStateDto
 
     /*Engineer*/
     @GetMapping("/engineer/find-id-by-name")
@@ -93,5 +95,6 @@ interface StorageFeignClient {
     fun getBoxById(@RequestParam id: Long) : ResponseEntity<RepairBoxDto>
     @PostMapping("/repairBox/save")
     fun saveBox(@RequestBody repairBoxDto: RepairBoxDto) : ResponseEntity<RepairBoxDto>
+
 
 }

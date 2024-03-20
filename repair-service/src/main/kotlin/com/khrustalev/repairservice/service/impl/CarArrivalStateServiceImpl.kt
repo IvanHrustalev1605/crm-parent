@@ -4,8 +4,6 @@ import com.khrustalev.repairservice.dto.CarArrivalStateDto
 import com.khrustalev.repairservice.feign.StorageFeignClient
 import com.khrustalev.repairservice.service.CarArrivalStateService
 import com.khrustalev.repairservice.service.TelegramService
-import org.springframework.scheduling.annotation.Async
-import org.springframework.scheduling.annotation.EnableAsync
 import org.springframework.stereotype.Service
 import java.time.LocalDateTime
 import java.time.temporal.ChronoUnit
@@ -48,6 +46,10 @@ class CarArrivalStateServiceImpl(private val storageFeignClient: StorageFeignCli
 
     override fun getStateByCarNumber(carNumber: String): CarArrivalStateDto? {
         return storageFeignClient.getLastArrivalStateByCarNumber(carNumber)
+    }
+
+    override fun getActualArrivalStateByCarId(carId: Long): CarArrivalStateDto? {
+        return storageFeignClient.getLastArrivalStateByCarId(carId)
     }
 
     override fun carGetAway(carNumber: String): Boolean {

@@ -26,7 +26,7 @@ class RepairProcessServiceImpl(private val storageFeignClient: StorageFeignClien
         repairInfoDto: RepairInfoDto,
         repairRequestList: MutableList<Long>
     ): RepairProcessDto? {
-        val arrivalStateDto = carArrivalStateService.getStateByCarNumber(repairInfoDto.carNumber!!)
+        val arrivalStateDto = carArrivalStateService.getActualArrivalStateByCarId(repairInfoDto.carId!!)
         if (arrivalStateDto?.repairRequestWritten == false) {
                 throw Exception("Заявка на ремонт не написана или не согласована. Нельзя приступить к ремонту!")
             }
@@ -35,12 +35,12 @@ class RepairProcessServiceImpl(private val storageFeignClient: StorageFeignClien
             repairProcessDto.createTime = LocalDateTime.now()
             repairProcessDto.endRepair = LocalDateTime.now().plusHours(24)
             repairProcessDto.repairProcessState = RepairProcessState.NEW
-            repairProcessDto.carArrivalTime = LocalDateTime.now().minusMinutes(25)
             repairProcessDto.carRepairStatesIds = mutableListOf(carRepairStateService.createNewRepairState(repairInfoDto))
             repairProcessDto.repairRequestIds = repairRequestList
-            return if (storageFeignClient.saveRepairProcess(repairProcessDto) > 0) {
-                telegramService.sendMessage("СООБЩЕНИЕ ДЛЯ МЕХАНИКОВ: ${repairInfoDto.mechanicIds} /*для каждого будет отсылаться отдельное сообщение*/ Подтвердите взятие машины в ремонт \n" +
-                        "/*Cсылка для подтверждения*/ \uD83D\uDD95")
+        val saveRepairProcess = storageFeignClient.saveRepairProcess(repairProcessDto)
+        return if (saveRepairProcess > 0) {
+                telegramService.sendMessage("СООБЩЕНИЕ ДЛЯ МЕХАНИКОВ: ${repairInfoDto.mechanicIds} /*для каждого будет отсылаться отдельное сообщение*/  \n" +
+                        "[Подтвердите взятие машины в ремонт](http://localhost:8080/api/rest/repair-service/take-to-repair-process?repairProcessId=$saveRepairProcess) \uD83D\uDD95")
                 LOGGER.info("Успешно сохранили repairProcess")
                 repairProcessDto
             } else {
@@ -54,7 +54,8 @@ class RepairProcessServiceImpl(private val storageFeignClient: StorageFeignClien
         processDto.repairProcessState = RepairProcessState.IN_REPAIR
         processDto.actual = true
         return if (storageFeignClient.saveRepairProcess(processDto) > 0) {
-            telegramService.sendMessage("Статус ремонта машины №${processDto.carId} изменен на \'Взято в ремонт\'")
+            telegramService.sendMessage("Статус ремонта машины №${processDto.carId} изменен на \'Взято в ремонт\' " +
+                    "<a href=\"http://localhost:8080/api/rest/repair-service/take-to-repair-process?repairProcessId=${processDto.id}\">:JGF</a>")
             true
         } else
             false

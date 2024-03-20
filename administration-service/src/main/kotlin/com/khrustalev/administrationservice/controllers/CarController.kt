@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RestController
 @RestController
 @RequestMapping("/api/rest/cars")
 class CarController(private val carService: CarService) {
-    @Operation(description = "Поиск машины по ее номеру",
+    @Operation(summary = "Поиск машины по ее номеру",
         parameters = [Parameter(
             name = "carNumber",
             description = "Номер машины", required = true)],
@@ -30,7 +30,7 @@ class CarController(private val carService: CarService) {
     fun getCarByNumber(@RequestParam carNumber: String) : ResponseEntity<CarDto> {
         return ResponseEntity(carService.getCarByNumber(carNumber), HttpStatus.OK)
     }
-    @Operation(description = "Поиск машины по ее ID",
+    @Operation(summary = "Поиск машины по ее ID",
         parameters = [Parameter(
             name = "id",
             description = "ID машины", required = true)],
@@ -41,7 +41,7 @@ class CarController(private val carService: CarService) {
     fun getCarById(@RequestParam id: Long) : ResponseEntity<CarDto> {
         return ResponseEntity(carService.getCarById(id), HttpStatus.OK)
     }
-    @Operation(description = "Поиск машины по ее Vin-номеру",
+    @Operation(summary = "Поиск машины по ее Vin-номеру",
         parameters = [Parameter(
             name = "vinNumber",
             description = "Vin номер машины", required = true)],
@@ -52,7 +52,7 @@ class CarController(private val carService: CarService) {
     fun getCarByVin(@RequestParam vinNumber: String) : ResponseEntity<CarDto> {
         return ResponseEntity(carService.getCarByVinNumber(vinNumber), HttpStatus.OK)
     }
-    @Operation(description = "Вывод списка всех машин",
+    @Operation(summary = "Вывод списка всех машин",
         responses = [
             ApiResponse(responseCode = "200", description = "Успешно"),
             ApiResponse(responseCode = "500", description = "Внутренняя ошибка сервера")])
@@ -60,7 +60,7 @@ class CarController(private val carService: CarService) {
     fun getAllCars() : ResponseEntity<MutableList<CarDto>> {
         return ResponseEntity(carService.getAllCars(), HttpStatus.OK)
     }
-    @Operation(description = "Вывод списка всех машин в ремонте",
+    @Operation(summary = "Вывод списка всех машин в ремонте",
         responses = [
             ApiResponse(responseCode = "200", description = "Успешно"),
             ApiResponse(responseCode = "500", description = "Внутренняя ошибка сервера")])
@@ -68,7 +68,7 @@ class CarController(private val carService: CarService) {
     fun getCarsInRepair() : ResponseEntity<MutableList<CarDto>> {
         return ResponseEntity(carService.getCarsInRepair(), HttpStatus.OK)
     }
-    @Operation(description = "Вывод списка всех машин  на базе",
+    @Operation(summary = "Вывод списка всех машин  на базе",
         responses = [
             ApiResponse(responseCode = "200", description = "Успешно"),
             ApiResponse(responseCode = "500", description = "Внутренняя ошибка сервера")])
@@ -76,7 +76,7 @@ class CarController(private val carService: CarService) {
     fun getCarsInBase() : ResponseEntity<MutableList<CarDto>> {
         return ResponseEntity(carService.getCarsInBase(), HttpStatus.OK)
     }
-    @Operation(description = "Сохранить новую машину или обновить существующую",
+    @Operation(summary = "Сохранить новую машину или обновить существующую",
         parameters = [Parameter(name = "carDto", description = "dto машины", required = true)],
         responses = [
             ApiResponse(responseCode = "201", description = "Успешно"),
@@ -85,7 +85,7 @@ class CarController(private val carService: CarService) {
     fun saveCar(@RequestBody carDto: CarDto) : ResponseEntity<CarDto> {
         return ResponseEntity(carService.saveCar(carDto), HttpStatus.CREATED)
     }
-    @Operation(description = "Удалить машину по номеру или vin-номеру",
+    @Operation(summary = "Удалить машину по номеру или vin-номеру",
         parameters = [Parameter(name = "v", description = "Номер или vin-номер машины", required = true)],
         responses = [
             ApiResponse(responseCode = "200", description = "Успешно"),

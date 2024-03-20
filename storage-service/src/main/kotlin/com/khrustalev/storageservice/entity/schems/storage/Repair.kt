@@ -12,8 +12,6 @@ open class Repair {
     @Column(name = "id", nullable = false)
     open var id: Long? = null
     @Column
-    open var carArrivalTime: LocalDateTime? = null
-    @Column
     open var endRepair: LocalDateTime? = null
     @Column
     open var actual: Boolean? = null
@@ -44,7 +42,6 @@ open class Repair {
         other as Repair
 
         if (id != other.id) return false
-        if (carArrivalTime != other.carArrivalTime) return false
         if (endRepair != other.endRepair) return false
         if (actual != other.actual) return false
         if (actualCompletionTime != other.actualCompletionTime) return false
@@ -59,7 +56,6 @@ open class Repair {
 
     override fun hashCode(): Int {
         var result = id?.hashCode() ?: 0
-        result = 31 * result + (carArrivalTime?.hashCode() ?: 0)
         result = 31 * result + (endRepair?.hashCode() ?: 0)
         result = 31 * result + (actual?.hashCode() ?: 0)
         result = 31 * result + (actualCompletionTime?.hashCode() ?: 0)

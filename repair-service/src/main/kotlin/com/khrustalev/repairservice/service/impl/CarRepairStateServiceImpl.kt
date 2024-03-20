@@ -34,25 +34,28 @@ class CarRepairStateServiceImpl(private val storageFeignClient: StorageFeignClie
             return storageFeignClient.saveCarRepairState(carRepairState)
     }
 
-    // TODO: доделать запчасти при стадиях ремонта!
     override fun changeRepairState(repairInfoDto: RepairInfoDto): Long {
         val previousRepairStateByCarId = storageFeignClient.getPreviousRepairStateByCarId(repairInfoDto.carId!!)
 
         val carRepairState = CarRepairStateDto()
+
         carRepairState.carRepairStateParentId = previousRepairStateByCarId.id
         carRepairState.repairBoxId = if (Objects.isNull(repairInfoDto.repairBoxNumber) || previousRepairStateByCarId.repairBoxId == storageFeignClient.getBoxByNumber(repairInfoDto.repairBoxNumber).body!!.id)
             previousRepairStateByCarId.repairBoxId else {
             boxService.setBoxFree(storageFeignClient.getBoxById(previousRepairStateByCarId.repairBoxId!!).body!!.boxNumber!!)
             checkRepairBox(repairInfoDto.repairBoxNumber)
             }
-        carRepairState.repairState = RepairState.entries[repairInfoDto.repairStateNumber]
+        carRepairState.repairState = if (Objects.isNull(repairInfoDto.repairStateNumber)) previousRepairStateByCarId.repairState!! else RepairState.entries[repairInfoDto.repairStateNumber]
         carRepairState.repairProblems = repairInfoDto.repairProblems
         carRepairState.createdAt = LocalDateTime.now()
         carRepairState.application = repairInfoDto.application
-        carRepairState.mechanicIds = if (CollectionUtils.isEmpty(repairInfoDto.mechanicIds) || repairInfoDto.mechanicIds!!.containsAll(previousRepairStateByCarId.mechanicIds!!))
+
+        carRepairState.mechanicIds = if (CollectionUtils.isEmpty(repairInfoDto.mechanicIds) || repairInfoDto.mechanicIds!!.contains(0) || repairInfoDto.mechanicIds.containsAll(previousRepairStateByCarId.mechanicIds!!))
             previousRepairStateByCarId.mechanicIds else repairInfoDto.mechanicIds
+
         carRepairState.engineerId = if (Objects.isNull(repairInfoDto.engineerId) || repairInfoDto.engineerId!! == previousRepairStateByCarId.engineerId!!)
             previousRepairStateByCarId.engineerId else repairInfoDto.engineerId
+
         if (!CollectionUtils.isEmpty(repairInfoDto.repairPartsNumbers)) {
             carRepairState.repairParts.addAll(repairPartsServiceFeignClient.installPartToCar(repairInfoDto.repairPartsNumbers, repairInfoDto.carId))
         } else carRepairState.repairParts = mutableListOf()

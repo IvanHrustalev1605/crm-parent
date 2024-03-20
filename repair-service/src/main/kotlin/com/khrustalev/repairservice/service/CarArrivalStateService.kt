@@ -8,4 +8,5 @@ interface CarArrivalStateService {
     fun setRepairRequest(carNumber: String) : Boolean
     fun getStateByCarNumber(carNumber: String) : CarArrivalStateDto?
     fun carGetAway(carNumber: String) : Boolean
+    fun getActualArrivalStateByCarId(carId: Long) : CarArrivalStateDto?
 }

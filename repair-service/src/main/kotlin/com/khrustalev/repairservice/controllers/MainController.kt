@@ -38,7 +38,7 @@ class MainController(private val securityService: SecurityService,
                             @RequestParam repairRequestList: MutableList<Long>) : ResponseEntity<RepairProcessDto> {
         return ResponseEntity(repairProcessService.createNewRepairProcess(repairInfoDto, repairRequestList), HttpStatus.OK)
     }
-    @PostMapping("/take-to-repair-process")
+    @GetMapping("/take-to-repair-process")
     fun takeToRepairRequest(@RequestParam repairProcessId: Long) : ResponseEntity<Boolean> {
         return ResponseEntity(repairProcessService.takeRepairToWork(repairProcessId), HttpStatus.OK)
     }

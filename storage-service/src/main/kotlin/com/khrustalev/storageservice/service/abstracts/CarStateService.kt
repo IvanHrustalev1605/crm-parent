@@ -9,4 +9,5 @@ interface CarStateService {
     fun getCarArrivalStateByCarNumber(carNumber: String): CarArrivalStateDto
     fun getArrivalStatesWithoutRepairRequest(): MutableList<CarArrivalStateDto>
     fun getPreviousRepairStateByCarId(carId: Long): CarRepairStateDto
+    fun getActualArrivalStateByCarId(carId: Long): CarArrivalStateDto
 }

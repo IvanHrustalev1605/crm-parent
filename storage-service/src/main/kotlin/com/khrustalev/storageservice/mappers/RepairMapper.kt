@@ -21,7 +21,6 @@ class RepairMapper(private val carService: CarService,
         it.carRepairState = repair.carRepairState?.stream()?.map { crs -> crs.id!!}?.toList()?.toMutableList()
         it.endRepair = repair.endRepair
         it.repairProcessState = repair.repairProcessState
-        it.carArrivalTime = repair.carArrivalTime
         it.actual = repair.actual
         it.differenceWorkTime = repair.differenceWorkTime
         it.actualCompletionTime = repair.actualCompletionTime
@@ -29,7 +28,6 @@ class RepairMapper(private val carService: CarService,
     fun toEntity(repairDto: RepairDto) : Repair = Repair().also {
         it.id = repairDto.id
         it.actual = repairDto.actual
-        it.carArrivalTime = repairDto.carArrivalTime
         it.repairProcessState = repairDto.repairProcessState
         it.endRepair = repairDto.endRepair
         it.differenceWorkTime = repairDto.differenceWorkTime

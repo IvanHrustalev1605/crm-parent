@@ -56,15 +56,9 @@ class RepairProcessController(private val repairService: RepairService) {
         return ResponseEntity(repairService.createRepairRequest(repairDescription, engineerId, carNumber, repairProcessId, requestNumber), HttpStatus.CREATED)
     }
 
-    @Operation(summary = "5. Создание ремонтного процесса", method = "POST", description = "Создания ремонтного процесса. Создается только после подтверждения заявки на ремонт " +
+    @Operation(summary = "4. Создание ремонтного процесса", method = "POST", description = "Создания ремонтного процесса. Создается только после подтверждения заявки на ремонт " +
             "Так же создается начальная CarRepairState, она же является родительской для всех остальных CarRepairState и у нее carRepairStatePArentID = null",
         parameters = [Parameter(name = "repairRequestList", description = "Список с ID заявок на ремонт", required = true)],
-        requestBody = io.swagger.v3.oas.annotations.parameters.RequestBody(description = "dto RepairInfoDto",
-            required = true, content = [Content(mediaType = "application/json",
-                schemaProperties = [SchemaProperty(name = "Dto сбора информации о ремонте",
-                    schema = Schema(implementation = RepairDto::class))
-                ])
-            ]),
         responses = [
             ApiResponse(responseCode = "201", description = "Начальная стадия процесса ремонта успешно создана", content = [Content(mediaType = MediaType.APPLICATION_JSON_VALUE, schema = Schema(implementation = RepairDto::class))]),
             ApiResponse(responseCode = "500", description = "Произошла ошибка на сервере", content = [Content(mediaType = "text/plain", schema = Schema(implementation = String::class))]),
@@ -76,7 +70,7 @@ class RepairProcessController(private val repairService: RepairService) {
         return ResponseEntity(repairService.createRepairRequest(repairInfoDto, repairRequestList), HttpStatus.CREATED)
     }
 
-    @Operation(summary = "4. Взятие механиками машины в ремонт", method = "POST", description = "При создании начального RepairProcess механикам, указанным в repairInfoDto приходят уведомления. " +
+    @Operation(summary = "5. Взятие механиками машины в ремонт", method = "POST", description = "При создании начального RepairProcess механикам, указанным в repairInfoDto приходят уведомления. " +
             "В которых они должны подтвердить что принимают данную машину в ремонт. После этого RepairProcess получает статус actual. " +
             "А водитель получает уведомление, что он может проезжать в ремонтную зону и номер бокса",
         parameters = [Parameter(name = "repairProcessId", description = "ID процесса ремонта", required = true)],
@@ -94,23 +88,6 @@ class RepairProcessController(private val repairService: RepairService) {
         parameters = [Parameter(name = "repairRequestList", description = "Список с ID заявок на ремонт. Если нет новых заявок по этому ремонту" +
                 "поля не заполняется", required = false, allowEmptyValue = true),
                      Parameter(name = "repairProcessId", description = "ID процесса ремонта к которому добавляются стадии", required = true)],
-        requestBody = io.swagger.v3.oas.annotations.parameters.RequestBody(
-            description = "dto RepairInfoDto \n" +
-                    "Значения для repairProcessStateNumber: \n" +
-                    "   0 - NEW\n" +
-                    "   1 - IN_REPAIR\n" +
-                    "   2 - PROBLEMS\n" +
-                    "   3 - DONE\n" +
-                    "Значения для repairStateNumber: \n" +
-                    "    NEW(0),\n" +
-                    "    TAKE_TO_WORK(1),\n" +
-                    "    DIAGNOSTICS(2),\n" +
-                    "    SPARE_PARTS_ORDERING(3),\n" +
-                    "    REPAIR_PROCESS(4),\n" +
-                    "    DONE(5),\n" +
-                    "    UNPLANNED_PROBLEMS(6),\n" +
-                    "    LONG_TIME_REPAIR(7)  ",
-            required = true),
         responses = [
             ApiResponse(responseCode = "201", description = "Успешно создана новая стадия ремонта", content = [Content(mediaType = MediaType.APPLICATION_JSON_VALUE, schema = Schema(implementation = RepairDto::class))]),
             ApiResponse(responseCode = "500", description = "Произошла ошибка на сервере", content = [Content(mediaType = "text/plain", schema = Schema(implementation = String::class))]),
@@ -128,12 +105,6 @@ class RepairProcessController(private val repairService: RepairService) {
             "могут быть добавлены дополнительно установленные запчасти, " +
             "actual = false",
         parameters = [Parameter(name = "repairProcessId", description = "ID ремонтного процесса", required = true)],
-        requestBody = io.swagger.v3.oas.annotations.parameters.RequestBody(description = "На этой стадии не обязательны: repairStateNumber, repairProcessStateNumber",
-            required = true, content = [Content(mediaType = "application/json",
-                schemaProperties = [SchemaProperty(name = "Dto сбора информации о ремонте",
-                    schema = Schema(implementation = RepairInfoDto::class))
-                ])
-            ]),
         responses = [
             ApiResponse(responseCode = "200", description = "Ремонт успешно завершен", content = [Content(mediaType = MediaType.TEXT_PLAIN_VALUE, schema = Schema(implementation = Boolean::class))]),
             ApiResponse(responseCode = "500", description = "Произошла ошибка на сервере", content = [Content(mediaType = "text/plain", schema = Schema(implementation = String::class))]),

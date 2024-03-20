@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestParam
 
-@FeignClient(name = "repair-process", url = "http://host.docker.internal:8888/api/rest/repair-service")
+@FeignClient(name = "repair-process", url = "http://host.docker.internal:8080/api/rest/repair-service")
 interface RepairProcessFeignClient {
     @PostMapping("/check-arrival-car")
     fun securityCheckCar(@RequestBody arrivalQuestionnaire: ArrivalQuestionnaire, @RequestParam securityId: Long) : Boolean

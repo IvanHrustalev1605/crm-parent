@@ -10,7 +10,6 @@ import java.time.LocalDateTime
  */
 data class RepairDto(
     var id: Long? = null,
-    var carArrivalTime: LocalDateTime? = null,
     var endRepair: LocalDateTime? = null,
     var repairProcessState: RepairProcessState? = null,
     var repairRequestIds: MutableList<Long> = mutableListOf(),

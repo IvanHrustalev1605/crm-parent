@@ -35,4 +35,8 @@ class CarStateController(private val carStateService: CarStateService) {
     fun getPreviousRepairStateByCarId(@RequestParam carId: Long) : ResponseEntity<CarRepairStateDto> {
         return ResponseEntity(carStateService.getPreviousRepairStateByCarId(carId), HttpStatus.OK)
     }
+    @GetMapping("/arrival/get-actual-by-car-id")
+    fun getLastArrivalStateByCarId(@RequestParam carId: Long) : ResponseEntity<CarArrivalStateDto> {
+        return ResponseEntity(carStateService.getActualArrivalStateByCarId(carId), HttpStatus.OK)
+    }
 }

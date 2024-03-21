@@ -79,7 +79,7 @@ class RepairProcessController(private val repairService: RepairService) {
             ApiResponse(responseCode = "500", description = "Произошла ошибка на сервере", content = [Content(mediaType = "text/plain", schema = Schema(implementation = String::class))]),
             ApiResponse(responseCode = "403", description = "Отказано в доступе", content = [Content(mediaType = "text/plain", schema = Schema(implementation = String::class))])
         ])
-    @PostMapping("/take-to-repair-process")
+    @GetMapping("/take-to-repair-process")
     fun takeToRepairRequest(@RequestParam repairProcessId: Long) : ResponseEntity<Boolean> {
         return ResponseEntity(repairService.takeToRepairRequest(repairProcessId), HttpStatus.OK)
     }
@@ -133,7 +133,7 @@ class RepairProcessController(private val repairService: RepairService) {
     }
     @Operation(summary = "Получить список свободных боксов", method = "GET", description = "Получить список свободных боксов",
         responses = [
-            ApiResponse(responseCode = "200", description = "Успешно!", content = [Content(mediaType = MediaType.TEXT_PLAIN_VALUE, schema = Schema(implementation = Boolean::class))]),
+            ApiResponse(responseCode = "200", description = "Успешно!", content = [Content(mediaType = MediaType.APPLICATION_JSON_VALUE, schema = Schema(implementation = Boolean::class))]),
             ApiResponse(responseCode = "500", description = "Произошла ошибка на сервере", content = [Content(mediaType = "text/plain", schema = Schema(implementation = String::class))]),
             ApiResponse(responseCode = "403", description = "Отказано в доступе", content = [Content(mediaType = "text/plain", schema = Schema(implementation = String::class))])
         ])

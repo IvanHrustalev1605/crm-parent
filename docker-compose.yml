@@ -12,8 +12,6 @@ services:
       dockerfile: Dockerfile
     ports:
       - "8181:8181"
-    depends_on:
-          - "storage-service"
   repair-service:
     build:
       context: repair-service
@@ -28,5 +26,9 @@ services:
       dockerfile: Dockerfile
     ports:
       - "8182:8182"
-    depends_on:
-      - "storage-service"
+  document-service:
+    build:
+      context: document-service
+      dockerfile: Dockerfile
+    ports:
+      - "8899:8899"

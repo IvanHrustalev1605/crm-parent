@@ -23,7 +23,7 @@ interface RepairProcessFeignClient {
     fun createRepairRequest(@RequestBody repairInfoDto: RepairInfoDto,
                             @RequestParam repairRequestList: MutableList<Long>) : RepairDto
 
-    @PostMapping("/take-to-repair-process")
+    @GetMapping("/take-to-repair-process")
     fun takeToRepairRequest(@RequestParam repairProcessId: Long) : Boolean
 
     @PostMapping("/update-repair-process")

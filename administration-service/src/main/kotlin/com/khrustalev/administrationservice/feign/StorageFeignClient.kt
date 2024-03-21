@@ -1,11 +1,11 @@
 package com.khrustalev.administrationservice.feign
 
-import com.khrustalev.administrationservice.dto.CarDto
+import com.khrustalev.administrationservice.dto.*
 import org.springframework.cloud.openfeign.FeignClient
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
 
-@FeignClient(name = "storage-feign-client", url = "http://localhost:8888/api/storage")
+@FeignClient(name = "storage-feign-client", url = "http://host.docker.internal:8888/api/storage")
 interface StorageFeignClient {
     /*Cars*/
     @GetMapping("/car/find-by-vin")
@@ -38,10 +38,32 @@ interface StorageFeignClient {
 
     /*-----*/
     /*Mechanics*/
-
+    @GetMapping("/mechanics/all")
+    fun getAllMechanics() : MutableList<MechanicDto>
+    @GetMapping("/mechanics/by-id")
+    fun getMechanicById(@RequestParam id: Long) : MechanicDto
+    @GetMapping("/mechanics/by-fio")
+    fun getMechanicByFIO(@RequestParam fio: String) : MechanicDto
+    @PostMapping("/mechanic/save")
+    fun saveMechanic(@RequestBody mechanicDto: MechanicDto) : MechanicDto
     /*-----*/
     /*Drivers*/
-
+    @GetMapping("/drivers/all")
+    fun getAllDrivers() : MutableList<DriverDto>
+    @GetMapping("/drivers/by-id")
+    fun getDriversById(@RequestParam id: Long) : DriverDto
+    @GetMapping("/drivers/by-fio")
+    fun getDriversByFIO(@RequestParam fio: String) : MutableList<DriverDto>
+    @PostMapping("/drivers/save")
+    fun saveDrivers(@RequestBody driverDto: DriverDto) : DriverDto
+    @GetMapping("/drivers/car")
+    fun getCarByDriverId(@RequestParam driverId: Long) : CarDto
+    @GetMapping("/drivers/all-repairs")
+    fun getAllRepairs(@RequestParam driverId: Long) : MutableList<RepairDto>
+    @GetMapping("/drivers/all-arrivals")
+    fun getAllArrivals(@RequestParam driverId: Long) : MutableList<CarArrivalStateDto>
+    @GetMapping("/drivers/by-license")
+    fun getDriversByLicense(@RequestParam license: String): DriverDto
     /*-----*/
 
 }

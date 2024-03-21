@@ -40,7 +40,7 @@ class WordServiceImpl(private val storageFeignClient: StorageFeignClient) : Word
         val r3 = document.createParagraph().createRun()
 
         r1.setFontSize(15.0)
-        repairRequestList.forEach { r1.setText("Основанием для ремонта являлся ${it.requestNumber} - ${it.requestDescription}") }
+        repairRequestList.forEach { r1.setText("Основанием для ремонта являлась Заявка на ремонт № ${it.requestNumber} - описание: ${it.requestDescription}") }
         r1.addBreak()
         r1.addBreak()
 

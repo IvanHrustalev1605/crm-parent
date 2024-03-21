@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam
 import java.time.LocalDateTime
 import java.util.*
 
-@FeignClient(name = "storage-feign-client", url = "http://localhost:8888/api/storage")
+@FeignClient(name = "storage-feign-client", url = "http://host.docker.internal:8888/api/storage")
 interface StorageFeignClient {
     /*Test Data*/
     @GetMapping("/test-data")
@@ -69,7 +69,7 @@ interface StorageFeignClient {
     fun getByRequestNumber(@RequestParam("repairRequestNumber") number: Long) : RepairRequestDto
 
     /*Drivers*/
-    @GetMapping("/driver/find-by-car-id")
+    @GetMapping("/drivers/find-by-car-id")
     fun findByCarId(@RequestParam carId: Long) : DriverDto
 
     /*RepairParts*/

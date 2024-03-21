@@ -1,15 +1,11 @@
-package com.khrustalev.storageservice.service.abstracts
+package com.khrustalev.administrationservice.service
 
-import com.khrustalev.storageservice.dto.CarArrivalStateDto
-import com.khrustalev.storageservice.dto.CarDto
-import com.khrustalev.storageservice.dto.DriverDto
-import com.khrustalev.storageservice.dto.RepairDto
-import com.khrustalev.storageservice.entity.schems.storage.Driver
+import com.khrustalev.administrationservice.dto.CarArrivalStateDto
+import com.khrustalev.administrationservice.dto.CarDto
+import com.khrustalev.administrationservice.dto.DriverDto
+import com.khrustalev.administrationservice.dto.RepairDto
 
 interface DriverService {
-    fun findById(id : Long?) : Driver
-    fun findByCarId(carId: Long): DriverDto?
-
     fun getAllDrivers() : MutableList<DriverDto>
     fun getDriversById(id: Long) : DriverDto
     fun getDriversByFIO(fio: String) : MutableList<DriverDto>

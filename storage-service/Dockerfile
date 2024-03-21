@@ -5,5 +5,6 @@ RUN mvn clean install -Dspring.profiles.active=docker
 
 FROM openjdk:17-oracle AS storage-service
 WORKDIR /app
+ENV SPRING_PROFILES_ACTIVE=docker
 COPY --from=builder /src/target/storage-service.jar /app/storage-service.jar
 ENTRYPOINT ["java","-jar","storage-service.jar"]

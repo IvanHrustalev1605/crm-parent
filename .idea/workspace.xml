@@ -5,10 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a8831c50-c17b-4626-9402-a365a662022b" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_14_03_2024_9_36_[Changes]1/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_14_03_2024_9_36__Changes_1.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/repair-parts-service/src/main/kotlin/org/khrustalev/repairpertsservice/feign/RepairPartsFeignClient.kt" beforeDir="false" afterPath="$PROJECT_DIR$/repair-parts-service/src/main/kotlin/org/khrustalev/repairpertsservice/feign/RepairPartsFeignClient.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/repair-parts-service/src/main/kotlin/org/khrustalev/repairpertsservice/feign/StoragePlaceFeignClient.kt" beforeDir="false" afterPath="$PROJECT_DIR$/repair-parts-service/src/main/kotlin/org/khrustalev/repairpertsservice/feign/StoragePlaceFeignClient.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,8 +24,8 @@
         <option value="Kotlin Enum" />
         <option value="com.haulmont.jpb.NewDataClass" />
         <option value="com.haulmont.jpb.JpaRepository" />
-        <option value="Kotlin Interface" />
         <option value="Kotlin Class" />
+        <option value="Kotlin Interface" />
       </list>
     </option>
   </component>
@@ -57,50 +58,52 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "DtoCreateDialog.IS_JSON_IGNORE_UNKNOWN_PROPERTIES": "true",
-    "RequestMappingsPanelOrder0": "0",
-    "RequestMappingsPanelOrder1": "1",
-    "RequestMappingsPanelWidth0": "75",
-    "RequestMappingsPanelWidth1": "75",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "com.google.cloudcode.ide_session_index": "20240313_0000",
-    "git-widget-placeholder": "develop",
-    "jdk.selected.JAVA_MODULE": "openjdk-19",
-    "last_opened_file_path": "D:/IdeaProjects/crm-parent/administration-service/src/main/kotlin/com/khrustalev/administrationservice/dto",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.36206895",
-    "settings.editor.selected.configurable": "com.haulmont.jpb.databaseVersioning",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;DtoCreateDialog.IS_JSON_IGNORE_UNKNOWN_PROPERTIES&quot;: &quot;true&quot;,
+    &quot;LOGSTASH_STARTER&quot;: &quot;D:\\logstash-8.12.2\\bin\\logstash.lib.sh&quot;,
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;com.google.cloudcode.ide_session_index&quot;: &quot;20240313_0000&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;develop&quot;,
+    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;openjdk-19&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/IdeaProjects/pgu&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.36206895&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "postgresql"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;postgresql&quot;,
+      &quot;elasticsearch&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\IdeaProjects\crm-parent\administration-service\src\main\kotlin\com\khrustalev\administrationservice\dto" />
       <recent name="D:\IdeaProjects\crm-parent\document-service" />
     </key>
     <key name="CreateKotlinClassDialog.RecentsKey">
+      <recent name="com.khrustalev.storageservice.elasticsearch.service.impl" />
       <recent name="com.khrustalev.administrationservice.service.impl" />
       <recent name="com.khrustalev.storageservice.service.impl" />
       <recent name="com.khrustalev.storageservice.service.abstracts" />
       <recent name="com.khrustalev.administrationservice.service" />
-      <recent name="com.khrustalev.repairservice.service.impl" />
     </key>
     <key name="MoveKotlinTopLevelDeclarationsDialog.RECENTS_KEY">
       <recent name="com.khrustalev.administrationservice.service" />
@@ -124,7 +127,15 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.AdministrationServiceApplication">
+  <component name="RunManager" selected="Spring Boot.StorageServiceApplication">
+    <configuration name="logstash-config.conf" type="LOGSTASH_RUN_CONFIGURATION" factoryName="Logstash configuration factory" temporary="true">
+      <option name="FILE_PATH" value="D:\IdeaProjects\crm-parent\storage-service\src\main\resources\logstash-config.conf" />
+      <option name="STARTER_PATH" value="D:\logstash-8.12.2\bin\logstash.lib.sh" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="PARAMETERS" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="AdministrationServiceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <module name="administration-service" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.khrustalev.administrationservice.AdministrationServiceApplication" />
@@ -202,6 +213,7 @@
       <item itemvalue="Docker.administration-service/Dockerfile" />
       <item itemvalue="Docker.docker-compose.yml: Compose Deployment" />
       <item itemvalue="Docker.storage-service/Dockerfile" />
+      <item itemvalue="Logstash.logstash-config.conf" />
       <item itemvalue="Spring Boot.AdministrationServiceApplication" />
       <item itemvalue="Spring Boot.DocumentServiceApplication" />
       <item itemvalue="Spring Boot.RepairServiceApplication" />
@@ -210,6 +222,7 @@
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Logstash.logstash-config.conf" />
         <item itemvalue="Spring Boot.RepairPartsServiceApplication" />
         <item itemvalue="Docker.docker-compose.yml: Compose Deployment" />
         <item itemvalue="Docker.administration-service/Dockerfile" />
@@ -236,7 +249,9 @@
       <workItem from="1710316958868" duration="13358000" />
       <workItem from="1710424306079" duration="6080000" />
       <workItem from="1710844876879" duration="20576000" />
-      <workItem from="1711001554585" duration="11974000" />
+      <workItem from="1711001554585" duration="19190000" />
+      <workItem from="1711031070105" duration="2271000" />
+      <workItem from="1711033370743" duration="5434000" />
     </task>
     <servers />
   </component>

@@ -16,5 +16,13 @@
         </introspection-scope>
       </schema-mapping>
     </data-source>
+    <data-source name="@localhost" uuid="013ec0f0-0165-4f6d-9ce8-7a834a3e9d87">
+      <database-info product="Elasticsearch" version="7.17.10" jdbc-version="4.2" driver-name="Elasticsearch JDBC Driver" driver-version="7.17" dbms="UNKNOWN" exact-version="8.12" exact-driver-version="7.17">
+        <identifier-quote-string>&quot;</identifier-quote-string>
+      </database-info>
+      <case-sensitivity plain-identifiers="exact" quoted-identifiers="exact" />
+      <secret-storage>master_key</secret-storage>
+      <schema-mapping />
+    </data-source>
   </component>
 </project>

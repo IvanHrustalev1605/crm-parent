@@ -40,7 +40,7 @@ class CarRepairStateServiceImpl(private val storageFeignClient: StorageFeignClie
         val carRepairState = CarRepairStateDto()
 
         carRepairState.carRepairStateParentId = previousRepairStateByCarId.id
-        carRepairState.repairBoxId = if (Objects.isNull(repairInfoDto.repairBoxNumber) || previousRepairStateByCarId.repairBoxId == storageFeignClient.getBoxByNumber(repairInfoDto.repairBoxNumber).body!!.id)
+        carRepairState.repairBoxId = if (Objects.isNull(repairInfoDto.repairBoxNumber) || repairInfoDto.repairBoxNumber == 0 || previousRepairStateByCarId.repairBoxId == storageFeignClient.getBoxByNumber(repairInfoDto.repairBoxNumber).body!!.id)
             previousRepairStateByCarId.repairBoxId else {
             boxService.setBoxFree(storageFeignClient.getBoxById(previousRepairStateByCarId.repairBoxId!!).body!!.boxNumber!!)
             checkRepairBox(repairInfoDto.repairBoxNumber)
@@ -53,7 +53,7 @@ class CarRepairStateServiceImpl(private val storageFeignClient: StorageFeignClie
         carRepairState.mechanicIds = if (CollectionUtils.isEmpty(repairInfoDto.mechanicIds) || repairInfoDto.mechanicIds!!.contains(0) || repairInfoDto.mechanicIds.containsAll(previousRepairStateByCarId.mechanicIds!!))
             previousRepairStateByCarId.mechanicIds else repairInfoDto.mechanicIds
 
-        carRepairState.engineerId = if (Objects.isNull(repairInfoDto.engineerId) || repairInfoDto.engineerId!! == previousRepairStateByCarId.engineerId!!)
+        carRepairState.engineerId = if (Objects.isNull(repairInfoDto.engineerId) || repairInfoDto.engineerId == 0L || repairInfoDto.engineerId!! == previousRepairStateByCarId.engineerId!!)
             previousRepairStateByCarId.engineerId else repairInfoDto.engineerId
 
         if (!CollectionUtils.isEmpty(repairInfoDto.repairPartsNumbers)) {
@@ -76,7 +76,7 @@ class CarRepairStateServiceImpl(private val storageFeignClient: StorageFeignClie
         carRepairState.carRepairStateParentId = previousRepairStateByCarId.id
         carRepairState.carId = previousRepairStateByCarId.carId!!
 
-        carRepairState.engineerId = if (Objects.isNull(repairInfoDto.engineerId) || repairInfoDto.engineerId!! == previousRepairStateByCarId.engineerId!!)
+        carRepairState.engineerId = if (Objects.isNull(repairInfoDto.engineerId) || repairInfoDto.engineerId == 0L || repairInfoDto.engineerId!! == previousRepairStateByCarId.engineerId!!)
             previousRepairStateByCarId.engineerId else repairInfoDto.engineerId
 
         if (!CollectionUtils.isEmpty(repairInfoDto.repairPartsNumbers)) {

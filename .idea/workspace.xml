@@ -5,12 +5,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a8831c50-c17b-4626-9402-a365a662022b" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/d6bb1a80-6065-44ba-9b9b-2c9d22a22183.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/d6bb1a80-6065-44ba-9b9b-2c9d22a22183.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/elasticsearchRequestHistory.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/elasticsearchRequestHistory.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/elasticsearchSettings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/elasticsearchSettings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_20_03_2024_22_58__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_20_03_2024_22_58__Changes_.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/repair-parts-service/src/main/kotlin/org/khrustalev/repairpertsservice/RepairPartsServiceApplication.kt" beforeDir="false" afterPath="$PROJECT_DIR$/repair-parts-service/src/main/kotlin/org/khrustalev/repairpartsservice/RepairPartsServiceApplication.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/repair-parts-service/src/main/kotlin/org/khrustalev/repairpertsservice/controllers/RepairPartsController.kt" beforeDir="false" afterPath="$PROJECT_DIR$/repair-parts-service/src/main/kotlin/org/khrustalev/repairpartsservice/controllers/RepairPartsController.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/repair-parts-service/src/main/kotlin/org/khrustalev/repairpertsservice/dto/AcceptablePartsDto.kt" beforeDir="false" afterPath="$PROJECT_DIR$/repair-parts-service/src/main/kotlin/org/khrustalev/repairpartsservice/dto/AcceptablePartsDto.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/repair-parts-service/src/main/kotlin/org/khrustalev/repairpertsservice/dto/EtalonPartsStocksDto.kt" beforeDir="false" afterPath="$PROJECT_DIR$/repair-parts-service/src/main/kotlin/org/khrustalev/repairpartsservice/dto/EtalonPartsStocksDto.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/repair-parts-service/src/main/kotlin/org/khrustalev/repairpertsservice/dto/RepairPartStoragePlaceDto.kt" beforeDir="false" afterPath="$PROJECT_DIR$/repair-parts-service/src/main/kotlin/org/khrustalev/repairpartsservice/dto/RepairPartStoragePlaceDto.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/repair-parts-service/src/main/kotlin/org/khrustalev/repairpertsservice/dto/RepairPartsDto.kt" beforeDir="false" afterPath="$PROJECT_DIR$/repair-parts-service/src/main/kotlin/org/khrustalev/repairpartsservice/dto/RepairPartsDto.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/repair-parts-service/src/main/kotlin/org/khrustalev/repairpertsservice/feign/RepairPartsFeignClient.kt" beforeDir="false" afterPath="$PROJECT_DIR$/repair-parts-service/src/main/kotlin/org/khrustalev/repairpartsservice/feign/RepairPartsFeignClient.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/repair-parts-service/src/main/kotlin/org/khrustalev/repairpertsservice/feign/StoragePlaceFeignClient.kt" beforeDir="false" afterPath="$PROJECT_DIR$/repair-parts-service/src/main/kotlin/org/khrustalev/repairpartsservice/feign/StoragePlaceFeignClient.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/repair-parts-service/src/main/kotlin/org/khrustalev/repairpertsservice/service/RepairPartsService.kt" beforeDir="false" afterPath="$PROJECT_DIR$/repair-parts-service/src/main/kotlin/org/khrustalev/repairpartsservice/service/RepairPartsService.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/repair-parts-service/src/main/kotlin/org/khrustalev/repairpertsservice/service/StorageService.kt" beforeDir="false" afterPath="$PROJECT_DIR$/repair-parts-service/src/main/kotlin/org/khrustalev/repairpartsservice/service/StorageService.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/repair-parts-service/src/main/kotlin/org/khrustalev/repairpertsservice/service/impl/RepairPartsServiceImpl.kt" beforeDir="false" afterPath="$PROJECT_DIR$/repair-parts-service/src/main/kotlin/org/khrustalev/repairpartsservice/service/impl/RepairPartsServiceImpl.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/repair-parts-service/src/main/kotlin/org/khrustalev/repairpertsservice/service/impl/StorageServiceImpl.kt" beforeDir="false" afterPath="$PROJECT_DIR$/repair-parts-service/src/main/kotlin/org/khrustalev/repairpartsservice/service/impl/StorageServiceImpl.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -71,7 +79,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
-    "com.google.cloudcode.ide_session_index": "20240322_0001",
+    "com.google.cloudcode.ide_session_index": "20240322_0002",
     "git-widget-placeholder": "develop",
     "jdk.selected.JAVA_MODULE": "openjdk-19",
     "last_opened_file_path": "C:/IdeaProjects/crm-parent/repair-parts-service",
@@ -132,7 +140,7 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.StorageServiceApplication">
+  <component name="RunManager" selected="Spring Boot.RepairServiceApplication">
     <configuration name="AdministrationServiceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <module name="administration-service" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.khrustalev.administrationservice.AdministrationServiceApplication" />
@@ -147,12 +155,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="RepairPartsServiceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+    <configuration name="RepairPartsServiceApplicationKt" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
       <module name="repair-parts-service" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="org.khrustalev.repairpertsservice.RepairPartsServiceApplication" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="org.khrustalev.repairpartsservice.RepairPartsServiceApplicationKt" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="org.khrustalev.repairpertsservice.*" />
+          <option name="PATTERN" value="org.khrustalev.repairpartsservice.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -222,11 +230,11 @@
       <item itemvalue="Spring Boot.DocumentServiceApplication" />
       <item itemvalue="Spring Boot.RepairServiceApplication" />
       <item itemvalue="Spring Boot.StorageServiceApplication" />
-      <item itemvalue="Spring Boot.RepairPartsServiceApplication" />
+      <item itemvalue="Spring Boot.RepairPartsServiceApplicationKt" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Spring Boot.RepairPartsServiceApplication" />
+        <item itemvalue="Spring Boot.RepairPartsServiceApplicationKt" />
         <item itemvalue="Docker.storage-service/Dockerfile" />
         <item itemvalue="Docker.repair-parts-service/Dockerfile" />
         <item itemvalue="Docker.docker-compose.yml: Compose Deployment" />
@@ -253,6 +261,7 @@
       <workItem from="1710748916926" duration="10628000" />
       <workItem from="1711092624354" duration="231000" />
       <workItem from="1711092890142" duration="2983000" />
+      <workItem from="1711096232228" duration="9972000" />
     </task>
     <servers />
   </component>

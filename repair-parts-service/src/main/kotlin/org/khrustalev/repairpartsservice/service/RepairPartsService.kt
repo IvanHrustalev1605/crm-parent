@@ -1,6 +1,6 @@
-package org.khrustalev.repairpertsservice.service
+package org.khrustalev.repairpartsservice.service
 
-import org.khrustalev.repairpertsservice.dto.RepairPartsDto
+import org.khrustalev.repairpartsservice.dto.RepairPartsDto
 import java.util.UUID
 
 interface RepairPartsService {
@@ -8,4 +8,5 @@ interface RepairPartsService {
     fun updatePart(repairPartsDto: RepairPartsDto) : Boolean
     fun acceptRepairParts(repairPartsList: MutableList<RepairPartsDto>) : Boolean
     fun writeOffRepairParts(repairPartsIdList: MutableList<Long>) : MutableList<Long>
+    fun getInstalledByRepairId(repairId: Long): MutableList<RepairPartsDto>
 }

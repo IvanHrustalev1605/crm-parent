@@ -19,6 +19,8 @@ open class Repair {
     open var actualCompletionTime : LocalDateTime? = null
     @Column
     open var differenceWorkTime : Long? = null
+    @Column
+    open var repairStartAt: LocalDateTime? = null
 
     @Enumerated(EnumType.ORDINAL)
     open var repairProcessState: RepairProcessState? = null

@@ -1,6 +1,7 @@
 package com.khrustalev.storageservice.repository;
 
 import com.khrustalev.storageservice.entity.schems.storage.Car
+import com.khrustalev.storageservice.entity.schems.storage.Repair
 import org.springframework.data.jpa.repository.JpaRepository
 import org.springframework.data.jpa.repository.Query
 import org.springframework.data.repository.query.Param
@@ -22,4 +23,9 @@ interface CarRepository : JpaRepository<Car, Long> {
     fun findByNumber(number: String) : Optional<Car>
     fun deleteByNumber(number: String) : Boolean
     fun deleteByVinNumber(vinNumber: String) : Boolean
+
+    @Query(value = "select r from Repair r where r.car.id =: carId order by r.endRepair ASC")
+    fun getAllCarRepairs(@Param("carId") carId: Long) : MutableList<Repair>
+    @Query(value = "select r from Repair r where r.car.id =: carId and r.actual = true order by r.endRepair ASC")
+    fun getActualCarRepairs(@Param("carId") carId: Long) : MutableList<Repair>
 }

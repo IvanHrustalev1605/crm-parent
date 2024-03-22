@@ -23,7 +23,8 @@ class RepairMapper(private val carService: CarService,
         it.repairProcessState = repair.repairProcessState
         it.actual = repair.actual
         it.differenceWorkTime = repair.differenceWorkTime
-        it.actualCompletionTime = repair.actualCompletionTime
+        it.actualCompletionTime = repair.actualCompletionTime,
+        it.repairStartAt = repair.repairStartAt
     }
     fun toEntity(repairDto: RepairDto) : Repair = Repair().also {
         it.id = repairDto.id
@@ -31,6 +32,7 @@ class RepairMapper(private val carService: CarService,
         it.repairProcessState = repairDto.repairProcessState
         it.endRepair = repairDto.endRepair
         it.differenceWorkTime = repairDto.differenceWorkTime
+        it.repairStartAt = repairDto.repairStartAt
         it.actualCompletionTime = repairDto.actualCompletionTime
         it.car = if (repairDto.carId != null) carService.findById(repairDto.carId!!) else null
         it.carRepairState = if (!CollectionUtils.isEmpty(repairDto.carRepairState)) repairDto.carRepairState?.let { it1 ->

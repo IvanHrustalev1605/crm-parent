@@ -19,4 +19,5 @@ interface RepairPartsService {
     fun countByEtalonArt(art: String) : Long
     fun convertToDto(repairParts: RepairParts) : RepairPartsDto
     fun getByEtalonArt(etalonArt: String) : MutableList<RepairPartsDto>
+    fun getInstalledInRepair(repairId: Long): MutableList<RepairPartsDto>
 }

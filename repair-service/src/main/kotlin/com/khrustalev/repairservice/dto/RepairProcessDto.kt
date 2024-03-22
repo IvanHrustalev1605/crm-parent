@@ -28,4 +28,6 @@ open class RepairProcessDto {
     open  var actualCompletionTime : LocalDateTime? = null
     @JsonProperty(value = "differenceWorkTime")
     open  var differenceWorkTime : Long? = null
+    @JsonProperty(value = "repairStartAt")
+    var repairStartAt: LocalDateTime? = null
 }

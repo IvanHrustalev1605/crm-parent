@@ -1,6 +1,7 @@
 package com.khrustalev.storageservice.controllers
 
 import com.khrustalev.storageservice.dto.CarDto
+import com.khrustalev.storageservice.dto.RepairDto
 import com.khrustalev.storageservice.service.abstracts.CarService
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
@@ -45,5 +46,9 @@ class CarController(private val carService: CarService) {
     @DeleteMapping("/delete")
     fun deleteCarByNumberOrVin(@RequestParam v: String) : ResponseEntity<Boolean> {
         return ResponseEntity(carService.deleteCarByNumberOrVin(v), HttpStatus.OK)
+    }
+    @GetMapping("/repairs")
+    fun getRepairsByCarId(@RequestParam carId: Long, @RequestParam(required = false) actual: Boolean) : ResponseEntity<MutableList<RepairDto>> {
+        return ResponseEntity(carService.getRepairsByCarId(carId, actual), HttpStatus.OK)
     }
 }

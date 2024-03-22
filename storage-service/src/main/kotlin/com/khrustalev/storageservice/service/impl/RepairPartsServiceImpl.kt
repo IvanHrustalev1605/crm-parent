@@ -92,4 +92,8 @@ class RepairPartsServiceImpl(private val repairPartsRepository: RepairPartsRepos
                 .toList().toMutableList()
         else mutableListOf()
     }
+
+    override fun getInstalledInRepair(repairId: Long): MutableList<RepairPartsDto> {
+        return repairPartsRepository.getAllInstalledRepairPArtsInRepair(repairId).map { repairPartsMapper.toDto(it) }.toMutableList()
+    }
 }

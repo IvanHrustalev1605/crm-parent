@@ -1,6 +1,6 @@
-package org.khrustalev.repairpertsservice.service
+package org.khrustalev.repairpartsservice.service
 
-import org.khrustalev.repairpertsservice.dto.AcceptablePartsDto
+import org.khrustalev.repairpartsservice.dto.AcceptablePartsDto
 
 interface StorageService {
     fun putPartsToStoragePlace(acceptablePartsDtoList: MutableList<AcceptablePartsDto>) :  Boolean

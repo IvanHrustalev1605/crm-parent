@@ -28,10 +28,7 @@ class RepairController(private val repairService: RepairService) {
     fun create(@RequestBody repairDto: RepairDto) : ResponseEntity<Long> {
         return ResponseEntity(repairService.save(repairDto), HttpStatus.OK)
     }
-    @GetMapping("/repair-parts")
-    fun getRepairPartsByRepairId(@RequestParam repairId: Long) : ResponseEntity<List<String>> {
-        return ResponseEntity(repairService.getAllRepairParts(repairId), HttpStatus.OK)
-    }
+
     @GetMapping("/repair-state/by-id")
     fun getRepairStatesForRepairByRepairId(@RequestParam repairId: Long) : ResponseEntity<MutableList<CarRepairStateDto>> {
         return ResponseEntity(repairService.findAllRepairStates(repairId), HttpStatus.OK)

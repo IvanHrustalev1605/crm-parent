@@ -75,4 +75,8 @@ class RepairPartsController(private val repairPartsService: RepairPartsService,
     fun saveRepairPart(@RequestBody repairPartsDto: RepairPartsDto) : ResponseEntity<RepairPartsDto> {
         return ResponseEntity(repairPartsService.save(repairPartsDto), HttpStatus.CREATED)
     }
+    @GetMapping("/installed")
+    fun getInstalledPartsByRepairId(@RequestParam repairId: Long) : ResponseEntity<MutableList<RepairPartsDto>> {
+        return ResponseEntity(repairPartsService.getInstalledInRepair(repairId), HttpStatus.OK)
+    }
 }

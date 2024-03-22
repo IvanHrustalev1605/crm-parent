@@ -1,15 +1,12 @@
-package org.khrustalev.repairpertsservice.controllers
+package org.khrustalev.repairpartsservice.controllers
 
-import org.khrustalev.repairpertsservice.dto.AcceptablePartsDto
-import org.khrustalev.repairpertsservice.service.RepairPartsService
-import org.khrustalev.repairpertsservice.service.StorageService
+import org.khrustalev.repairpartsservice.dto.AcceptablePartsDto
+import org.khrustalev.repairpartsservice.dto.RepairPartsDto
+import org.khrustalev.repairpartsservice.service.RepairPartsService
+import org.khrustalev.repairpartsservice.service.StorageService
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
-import org.springframework.web.bind.annotation.PostMapping
-import org.springframework.web.bind.annotation.RequestBody
-import org.springframework.web.bind.annotation.RequestMapping
-import org.springframework.web.bind.annotation.RequestParam
-import org.springframework.web.bind.annotation.RestController
+import org.springframework.web.bind.annotation.*
 import java.util.*
 
 @RestController
@@ -33,5 +30,8 @@ class RepairPartsController(private val storageService: StorageService,
     fun writeOffParts(@RequestBody repairPartsIdList: MutableList<Long>) : ResponseEntity<MutableList<Long>> {
         return ResponseEntity(repairPartsService.writeOffRepairParts(repairPartsIdList), HttpStatus.ACCEPTED)
     }
-
+    @GetMapping("/installed-parts/by-repair-id")
+    fun getInstalledRepairParts(@RequestParam repairId: Long) : ResponseEntity<MutableList<RepairPartsDto>> {
+        return ResponseEntity(repairPartsService.getInstalledByRepairId(repairId), HttpStatus.OK)
+    }
 }

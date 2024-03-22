@@ -1,10 +1,10 @@
-package org.khrustalev.repairpertsservice.service.impl
+package org.khrustalev.repairpartsservice.service.impl
 
-import org.khrustalev.repairpertsservice.dto.AcceptablePartsDto
-import org.khrustalev.repairpertsservice.dto.RepairPartStoragePlaceDto
-import org.khrustalev.repairpertsservice.feign.RepairPartsFeignClient
-import org.khrustalev.repairpertsservice.feign.StoragePlaceFeignClient
-import org.khrustalev.repairpertsservice.service.StorageService
+import org.khrustalev.repairpartsservice.dto.AcceptablePartsDto
+import org.khrustalev.repairpartsservice.dto.RepairPartStoragePlaceDto
+import org.khrustalev.repairpartsservice.feign.RepairPartsFeignClient
+import org.khrustalev.repairpartsservice.feign.StoragePlaceFeignClient
+import org.khrustalev.repairpartsservice.service.StorageService
 import org.springframework.stereotype.Service
 import java.time.LocalDateTime
 

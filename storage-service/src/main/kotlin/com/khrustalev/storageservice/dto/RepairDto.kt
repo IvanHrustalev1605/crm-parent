@@ -1,7 +1,6 @@
 package com.khrustalev.storageservice.dto
 
 import com.khrustalev.storageservice.entity.enums.RepairProcessState
-import com.khrustalev.storageservice.entity.enums.RepairState
 import java.io.Serializable
 import java.time.LocalDateTime
 
@@ -17,7 +16,8 @@ data class RepairDto(
     var actual: Boolean? = null,
     var carRepairState: MutableList<Long>? = null,
     var actualCompletionTime : LocalDateTime? = null,
-    var differenceWorkTime : Long? = null
+    var differenceWorkTime : Long? = null,
+    var repairStartAt: LocalDateTime? = null
 ) : Serializable {
 
 }

@@ -1,6 +1,6 @@
-package org.khrustalev.repairpertsservice.feign
+package org.khrustalev.repairpartsservice.feign
 
-import org.khrustalev.repairpertsservice.dto.RepairPartStoragePlaceDto
+import org.khrustalev.repairpartsservice.dto.RepairPartStoragePlaceDto
 import org.springframework.cloud.openfeign.FeignClient
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PostMapping

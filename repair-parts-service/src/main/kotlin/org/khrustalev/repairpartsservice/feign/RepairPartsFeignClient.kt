@@ -1,7 +1,7 @@
-package org.khrustalev.repairpertsservice.feign
+package org.khrustalev.repairpartsservice.feign
 
-import org.khrustalev.repairpertsservice.dto.EtalonPartsStocksDto
-import org.khrustalev.repairpertsservice.dto.RepairPartsDto
+import org.khrustalev.repairpartsservice.dto.EtalonPartsStocksDto
+import org.khrustalev.repairpartsservice.dto.RepairPartsDto
 import org.springframework.cloud.openfeign.FeignClient
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PostMapping
@@ -42,6 +42,7 @@ interface RepairPartsFeignClient {
     fun getEtalonPartsStocks(@RequestParam id: Long) : EtalonPartsStocksDto
     @PostMapping("/update-etalon-parts-stocks")
     fun updatePartsStocks(etalonPartsStocksDto: EtalonPartsStocksDto) : Boolean
-
+    @GetMapping("/installed")
+    fun getInstalledPartsByRepairId(@RequestParam repairId: Long) : MutableList<RepairPartsDto>
 
 }

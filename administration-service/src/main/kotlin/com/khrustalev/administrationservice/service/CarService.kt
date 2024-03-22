@@ -1,6 +1,7 @@
 package com.khrustalev.administrationservice.service
 
 import com.khrustalev.administrationservice.dto.CarDto
+import com.khrustalev.administrationservice.dto.RepairDto
 
 interface CarService {
     fun getCarById(id: Long) : CarDto?
@@ -11,4 +12,5 @@ interface CarService {
     fun getAllCars() : MutableList<CarDto>
     fun getCarsInRepair() : MutableList<CarDto>
     fun getCarsInBase() : MutableList<CarDto>
+    fun getRepairsByCarNumber(carId: Long, actual: Boolean) : MutableList<RepairDto>
 }

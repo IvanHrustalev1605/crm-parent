@@ -1,5 +1,6 @@
 package com.khrustalev.repairservice.feign
 
+import com.khrustalev.repairservice.dto.RepairPartsDto
 import org.springframework.cloud.openfeign.FeignClient
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PostMapping
@@ -12,4 +13,6 @@ interface RepairPartsServiceFeignClient {
     @PostMapping("/install-parts-to-car")
     fun installPartToCar(@RequestBody partNumberList: List<UUID>,
                          @RequestParam carId: Long) : MutableList<Long>
+    @GetMapping("/installed-parts/by-repair-id")
+    fun getInstalledRepairParts(@RequestParam repairId: Long) : MutableList<RepairPartsDto>
 }

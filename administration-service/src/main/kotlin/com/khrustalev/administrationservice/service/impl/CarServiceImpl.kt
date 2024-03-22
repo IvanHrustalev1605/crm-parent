@@ -1,6 +1,7 @@
 package com.khrustalev.administrationservice.service.impl
 
 import com.khrustalev.administrationservice.dto.CarDto
+import com.khrustalev.administrationservice.dto.RepairDto
 import com.khrustalev.administrationservice.feign.StorageFeignClient
 import com.khrustalev.administrationservice.service.CarService
 import org.slf4j.Logger
@@ -80,6 +81,16 @@ class CarServiceImpl(private val storageFeignClient: StorageFeignClient) : CarSe
             return response.body!!
         }
         LOGGER.info("Car list is empty")
+        return mutableListOf()
+    }
+
+    override fun getRepairsByCarNumber(carId: Long, actual: Boolean): MutableList<RepairDto> {
+        val responseEntity = storageFeignClient.getRepairsByCarId(carId, actual)
+        if (responseEntity.statusCode.is2xxSuccessful) {
+            return responseEntity.body!!
+        }
+        LOGGER.error("${responseEntity.statusCode}")
+        LOGGER.info("Repairs for car with ID: $carId is empty!")
         return mutableListOf()
     }
 }

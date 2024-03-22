@@ -1,4 +1,4 @@
-package org.khrustalev.repairpertsservice.dto
+package org.khrustalev.repairpartsservice.dto
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties
 import com.fasterxml.jackson.annotation.JsonProperty

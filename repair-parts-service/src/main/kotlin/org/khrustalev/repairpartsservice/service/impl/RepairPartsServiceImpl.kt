@@ -1,9 +1,9 @@
-package org.khrustalev.repairpertsservice.service.impl
+package org.khrustalev.repairpartsservice.service.impl
 
-import org.khrustalev.repairpertsservice.dto.EtalonPartsStocksDto
-import org.khrustalev.repairpertsservice.dto.RepairPartsDto
-import org.khrustalev.repairpertsservice.feign.RepairPartsFeignClient
-import org.khrustalev.repairpertsservice.service.RepairPartsService
+import org.khrustalev.repairpartsservice.dto.EtalonPartsStocksDto
+import org.khrustalev.repairpartsservice.dto.RepairPartsDto
+import org.khrustalev.repairpartsservice.feign.RepairPartsFeignClient
+import org.khrustalev.repairpartsservice.service.RepairPartsService
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 import org.springframework.stereotype.Service
@@ -67,6 +67,10 @@ class RepairPartsServiceImpl(private val repairPartsFeignClient: RepairPartsFeig
         }
     logger.info("Количество запчастей в БД для всех позиций успешно изменено!")
     return partsWithExceptions
+    }
+
+    override fun getInstalledByRepairId(repairId: Long): MutableList<RepairPartsDto> {
+        return repairPartsFeignClient.getInstalledPartsByRepairId(repairId)
     }
 
 }

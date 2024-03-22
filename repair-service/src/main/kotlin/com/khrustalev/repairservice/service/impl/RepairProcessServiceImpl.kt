@@ -3,6 +3,7 @@ package com.khrustalev.repairservice.service.impl
 import com.khrustalev.repairservice.dto.RepairInfoDto
 import com.khrustalev.repairservice.dto.RepairProcessDto
 import com.khrustalev.repairservice.dto.enums.RepairProcessState
+import com.khrustalev.repairservice.feign.RepairPartsServiceFeignClient
 import com.khrustalev.repairservice.feign.StorageFeignClient
 import com.khrustalev.repairservice.service.CarArrivalStateService
 import com.khrustalev.repairservice.service.CarRepairStateService
@@ -14,25 +15,24 @@ import org.springframework.stereotype.Service
 import org.springframework.util.CollectionUtils
 import java.time.LocalDateTime
 import java.time.temporal.ChronoUnit
+import java.util.UUID
 
 @Service
 class RepairProcessServiceImpl(private val storageFeignClient: StorageFeignClient,
                                private val carRepairStateService: CarRepairStateService,
                                private val telegramService: TelegramService,
-                               private val carArrivalStateService: CarArrivalStateService) : RepairProcessService {
+                               private val carArrivalStateService: CarArrivalStateService,
+                               private val repairPartsServiceFeignClient: RepairPartsServiceFeignClient) : RepairProcessService {
     private val LOGGER: Logger = LoggerFactory.getLogger(RepairProcessServiceImpl::class.java)
 
-    override fun createNewRepairProcess(
-        repairInfoDto: RepairInfoDto,
-        repairRequestList: MutableList<Long>
-    ): RepairProcessDto? {
+    override fun createNewRepairProcess(repairInfoDto: RepairInfoDto, repairRequestList: MutableList<Long>): RepairProcessDto? {
         val arrivalStateDto = carArrivalStateService.getActualArrivalStateByCarId(repairInfoDto.carId!!)
         if (arrivalStateDto?.repairRequestWritten == false) {
                 throw Exception("Заявка на ремонт не написана или не согласована. Нельзя приступить к ремонту!")
             }
             val repairProcessDto = RepairProcessDto()
+            repairProcessDto.repairStartAt = LocalDateTime.now()
             repairProcessDto.carId = repairInfoDto.carId
-            repairProcessDto.createTime = LocalDateTime.now()
             repairProcessDto.endRepair = LocalDateTime.now().plusHours(24)
             repairProcessDto.repairProcessState = RepairProcessState.NEW
             repairProcessDto.carRepairStatesIds = mutableListOf(carRepairStateService.createNewRepairState(repairInfoDto))
@@ -91,8 +91,10 @@ class RepairProcessServiceImpl(private val storageFeignClient: StorageFeignClien
         repairProcess.repairProcessState = RepairProcessState.DONE
         val result = storageFeignClient.saveRepairProcess(repairProcess)
         if (result > 0) {
+            val mapParts: MutableMap<UUID, String> = mutableMapOf()
+            repairPartsServiceFeignClient.getInstalledRepairParts(result).forEach { mapParts[it.number] = it.name!! }
             telegramService.sendMessage("Ремонт машины №${repairInfoDto.carNumber} Успешно завершен! \n " +
-                    "Были установлены запчасти: ${storageFeignClient.getRepairPartsByRepairId(result).body}")
+                    "Были установлены запчасти: ${mapParts.entries}")
             return true
         }
         return false

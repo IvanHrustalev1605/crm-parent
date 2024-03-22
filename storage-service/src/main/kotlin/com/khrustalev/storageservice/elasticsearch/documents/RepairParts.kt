@@ -26,4 +26,10 @@ open class RepairParts {
     open var installed: Boolean = false
     @Field(type = FieldType.Text, name = "vendorArt")
     open var vendorArt: String = ""
+    @Field(type = FieldType.Long, name = "repairPartsLargeGroupId")
+    val repairPartsLargeGroupId: Long? = null
+    @Field(type = FieldType.Long, name = "etalonPartsDictionaryId")
+    val etalonPartsDictionaryId: Long? = null
+    @Field(type = FieldType.Long, name = "carId")
+    val carId: Long? = null
 }

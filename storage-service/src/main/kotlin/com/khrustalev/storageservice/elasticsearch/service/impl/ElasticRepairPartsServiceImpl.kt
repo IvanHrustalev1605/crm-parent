@@ -10,4 +10,8 @@ class ElasticRepairPartsServiceImpl(private var repairPartsDocumentRepository: R
     override fun getByNumber(number: String): MutableList<RepairParts> {
         return repairPartsDocumentRepository.findAllByNumberContainingIgnoreCase(number)
     }
+
+    override fun getAllPartsNumbers(): MutableList<RepairParts> {
+        return repairPartsDocumentRepository.findAll().toMutableList()
+    }
 }

@@ -3,6 +3,16 @@
   <component name="ElasticsearchRequestHistory">
     <option name="requestHistory">
       <map>
+        <entry key="46affda9-e31d-4bd2-966e-8f8497e963ba">
+          <value>
+            <list>
+              <HistoryRequest>
+                <option name="body" value="{&#10;  &quot;from&quot;: 0,&#10;  &quot;size&quot;: 50,&#10;  &quot;query&quot;: {&#10;    &quot;match_all&quot;: {}&#10;  }&#10;}" />
+                <option name="path" value="/repair_parts/_search" />
+              </HistoryRequest>
+            </list>
+          </value>
+        </entry>
         <entry key="609b929c-7ec9-49a6-837b-9ab4279e906c">
           <value>
             <list>

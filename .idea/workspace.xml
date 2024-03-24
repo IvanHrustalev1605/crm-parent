@@ -123,7 +123,7 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.StorageServiceApplication">
+  <component name="RunManager" selected="Docker.docker-compose.yml: Compose Deployment">
     <configuration name="logstash-config.conf" type="LOGSTASH_RUN_CONFIGURATION" factoryName="Logstash configuration factory" temporary="true">
       <option name="FILE_PATH" value="D:\IdeaProjects\crm-parent\storage-service\src\main\resources\logstash-config.conf" />
       <option name="STARTER_PATH" value="D:\logstash-8.12.2\bin\logstash.lib.sh" />
@@ -248,7 +248,7 @@
       <workItem from="1711001554585" duration="19190000" />
       <workItem from="1711031070105" duration="2271000" />
       <workItem from="1711033370743" duration="5434000" />
-      <workItem from="1711289547475" duration="1633000" />
+      <workItem from="1711289547475" duration="2783000" />
     </task>
     <servers />
   </component>

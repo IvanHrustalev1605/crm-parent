@@ -23,7 +23,7 @@ class RepairMapper(private val carService: CarService,
         it.repairProcessState = repair.repairProcessState
         it.actual = repair.actual
         it.differenceWorkTime = repair.differenceWorkTime
-        it.actualCompletionTime = repair.actualCompletionTime,
+        it.actualCompletionTime = repair.actualCompletionTime
         it.repairStartAt = repair.repairStartAt
     }
     fun toEntity(repairDto: RepairDto) : Repair = Repair().also {

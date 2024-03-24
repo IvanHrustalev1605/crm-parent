@@ -18,6 +18,10 @@
             <list>
               <HistoryRequest>
                 <option name="body" value="{&#10;  &quot;from&quot;: 0,&#10;  &quot;size&quot;: 50,&#10;  &quot;query&quot;: {&#10;    &quot;match_all&quot;: {}&#10;  }&#10;}" />
+                <option name="path" value="/repair_parts/_search" />
+              </HistoryRequest>
+              <HistoryRequest>
+                <option name="body" value="{&#10;  &quot;from&quot;: 0,&#10;  &quot;size&quot;: 50,&#10;  &quot;query&quot;: {&#10;    &quot;match_all&quot;: {}&#10;  }&#10;}" />
                 <option name="path" value="/cars/_search" />
               </HistoryRequest>
               <HistoryRequest>

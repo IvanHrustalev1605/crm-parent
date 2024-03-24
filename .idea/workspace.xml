@@ -5,12 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a8831c50-c17b-4626-9402-a365a662022b" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/d6bb1a80-6065-44ba-9b9b-2c9d22a22183.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/d6bb1a80-6065-44ba-9b9b-2c9d22a22183.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/elasticsearchRequestHistory.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/elasticsearchRequestHistory.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_16_03_2024_10_37_[Changes]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_16_03_2024_10_37__Changes_.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_22_03_2024_10_30__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_22_03_2024_10_30__Changes_.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -254,7 +248,7 @@
       <workItem from="1711001554585" duration="19190000" />
       <workItem from="1711031070105" duration="2271000" />
       <workItem from="1711033370743" duration="5434000" />
-      <workItem from="1711289547475" duration="394000" />
+      <workItem from="1711289547475" duration="1313000" />
     </task>
     <servers />
   </component>

@@ -18,7 +18,7 @@ open class CarLongRepairState(
     open var expectedEnd: LocalDateTime,
 
     @OneToMany
-    @JoinTable
+    @JoinTable(schema = "storage")
     open var longRepairEvent: MutableList<LongRepairEvent>
 
 ) {

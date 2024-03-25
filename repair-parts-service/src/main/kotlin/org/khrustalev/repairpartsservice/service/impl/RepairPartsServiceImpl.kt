@@ -73,6 +73,10 @@ class RepairPartsServiceImpl(private val repairPartsFeignClient: RepairPartsFeig
         return repairPartsFeignClient.getInstalledPartsByRepairId(repairId)
     }
 
+    override fun allParts(size: Int): MutableList<RepairPartsDto> {
+        return repairPartsFeignClient.getAllParts(size)
+    }
+
 }
 
 

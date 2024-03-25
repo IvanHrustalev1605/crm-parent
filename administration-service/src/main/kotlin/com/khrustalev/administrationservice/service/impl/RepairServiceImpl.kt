@@ -11,14 +11,12 @@ class RepairServiceImpl(private val repairProcessFeignClient: RepairProcessFeign
         return repairProcessFeignClient.securityCheckCar(arrivalQuestionnaire, securityId)
     }
 
-    override fun createRepairRequest(
-        repairDescription: String,
-        engineerId: Long,
-        carNumber: String,
-        repairProcessId: Long?,
-        requestNumber: Long
-    ): RepairRequestDto {
-        return repairProcessFeignClient.createRepairRequest(repairDescription, engineerId, carNumber, repairProcessId, requestNumber)
+    override fun createRepairRequest(repairRequestQuestionerDto: RepairRequestQuestionerDto): RepairRequestDto {
+        return repairProcessFeignClient.createRepairRequest(repairRequestQuestionerDto)
+    }
+
+    override fun getLastCarArrivalStateByCarId(carId: Long): CarArrivalStateDto {
+        return repairProcessFeignClient.getActualCarArrivalState(carId)
     }
 
     override fun createRepairRequest(repairInfoDto: RepairInfoDto, repairRequestList: MutableList<Long>): RepairDto {

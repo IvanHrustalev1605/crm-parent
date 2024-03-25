@@ -1,5 +1,6 @@
 package com.khrustalev.storageservice.controllers
 
+import com.khrustalev.storageservice.dto.CarArrivalStateDto
 import com.khrustalev.storageservice.dto.CarDto
 import com.khrustalev.storageservice.dto.RepairDto
 import com.khrustalev.storageservice.service.abstracts.CarService
@@ -50,5 +51,9 @@ class CarController(private val carService: CarService) {
     @GetMapping("/repairs")
     fun getRepairsByCarId(@RequestParam carId: Long, @RequestParam(required = false) actual: Boolean) : ResponseEntity<MutableList<RepairDto>> {
         return ResponseEntity(carService.getRepairsByCarId(carId, actual), HttpStatus.OK)
+    }
+    @GetMapping("/all-arrives")
+    fun getAllArrives(@RequestParam carId: Long): ResponseEntity<MutableList<CarArrivalStateDto>> {
+        return ResponseEntity(carService.getAllArrivesByCarId(carId), HttpStatus.OK)
     }
 }

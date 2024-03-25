@@ -1,5 +1,6 @@
 package com.khrustalev.administrationservice.service.impl
 
+import com.khrustalev.administrationservice.dto.CarArrivalStateDto
 import com.khrustalev.administrationservice.dto.CarDto
 import com.khrustalev.administrationservice.dto.RepairDto
 import com.khrustalev.administrationservice.feign.StorageFeignClient
@@ -86,6 +87,16 @@ class CarServiceImpl(private val storageFeignClient: StorageFeignClient) : CarSe
 
     override fun getRepairsByCarNumber(carId: Long, actual: Boolean): MutableList<RepairDto> {
         val responseEntity = storageFeignClient.getRepairsByCarId(carId, actual)
+        if (responseEntity.statusCode.is2xxSuccessful) {
+            return responseEntity.body!!
+        }
+        LOGGER.error("${responseEntity.statusCode}")
+        LOGGER.info("Repairs for car with ID: $carId is empty!")
+        return mutableListOf()
+    }
+
+    override fun getAllArrives(carId: Long): MutableList<CarArrivalStateDto> {
+        val responseEntity = storageFeignClient.getAllArrivesByCarId(carId)
         if (responseEntity.statusCode.is2xxSuccessful) {
             return responseEntity.body!!
         }

@@ -25,18 +25,6 @@ import java.util.Arrays
 @RequestMapping("/api/rest/repair-parts")
 @Schema(description = "Контроллер для работы с модулем хранилища запчастей repair-parts-service")
 class RepairPartsServiceController(private val repairPartsServiceService: RepairPartsServiceService) {
-
-    @Operation(summary = "Все запчасти", description = "Получить список всех запчастей, как на складе так и нет")
-    @ApiResponses(value = [
-        ApiResponse(responseCode = "200", description = "Успешно", content = [Content(mediaType = MediaType.APPLICATION_JSON_VALUE, schema = Schema(implementation = RepairPartsDto::class))]),
-        ApiResponse(responseCode = "500", description = "Внутренняя ошибка сервера" ,content = [Content(mediaType = MediaType.TEXT_PLAIN_VALUE, schema = Schema(implementation = String::class))]),
-        ApiResponse(responseCode = "403", description = "Нет доступа", content = [Content(mediaType = MediaType.TEXT_PLAIN_VALUE, schema = Schema(implementation = String::class))])
-    ])
-    @GetMapping("/all")
-    fun getAllRepairParts() : ResponseEntity<MutableList<RepairPartsDto>> {
-        return ResponseEntity(null, HttpStatus.OK)
-    }
-
     @Operation(summary = "Положить запчасти на склады", description = "Положить ПРИНЯТЫЕ от поставщиков запчасти на склад т.е. запчасти лежащие в db -> storage -> repair_parts")
     @ApiResponses(value = [
         ApiResponse(responseCode = "202", description = "Успешно", content = [Content(mediaType = MediaType.TEXT_PLAIN_VALUE, schema = Schema(implementation = Boolean::class))]),
@@ -68,5 +56,16 @@ class RepairPartsServiceController(private val repairPartsServiceService: Repair
     @GetMapping("/installed-parts-in-repair")
     fun getInstalledPartsDuringRepairProcess(@RequestParam repairId: Long) : ResponseEntity<MutableList<RepairPartsDto>> {
         return ResponseEntity(repairPartsServiceService.getInstalledPartsDuringRepair(repairId), HttpStatus.OK)
+    }
+    @Operation(summary = "Все запчасти с пагинацией", description = "Получить список всех запчастей",
+        parameters = [Parameter(name = "size", description = "Количество элементов в списке", required = true)])
+    @ApiResponses(value = [
+        ApiResponse(responseCode = "200", description = "Успешно", content = [Content(mediaType = MediaType.APPLICATION_JSON_VALUE, array = ArraySchema(items = Schema(implementation = RepairPartsDto::class)))]),
+        ApiResponse(responseCode = "500", description = "Внутренняя ошибка сервера" ,content = [Content(mediaType = MediaType.TEXT_PLAIN_VALUE, schema = Schema(implementation = String::class))]),
+        ApiResponse(responseCode = "403", description = "Нет доступа", content = [Content(mediaType = MediaType.TEXT_PLAIN_VALUE, schema = Schema(implementation = String::class))])
+    ])
+    @GetMapping("/all")
+    fun getAll(@RequestParam size: Int) : ResponseEntity<MutableList<RepairPartsDto>> {
+        return ResponseEntity(repairPartsServiceService.getAllParts(size), HttpStatus.OK)
     }
 }

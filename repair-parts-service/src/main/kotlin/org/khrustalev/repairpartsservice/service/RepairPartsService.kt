@@ -9,4 +9,5 @@ interface RepairPartsService {
     fun acceptRepairParts(repairPartsList: MutableList<RepairPartsDto>) : Boolean
     fun writeOffRepairParts(repairPartsIdList: MutableList<Long>) : MutableList<Long>
     fun getInstalledByRepairId(repairId: Long): MutableList<RepairPartsDto>
+    fun allParts(size: Int): MutableList<RepairPartsDto>
 }

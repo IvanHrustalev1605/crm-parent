@@ -6,6 +6,7 @@ import com.khrustalev.storageservice.mappers.RepairPartsMapper
 import com.khrustalev.storageservice.repository.RepairPartsRepository
 import com.khrustalev.storageservice.service.abstracts.RepairPartsService
 import org.springframework.context.annotation.Lazy
+import org.springframework.data.domain.Pageable
 import org.springframework.stereotype.Service
 import org.springframework.util.CollectionUtils
 import java.util.*
@@ -95,5 +96,9 @@ class RepairPartsServiceImpl(private val repairPartsRepository: RepairPartsRepos
 
     override fun getInstalledInRepair(repairId: Long): MutableList<RepairPartsDto> {
         return repairPartsRepository.getAllInstalledRepairPArtsInRepair(repairId).map { repairPartsMapper.toDto(it) }.toMutableList()
+    }
+
+    override fun getAll(size: Int): MutableList<RepairPartsDto> {
+        return repairPartsRepository.findAll(Pageable.ofSize(size)).map { repairPartsMapper.toDto(it) }.toMutableList()
     }
 }

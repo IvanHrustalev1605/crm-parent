@@ -1,8 +1,8 @@
 package com.khrustalev.repairservice.dto
 
 open class ArrivalQuestionnaire {
- open var carNumber: String? = null
+ open var carId: Long? = null
  open var needRepair: Boolean? = null
- open var engineerName: String? = null
+ open var engineerId: Long? = null
  open var carDescriptionProblems: String? = null
 }

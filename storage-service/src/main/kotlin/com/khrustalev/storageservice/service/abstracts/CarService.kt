@@ -1,5 +1,6 @@
 package com.khrustalev.storageservice.service.abstracts
 
+import com.khrustalev.storageservice.dto.CarArrivalStateDto
 import com.khrustalev.storageservice.dto.CarDto
 import com.khrustalev.storageservice.dto.RepairDto
 import com.khrustalev.storageservice.entity.schems.storage.Car
@@ -17,4 +18,5 @@ interface CarService {
     fun getCarsInBase() : MutableList<CarDto>
 
     fun getRepairsByCarId(carId: Long, actual: Boolean) : MutableList<RepairDto>
+    fun getAllArrivesByCarId(carId: Long): MutableList<CarArrivalStateDto>
 }

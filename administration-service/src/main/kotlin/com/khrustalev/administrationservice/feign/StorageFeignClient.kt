@@ -25,7 +25,11 @@ interface StorageFeignClient {
     @DeleteMapping("/car/delete")
     fun deleteCarByNumberOrVin(@RequestParam v: String) : ResponseEntity<Boolean>
     @GetMapping("/car/repairs")
-    fun getRepairsByCarId(@RequestParam carId: Long, @RequestParam(required = false) actual: Boolean) : ResponseEntity<MutableList<RepairDto>>
+    fun getRepairsByCarId(@RequestParam carId: Long,
+                          @RequestParam(required = false) actual: Boolean) : ResponseEntity<MutableList<RepairDto>>
+    @GetMapping("/car/all-arrives")
+    fun getAllArrivesByCarId(@RequestParam carId: Long): ResponseEntity<MutableList<CarArrivalStateDto>>
+
     /*-----*/
     /*Engineers*/
 

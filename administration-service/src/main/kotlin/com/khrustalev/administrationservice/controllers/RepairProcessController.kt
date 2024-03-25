@@ -6,7 +6,6 @@ import io.swagger.v3.oas.annotations.Operation
 import io.swagger.v3.oas.annotations.Parameter
 import io.swagger.v3.oas.annotations.media.Content
 import io.swagger.v3.oas.annotations.media.Schema
-import io.swagger.v3.oas.annotations.media.SchemaProperty
 import io.swagger.v3.oas.annotations.responses.ApiResponse
 import org.springframework.http.HttpStatus
 import org.springframework.http.MediaType
@@ -36,24 +35,14 @@ class RepairProcessController(private val repairService: RepairService) {
 
     @Operation(summary = "2. Написание заявки на ремонт", method = "GET", description = "Написание заявки на ремонт с \"инженером\". Завяка еще должнабыть подтверждена самим инженером. " +
             "Да-да звучит очень глупо =)",
-        parameters = [Parameter(name = "repairDescription", description = "Описание проблем", required = false),
-                     Parameter(name = "engineerId", description = "ID \"инженера\" с которым пишется заявка"),
-                     Parameter(name = "carNumber", description = "Номер машины"),
-                     Parameter(name = "repairProcessId", description = "Номер процесса ремонта, " +
-                             "в случае если это дополнительная заявка, а не первичная", required = false),
-                     Parameter(name = "requestNumber", description = "Уникальный номер заявки. Пока что пишется руками, потом будет генерироваться автоматически", required = true)],
         responses = [
             ApiResponse(responseCode = "201", description = "Заявка успешно написана и ждет согласования", content = [Content(mediaType = MediaType.APPLICATION_JSON_VALUE, schema = Schema(implementation = RepairRequestDto::class))]),
             ApiResponse(responseCode = "500", description = "Произошла ошибка на сервере", content = [Content(mediaType = "text/plain", schema = Schema(implementation = String::class))]),
             ApiResponse(responseCode = "403", description = "Отказано в доступе", content = [Content(mediaType = "text/plain", schema = Schema(implementation = String::class))])
         ])
-    @GetMapping("/create-repair-request")
-    fun createRepairRequest(@RequestParam repairDescription: String,
-                            @RequestParam engineerId: Long,
-                            @RequestParam carNumber: String,
-                            @RequestParam(required = false) repairProcessId: Long?,
-                            @RequestParam requestNumber: Long) : ResponseEntity<RepairRequestDto> {
-        return ResponseEntity(repairService.createRepairRequest(repairDescription, engineerId, carNumber, repairProcessId, requestNumber), HttpStatus.CREATED)
+    @PostMapping("/create-repair-request")
+    fun createRepairRequest(@RequestBody repairRequestQuestionerDto: RepairRequestQuestionerDto) : ResponseEntity<RepairRequestDto> {
+        return ResponseEntity(repairService.createRepairRequest(repairRequestQuestionerDto), HttpStatus.CREATED)
     }
 
     @Operation(summary = "4. Создание ремонтного процесса", method = "POST", description = "Создания ремонтного процесса. Создается только после подтверждения заявки на ремонт " +
@@ -79,7 +68,7 @@ class RepairProcessController(private val repairService: RepairService) {
             ApiResponse(responseCode = "500", description = "Произошла ошибка на сервере", content = [Content(mediaType = "text/plain", schema = Schema(implementation = String::class))]),
             ApiResponse(responseCode = "403", description = "Отказано в доступе", content = [Content(mediaType = "text/plain", schema = Schema(implementation = String::class))])
         ])
-    @GetMapping("/take-to-repair-process")
+    @PostMapping("/take-to-repair-process")
     fun takeToRepairRequest(@RequestParam repairProcessId: Long) : ResponseEntity<Boolean> {
         return ResponseEntity(repairService.takeToRepairRequest(repairProcessId), HttpStatus.OK)
     }
@@ -118,11 +107,11 @@ class RepairProcessController(private val repairService: RepairService) {
     @Operation(summary = "3. Подтвердить заявку на ремонт", method = "GET", description = "Подтверждение составленной заявки на ремонт",
         parameters = [Parameter(name = "id", description = "ID заявки на ремонт (RepairRequest)", required = true)],
         responses = [
-            ApiResponse(responseCode = "202", description = "Заявка подтверждена", content = [Content(mediaType = MediaType.TEXT_PLAIN_VALUE, schema = Schema(implementation = Boolean::class))]),
+            ApiResponse(responseCode = "202", description = "Заявка подтверждена", content = [Content(mediaType = MediaType.APPLICATION_JSON_VALUE, schema = Schema(implementation = Boolean::class))]),
             ApiResponse(responseCode = "500", description = "Произошла ошибка на сервере", content = [Content(mediaType = "text/plain", schema = Schema(implementation = String::class))]),
             ApiResponse(responseCode = "403", description = "Отказано в доступе", content = [Content(mediaType = "text/plain", schema = Schema(implementation = String::class))])
         ])
-    @GetMapping("/agreed-repair-request")
+    @PostMapping("/agreed-repair-request")
     fun agreedRepairRequest(@RequestParam id: Long) : ResponseEntity<Boolean> {
         return ResponseEntity(repairService.agreedRepairRequest(id), HttpStatus.ACCEPTED)
     }
@@ -142,14 +131,25 @@ class RepairProcessController(private val repairService: RepairService) {
         return ResponseEntity(repairService.getFreeBoxes(), HttpStatus.OK)
     }
     @Operation(summary = "Машина покидает базу", method = "GET", description = "Машина уезжает с базы",
-        parameters = [Parameter(name = "id", description = "Номер машины", required = true)],
+        parameters = [Parameter(name = "carNumber", description = "Номер машины", required = true)],
         responses = [
-            ApiResponse(responseCode = "200", description = "Успешно!", content = [Content(mediaType = MediaType.TEXT_PLAIN_VALUE, schema = Schema(implementation = Boolean::class))]),
+            ApiResponse(responseCode = "200", description = "Успешно!", content = [Content(mediaType = MediaType.APPLICATION_JSON_VALUE, schema = Schema(implementation = Boolean::class))]),
             ApiResponse(responseCode = "500", description = "Произошла ошибка на сервере", content = [Content(mediaType = "text/plain", schema = Schema(implementation = String::class))]),
             ApiResponse(responseCode = "403", description = "Отказано в доступе", content = [Content(mediaType = "text/plain", schema = Schema(implementation = String::class))])
         ])
-    @GetMapping("/car-get-away")
+    @PostMapping("/car-get-away")
     fun carGetAway(@RequestParam carNumber: String) : ResponseEntity<Boolean> {
         return ResponseEntity(repairService.carGetAway(carNumber), HttpStatus.OK)
+    }
+    @Operation(summary = "Получить информацию о текущем приезде на базу маишины", method = "GET", description = "Машина уезжает с базы",
+        parameters = [Parameter(name = "id", description = "ID машины", required = true)],
+        responses = [
+            ApiResponse(responseCode = "200", description = "Успешно!", content = [Content(mediaType = MediaType.APPLICATION_JSON_VALUE, schema = Schema(implementation = Boolean::class))]),
+            ApiResponse(responseCode = "500", description = "Произошла ошибка на сервере", content = [Content(mediaType = "text/plain", schema = Schema(implementation = String::class))]),
+            ApiResponse(responseCode = "403", description = "Отказано в доступе", content = [Content(mediaType = "text/plain", schema = Schema(implementation = String::class))])
+        ])
+    @GetMapping("/last-car-arrival-state")
+    fun getActualCarArrivalState(@RequestParam carId: Long) : ResponseEntity<CarArrivalStateDto> {
+        return ResponseEntity(repairService.getLastCarArrivalStateByCarId(carId), HttpStatus.OK)
     }
 }

@@ -19,4 +19,8 @@ class RepairPartsServiceServiceImpl(private val repairPartsServiceFeignClient: R
     override fun getInstalledPartsDuringRepair(repairId: Long): MutableList<RepairPartsDto> {
         return repairPartsServiceFeignClient.getInstalledRepairParts(repairId)
     }
+
+    override fun getAllParts(size: Int): MutableList<RepairPartsDto> {
+        return repairPartsServiceFeignClient.getAllParts(size)
+    }
 }

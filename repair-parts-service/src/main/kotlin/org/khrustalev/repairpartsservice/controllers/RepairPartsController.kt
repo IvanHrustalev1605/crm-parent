@@ -34,4 +34,8 @@ class RepairPartsController(private val storageService: StorageService,
     fun getInstalledRepairParts(@RequestParam repairId: Long) : ResponseEntity<MutableList<RepairPartsDto>> {
         return ResponseEntity(repairPartsService.getInstalledByRepairId(repairId), HttpStatus.OK)
     }
+    @GetMapping("/all")
+    fun getAllParts(@RequestParam size: Int): ResponseEntity<MutableList<RepairPartsDto>> {
+        return ResponseEntity(repairPartsService.allParts(size), HttpStatus.OK)
+    }
 }

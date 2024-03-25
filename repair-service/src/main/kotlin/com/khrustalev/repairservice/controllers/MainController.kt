@@ -25,13 +25,9 @@ class MainController(private val securityService: SecurityService,
                          @RequestParam("securityId") securityId: Long) : ResponseEntity<Boolean> {
         return ResponseEntity(securityService.checkArrivalCar(arrivalQuestionnaire, securityId), HttpStatus.OK)
     }
-    @GetMapping("/create-repair-request")
-    fun createRepairRequest(@RequestParam repairDescription: String,
-                            @RequestParam engineerId: Long,
-                            @RequestParam carNumber: String,
-                            @RequestParam(required = false) repairProcessId: Long?,
-                            @RequestParam requestNumber: Long) : ResponseEntity<RepairRequestDto> {
-        return ResponseEntity(repairRequestService.createRepairRequest(repairDescription, engineerId, carNumber, repairProcessId, requestNumber), HttpStatus.OK)
+    @PostMapping("/create-repair-request")
+    fun createRepairRequest(@RequestBody repairRequestQuestionerDto: RepairRequestQuestionerDto) : ResponseEntity<RepairRequestDto> {
+        return ResponseEntity(repairRequestService.createRepairRequest(repairRequestQuestionerDto), HttpStatus.OK)
     }
     @PostMapping("/create-repair-process")
     fun createRepairRequest(@RequestBody repairInfoDto: RepairInfoDto,
@@ -68,5 +64,9 @@ class MainController(private val securityService: SecurityService,
     @GetMapping("/car-get-away")
     fun carGetAway(@RequestParam carNumber: String) : ResponseEntity<Boolean> {
         return ResponseEntity(carArrivalStateService.carGetAway(carNumber), HttpStatus.OK)
+    }
+    @GetMapping("/car-last-arrival-state")
+    fun getActualCarArrivalState(carId: Long): ResponseEntity<CarArrivalStateDto> {
+        return ResponseEntity(carArrivalStateService.getActualArrivalStateByCarId(carId), HttpStatus.OK)
     }
 }

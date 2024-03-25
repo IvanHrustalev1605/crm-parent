@@ -1,6 +1,7 @@
 package com.khrustalev.repairservice.service.impl
 
 import com.khrustalev.repairservice.dto.RepairRequestDto
+import com.khrustalev.repairservice.dto.RepairRequestQuestionerDto
 import com.khrustalev.repairservice.feign.StorageFeignClient
 import com.khrustalev.repairservice.service.CarArrivalStateService
 import com.khrustalev.repairservice.service.RepairRequestService
@@ -9,6 +10,7 @@ import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 import org.springframework.stereotype.Service
 import java.time.LocalDateTime
+import kotlin.random.Random
 
 @Service
 class RepairRequestServiceImpl(private val storageFeignClient: StorageFeignClient,
@@ -16,24 +18,19 @@ class RepairRequestServiceImpl(private val storageFeignClient: StorageFeignClien
                                private val carArrivalStateService: CarArrivalStateService) : RepairRequestService {
     private val LOGGER: Logger = LoggerFactory.getLogger(RepairRequestServiceImpl::class.java)
 
-    override fun createRepairRequest(
-        repairDescription: String,
-        engineerId: Long,
-        carNumber: String,
-        repairProcessId: Long?,
-        requestNumber: Long
+    override fun createRepairRequest(repairRequestQuestionerDto: RepairRequestQuestionerDto
     ): RepairRequestDto {
         val repairRequestDto = RepairRequestDto().also {
-            it.carId = storageFeignClient.findCarByCarNumber(carNumber)
-            it.repairId = repairProcessId
-            it.requestDescription = repairDescription
-            it.engineerId = engineerId
+            it.carId = repairRequestQuestionerDto.carId
+            it.repairId = repairRequestQuestionerDto.repairProcessId!!
+            it.requestDescription = repairRequestQuestionerDto.repairDescription
+            it.engineerId = repairRequestQuestionerDto.engineerId
             it.createDate = LocalDateTime.now()
-            it.requestNumber = requestNumber
+            it.requestNumber = Random.nextInt(560000, 1000000).toLong()
         }
         LOGGER.info("Сохраняем заявку на ремонт $repairRequestDto")
         storageFeignClient.saveRepairRequest(repairRequestDto)
-        telegramService.sendMessage("Поступила новая заявка #$requestNumber" + "Нужно согласовать!")
+        telegramService.sendMessage("Поступила новая заявка #${repairRequestDto.repairId}" + "Нужно согласовать!")
         return repairRequestDto
     }
 

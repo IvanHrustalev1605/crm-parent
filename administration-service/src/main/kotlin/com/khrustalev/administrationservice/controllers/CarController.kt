@@ -1,14 +1,14 @@
 package com.khrustalev.administrationservice.controllers
 
+import com.khrustalev.administrationservice.dto.CarArrivalStateDto
 import com.khrustalev.administrationservice.dto.CarDto
+import com.khrustalev.administrationservice.dto.RepairDto
 import com.khrustalev.administrationservice.service.CarService
 import io.swagger.v3.oas.annotations.Operation
 import io.swagger.v3.oas.annotations.Parameter
 import io.swagger.v3.oas.annotations.responses.ApiResponse
-import io.swagger.v3.oas.annotations.responses.ApiResponses
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
-import org.springframework.web.bind.annotation.DeleteMapping
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody
@@ -85,13 +85,24 @@ class CarController(private val carService: CarService) {
     fun saveCar(@RequestBody carDto: CarDto) : ResponseEntity<CarDto> {
         return ResponseEntity(carService.saveCar(carDto), HttpStatus.CREATED)
     }
-    @Operation(summary = "Удалить машину по номеру или vin-номеру",
-        parameters = [Parameter(name = "v", description = "Номер или vin-номер машины", required = true)],
+    @Operation(summary = "Получить все приезды на базу машины", method = "GET",
+        parameters = [Parameter(name = "carId", description = "ID машины", required = true)],
         responses = [
-            ApiResponse(responseCode = "200", description = "Успешно"),
+            ApiResponse(responseCode = "201", description = "Успешно"),
+            ApiResponse(responseCode = "500", description = "Внутренняя ошибка сервера")
+        ])
+    @GetMapping("/all-arrives")
+    fun getAllArrivesByCarId(@RequestParam carId: Long) : ResponseEntity<MutableList<CarArrivalStateDto>> {
+        return ResponseEntity(carService.getAllArrives(carId), HttpStatus.OK)
+    }
+    @Operation(summary = "Получить все ремонты машины", method = "GET",
+        parameters = [Parameter(name = "carId", description = "ID машины", required = true),
+                      Parameter(name = "actual", description = "true - текущие, null - все которые были", required = false)],
+        responses = [
+            ApiResponse(responseCode = "201", description = "Успешно"),
             ApiResponse(responseCode = "500", description = "Внутренняя ошибка сервера")])
-    @DeleteMapping("/delete")
-    fun deleteCarByNumberOrVin(@RequestParam v: String) : ResponseEntity<Boolean> {
-        return ResponseEntity(carService.deleteCarByNumberOrVin(v), HttpStatus.OK)
+    @GetMapping("/all-repairs")
+    fun getAllRepairsByCarId(@RequestParam carId: Long, @RequestParam(required = false) actual: Boolean) : ResponseEntity<MutableList<RepairDto>> {
+        return ResponseEntity(carService.getRepairsByCarNumber(carId, actual), HttpStatus.OK)
     }
 }

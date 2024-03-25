@@ -44,5 +44,7 @@ interface RepairPartsFeignClient {
     fun updatePartsStocks(etalonPartsStocksDto: EtalonPartsStocksDto) : Boolean
     @GetMapping("/installed")
     fun getInstalledPartsByRepairId(@RequestParam repairId: Long) : MutableList<RepairPartsDto>
+    @GetMapping("/all")
+    fun getAllParts(@RequestParam size: Int): MutableList<RepairPartsDto>
 
 }

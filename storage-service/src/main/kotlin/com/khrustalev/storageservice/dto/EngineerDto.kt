@@ -1,6 +1,7 @@
 package com.khrustalev.storageservice.dto
 
 import com.khrustalev.storageservice.entity.enums.EmployeePosition
+import com.khrustalev.storageservice.entity.schems.storage.PersonInfo
 import java.io.Serializable
 
 /**
@@ -8,6 +9,6 @@ import java.io.Serializable
  */
 data class EngineerDto(
     val id: Long? = null,
-    val personInfo: PersonInfoDto? = null,
+    val personInfo: PersonInfo? = null,
     val employeePosition: EmployeePosition? = null
 ) : Serializable

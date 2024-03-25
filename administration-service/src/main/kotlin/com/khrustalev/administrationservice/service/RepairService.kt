@@ -4,7 +4,7 @@ import com.khrustalev.administrationservice.dto.*
 
 interface RepairService {
     fun securityCheckCar(arrivalQuestionnaire: ArrivalQuestionnaire, securityId: Long) : Boolean
-    fun createRepairRequest( repairDescription: String, engineerId: Long, carNumber: String, repairProcessId: Long?, requestNumber: Long) : RepairRequestDto
+    fun createRepairRequest( repairRequestQuestionerDto: RepairRequestQuestionerDto) : RepairRequestDto
     fun createRepairRequest( repairInfoDto: RepairInfoDto, repairRequestList: MutableList<Long>) : RepairDto
     fun takeToRepairRequest( repairProcessId: Long) : Boolean
     fun updateRepairRequest(repairInfoDto: RepairInfoDto, repairRequestList: MutableList<Long>?, repairProcessId: Long) : Boolean
@@ -13,4 +13,5 @@ interface RepairService {
     fun getRepairReport( repairId: Long) : Boolean
     fun getFreeBoxes() : MutableList<RepairBoxDto>
     fun carGetAway( carNumber: String) : Boolean
+    fun getLastCarArrivalStateByCarId(carId: Long) : CarArrivalStateDto
 }

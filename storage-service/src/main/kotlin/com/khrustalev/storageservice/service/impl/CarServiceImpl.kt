@@ -1,9 +1,11 @@
 package com.khrustalev.storageservice.service.impl
 
+import com.khrustalev.storageservice.dto.CarArrivalStateDto
 import com.khrustalev.storageservice.dto.CarDto
 import com.khrustalev.storageservice.dto.RepairDto
 import com.khrustalev.storageservice.entity.schems.storage.Car
 import com.khrustalev.storageservice.exception.NotFoundEntityException
+import com.khrustalev.storageservice.mappers.CarArrivalStateMapper
 import com.khrustalev.storageservice.mappers.CarMapper
 import com.khrustalev.storageservice.mappers.RepairMapper
 import com.khrustalev.storageservice.repository.CarRepository
@@ -15,7 +17,8 @@ import java.util.Objects
 @Service
 class CarServiceImpl(private val carRepository: CarRepository,
                      private val carMapper: CarMapper,
-                     @Lazy private val repairMapper: RepairMapper) : CarService {
+                     @Lazy private val repairMapper: RepairMapper,
+                     @Lazy private val carArrivalStateMapper: CarArrivalStateMapper) : CarService {
     override fun findById(carId: Long): Car? {
         return carRepository.findById(carId).orElseThrow { NotFoundEntityException("Car not found by id $carId") }
     }
@@ -75,5 +78,9 @@ class CarServiceImpl(private val carRepository: CarRepository,
             return carRepository.getActualCarRepairs(carId).map { repairMapper.toDto(it) }.toMutableList()
         }
         return carRepository.getAllCarRepairs(carId).map { repairMapper.toDto(it) }.toMutableList()
+    }
+
+    override fun getAllArrivesByCarId(carId: Long): MutableList<CarArrivalStateDto> {
+        return carRepository.getAllArrivesByCarId(carId).map { carArrivalStateMapper.toDto(it) }.toMutableList()
     }
 }

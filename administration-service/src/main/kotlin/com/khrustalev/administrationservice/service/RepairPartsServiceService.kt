@@ -7,4 +7,5 @@ interface RepairPartsServiceService {
     fun putPartsToStoragePlace(acceptablePartsDtoList: MutableList<AcceptablePartsDto>) : Boolean
     fun takePartsFromStoragePlace(map: MutableMap<Long, Long>) : Boolean
     fun getInstalledPartsDuringRepair(repairId: Long): MutableList<RepairPartsDto>
+    fun getAllParts(size: Int) : MutableList<RepairPartsDto>
 }

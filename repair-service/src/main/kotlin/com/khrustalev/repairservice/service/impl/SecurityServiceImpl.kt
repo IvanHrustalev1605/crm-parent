@@ -17,12 +17,11 @@ class SecurityServiceImpl(private val storageFeignClient: StorageFeignClient,
 
     override fun checkArrivalCar(arrivalQuestionnaire: ArrivalQuestionnaire, securityId: Long): Boolean {
         val carState = CarArrivalStateDto()
-        val carId = storageFeignClient.findCarByCarNumber(arrivalQuestionnaire.carNumber!!)
-        val engineerId: Long = storageFeignClient.getEngineerId(arrivalQuestionnaire.engineerName!!)
+        val engineerId: Long = storageFeignClient.getEngineerById(arrivalQuestionnaire.engineerId!!).id!!
         carState.inBase = true
         carState.needRepair = arrivalQuestionnaire.needRepair!!
         carState.arrivalTime = LocalDateTime.now()
-        carState.carId = carId
+        carState.carId = arrivalQuestionnaire.carId
         carState.stateChangeTime = LocalDateTime.now()
         carState.receivingSecurity = securityId
         carState.is30Notificate = false
@@ -39,7 +38,7 @@ class SecurityServiceImpl(private val storageFeignClient: StorageFeignClient,
         if (storageFeignClient.saveCarArrivalState(carState)) {
             LOGGER.info("CarState успешно сохранен!")
             if (carState.needRepair!!) {
-                telegramService.sendMessage("Братишкааа! Там тачка ${arrivalQuestionnaire.carNumber} в ремонт приехала, заебал, работай давай \uD83D\uDE18")
+                telegramService.sendMessage("Братишкааа! Там тачка ${arrivalQuestionnaire.carId} в ремонт приехала, заебал, работай давай \uD83D\uDE18")
             }
             return true
         }

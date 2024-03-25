@@ -43,6 +43,8 @@ interface StorageFeignClient {
     /*Engineer*/
     @GetMapping("/engineer/find-id-by-name")
     fun getEngineerId(@RequestParam("name") engineerName: String): Long
+    @GetMapping("/engineer/find-by-id")
+    fun getEngineerById(@RequestParam("id") id: Long): EngineerDto
 
     /*RepairProcess*/
     @GetMapping("/repairProcess/find-by-car-number-actual-true")

@@ -17,4 +17,6 @@ interface RepairPartsServiceFeignClient {
     fun takePartsFromStoragePlace(@RequestBody map: MutableMap<Long, Long>) : Boolean
     @GetMapping("/installed-parts/by-repair-id")
     fun getInstalledRepairParts(@RequestParam repairId: Long) : MutableList<RepairPartsDto>
+    @GetMapping("/all")
+    fun getAllParts(@RequestParam size: Int): MutableList<RepairPartsDto>
 }

@@ -12,12 +12,8 @@ interface RepairProcessFeignClient {
     @PostMapping("/check-arrival-car")
     fun securityCheckCar(@RequestBody arrivalQuestionnaire: ArrivalQuestionnaire, @RequestParam securityId: Long) : Boolean
 
-    @GetMapping("/create-repair-request")
-    fun createRepairRequest(@RequestParam repairDescription: String,
-                            @RequestParam engineerId: Long,
-                            @RequestParam carNumber: String,
-                            @RequestParam(required = false) repairProcessId: Long?,
-                            @RequestParam requestNumber: Long) : RepairRequestDto
+    @PostMapping("/create-repair-request")
+    fun createRepairRequest(@RequestBody repairRequestQuestionerDto: RepairRequestQuestionerDto) : RepairRequestDto
 
     @PostMapping("/create-repair-process")
     fun createRepairRequest(@RequestBody repairInfoDto: RepairInfoDto,
@@ -46,4 +42,6 @@ interface RepairProcessFeignClient {
 
     @GetMapping("/car-get-away")
     fun carGetAway(@RequestParam carNumber: String) : Boolean
+    @GetMapping("/car-last-arrival-state")
+    fun getActualCarArrivalState(carId: Long): CarArrivalStateDto
 }

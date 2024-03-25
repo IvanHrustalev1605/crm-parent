@@ -1,6 +1,7 @@
 version: '3'
 services:
   storage-service:
+    container_name: "storage-service"
     build:
       context: storage-service
       dockerfile: Dockerfile
@@ -32,3 +33,13 @@ services:
       dockerfile: Dockerfile
     ports:
       - "8899:8899"
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:8.12.2
+    container_name: "elasticsearch"
+    ports:
+      - "9200:9200"
+      - "9300:9300"
+    environment:
+      - discovery.type=single-node
+      - xpack.security.enabled=false
+

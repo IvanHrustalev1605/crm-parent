@@ -32,45 +32,44 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
 <script th:inline="javascript">
     $(document).ready(function() {
-        $('#productNamedesc').autocomplete({
-                source: function (request, response){
-                    $.get("http://localhost:8080/suggestions?",{q : request.term},function(data, status){
-                        $("#results").html("");
-                        if(status=='success'){
-                            response(data);
+        let idTimer = null;
+        $("#productNamedesc").on('input',function(){
+            const updateInput = () => {
+
+                var inputText = $("#productNamedesc").val();
+                if(inputText.length === 0) {
+                    alert("Enter product name or description");
+                } else {
+                    var response = '';
+                    $.ajax({
+                        type: "GET",
+                        url: "http://localhost:8888/api/storage/elastic?number="+inputText,
+                        async: true,
+                        success: function(resp) {
+                            var len = resp.length;
+                            const strHtml = "";
+                            let strHTML;
+                            if (len === 0) {
+                                $("#results").html("<p class='text-danger'>Zero matches</p>");
+                            } else {
+                                strHTML = "<p class='text-success'>" + len + " matches found.</p>";
+                                strHTML += "<ul class='list-unstyled'>";
+                                for (let i = 0; i < len; i++) {
+                                    strHTML += "<li>" + resp[i].name + "</li>";
+                                }
+                                strHTML = strHTML + "</ul>";
+                                $("#results").html(strHTML)
+                            }
                         }
                     });
                 }
+                console.log('clear timer')
+                clearTimeout(idTimer);
+                idTimer = null;
             }
-        );
-
-        $("#btnNameSearch").click(function(){
-            var inputText = $("#productNamedesc").val();
-            if(inputText.length === 0) {
-                alert("Enter product name or description");
-            }else{
-                var response = '';
-                $.ajax({
-                    type: "GET",
-                    url: "http://localhost:8888/api/storage/elastic?number="+inputText,
-                    async: true,
-                    success: function(resp) {
-                        var len = resp.length;
-                        var strHtml = "";
-                        if(len == 0) {
-                            $("#results").html("<p class='text-danger'>Zero matches</p>");
-                        }else{
-                            strHTML = "<p class='text-success'>"+len + " matches found.</p>";
-                            strHTML += "<ul class='list-unstyled'>";
-                            for(var i=0; i<len; i++){
-                                strHTML += "<li>"+resp[i].name+"</li>";
-                            }
-                            strHTML = strHTML + "</ul>";
-                            $("#results").html(strHTML)
-                        }
-                    }
-                });
-            }
+            console.log(idTimer)
+            if(idTimer) return;
+            idTimer = setTimeout(updateInput, 1000);
         });
     });
 </script>

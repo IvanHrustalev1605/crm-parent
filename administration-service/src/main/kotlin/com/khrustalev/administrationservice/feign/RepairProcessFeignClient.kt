@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestParam
 
-@FeignClient(name = "repair-process", url = "http://host.docker.internal:8080/api/rest/repair-service")
+@FeignClient(name = "repair-process", url = "http://localhost:8080/api/rest/repair-service")
 interface RepairProcessFeignClient {
     @PostMapping("/check-arrival-car")
     fun securityCheckCar(@RequestBody arrivalQuestionnaire: ArrivalQuestionnaire, @RequestParam securityId: Long) : Boolean
@@ -44,4 +44,10 @@ interface RepairProcessFeignClient {
     fun carGetAway(@RequestParam carNumber: String) : Boolean
     @GetMapping("/car-last-arrival-state")
     fun getActualCarArrivalState(carId: Long): CarArrivalStateDto
+    @PostMapping("/create-long-repair-process")
+    fun createLongRepairRequest(@RequestBody repairInfoDto: RepairInfoDto, @RequestParam repairProcessId: Long): LongRepairProcessDto?
+    @PostMapping("/update-long-repair-process")
+    fun updateLongRepairRequest(@RequestBody repairInfoDto: RepairInfoDto): LongRepairProcessDto?
+    @GetMapping("/info-all")
+    fun getInfoAboutAllRepairs(): MutableList<FullInfoRepairDto>
 }

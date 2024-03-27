@@ -9,4 +9,5 @@ interface RepairService {
     fun save(repairDto: RepairDto) : Long
     fun getAllRepairParts(repairId: Long) : List<String>
     fun findAllRepairStates(repairId: Long): MutableList<CarRepairStateDto>?
+    fun getAll(): MutableList<RepairDto>
 }

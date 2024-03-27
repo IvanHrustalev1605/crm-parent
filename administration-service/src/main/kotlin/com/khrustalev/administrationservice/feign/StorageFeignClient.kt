@@ -5,7 +5,7 @@ import org.springframework.cloud.openfeign.FeignClient
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
 
-@FeignClient(name = "storage-feign-client", url = "http://host.docker.internal:8888/api/storage")
+@FeignClient(name = "storage-feign-client", url = "http://localhostlocalhost:8888/api/storage")
 interface StorageFeignClient {
     /*Cars*/
     @GetMapping("/car/find-by-vin")

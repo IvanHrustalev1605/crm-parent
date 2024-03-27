@@ -3,6 +3,7 @@ package com.khrustalev.administrationservice.dto
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties
 import com.fasterxml.jackson.annotation.JsonProperty
 import io.swagger.v3.oas.annotations.media.Schema
+import java.time.LocalDateTime
 import java.util.*
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -37,4 +38,21 @@ class RepairInfoDto {
     @JsonProperty(value = "repairBoxNumber")
     @Schema(description = "Номер бокса для ремонта")
     val repairBoxNumber: Int? = null
+    @JsonProperty(value = "longRepairStateId")
+    @Schema(description = "Enum из стадий длительного ремонта:     NEW(1),\n" +
+            "    IN_PLANNED_LONG_REPAIR(2),\n" +
+            "    LONG_REPAIR_PROBLEMS(3),\n" +
+            "    LEAVE_OUTSIDE(4),\n" +
+            "    WAITING_REPAIR_PARTS(5),\n" +
+            "    SUCCESSFUL_END(6)")
+    val longRepairStateId: Int? = null
+    @JsonProperty(value = "carStayInBase")
+    @Schema(description = "Остается ли машина на базе ")
+    val carStayInBase: Boolean? = null
+    @JsonProperty(value = "reasons")
+    @Schema(description = "Причины длительного ремонта")
+    val reasons: String = ""
+    @JsonProperty(value = "expectedEnd")
+    @Schema(description = "Ожидаемое время окончания ремонта")
+    val expectedEnd: LocalDateTime? = null
 }

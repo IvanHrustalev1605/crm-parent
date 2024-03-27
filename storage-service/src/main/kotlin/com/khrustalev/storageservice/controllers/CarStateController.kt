@@ -1,7 +1,9 @@
 package com.khrustalev.storageservice.controllers
 
 import com.khrustalev.storageservice.dto.CarArrivalStateDto
+import com.khrustalev.storageservice.dto.CarLongRepairStateDto
 import com.khrustalev.storageservice.dto.CarRepairStateDto
+import com.khrustalev.storageservice.service.abstracts.CarLongRepairStatesService
 import com.khrustalev.storageservice.service.abstracts.CarStateService
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
@@ -14,7 +16,8 @@ import org.springframework.web.bind.annotation.RestController
 
 @RestController
 @RequestMapping("/api/storage/carState")
-class CarStateController(private val carStateService: CarStateService) {
+class CarStateController(private val carStateService: CarStateService,
+                         private val carLongRepairStatesService: CarLongRepairStatesService) {
     @PostMapping("/arrival/save")
     fun saveArrivalCarState(@RequestBody(required = true) carArrivalStateDto: CarArrivalStateDto) : ResponseEntity<Boolean> {
         return ResponseEntity(carStateService.saveArrivalState(carArrivalStateDto), HttpStatus.CREATED)
@@ -38,5 +41,17 @@ class CarStateController(private val carStateService: CarStateService) {
     @GetMapping("/arrival/get-actual-by-car-id")
     fun getLastArrivalStateByCarId(@RequestParam carId: Long) : ResponseEntity<CarArrivalStateDto> {
         return ResponseEntity(carStateService.getActualArrivalStateByCarId(carId), HttpStatus.OK)
+    }
+    @GetMapping("/longRepair/by-id")
+    fun getCarLongRepairStateById(@RequestParam id: Long) : ResponseEntity<CarLongRepairStateDto> {
+        return ResponseEntity(carLongRepairStatesService.toDto(carLongRepairStatesService.findById(id)), HttpStatus.OK)
+    }
+    @PostMapping("/longRepair/save")
+    fun saveCarLongRepairState(@RequestBody carLongRepairStateDto: CarLongRepairStateDto) : ResponseEntity<CarLongRepairStateDto> {
+        return ResponseEntity(carLongRepairStatesService.save(carLongRepairStateDto), HttpStatus.CREATED)
+    }
+    @GetMapping("/longRepair/get-previous-repair-state/by-car-id")
+    fun getPreviousLongRepairStateByCarId(@RequestParam carId: Long) : ResponseEntity<CarLongRepairStateDto?> {
+        return ResponseEntity(carLongRepairStatesService.getPreviousStateByCarId(carId), HttpStatus.OK)
     }
 }

@@ -8,7 +8,7 @@ import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.RequestParam
 
-@FeignClient (name = "storage-feign-client", url = "http://host.docker.internal:8888/api/storage")
+@FeignClient (name = "storage-feign-client", url = "http://localhostlocalhost:8888/api/storage")
 interface StorageFeignClient {
     @GetMapping("/reports/repair-report")
     fun generateRepairReport(@RequestParam id: Long) : ResponseEntity<RepairReportDto>

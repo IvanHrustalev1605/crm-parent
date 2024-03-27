@@ -37,4 +37,6 @@ open class CarArrivalStateDto {
     var is15Notificate: Boolean? = null
     @JsonProperty(value = "is30Notificate")
     var is30Notificate: Boolean? = null
+    @JsonProperty(value = "needLongRepair")
+    var needLongRepair: Boolean? = null
 }

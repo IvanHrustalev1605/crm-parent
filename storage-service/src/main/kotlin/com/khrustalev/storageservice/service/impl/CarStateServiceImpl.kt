@@ -26,7 +26,7 @@ class CarStateServiceImpl(private val carArrivalStateRepository: CarArrivalState
     }
 
     override fun getActualArrivalStateByCarId(carId: Long): CarArrivalStateDto {
-        return carArrivalStateMapper.toDto(carArrivalStateRepository.findFirstByCar_IdAndInBaseTrue(carId))
+        return carArrivalStateMapper.toDto(carArrivalStateRepository.findFirstByCar_IdAndInBaseTrueOrderByStateChangeTimeDesc(carId))
     }
 
     override fun getArrivalStatesWithoutRepairRequest(): MutableList<CarArrivalStateDto> {

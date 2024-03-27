@@ -18,7 +18,8 @@ class MainController(private val securityService: SecurityService,
                      private val repairRequestService: RepairRequestService,
                      private val documentService: DocumentService,
                      private val repairBoxService: RepairBoxService,
-                     private val carArrivalStateService: CarArrivalStateService
+                     private val carArrivalStateService: CarArrivalStateService,
+                     private val longRepairService: LongRepairService
 ) {
     @PostMapping("/check-arrival-car")
     fun securityCheckCar(@RequestBody arrivalQuestionnaire: ArrivalQuestionnaire,
@@ -68,5 +69,18 @@ class MainController(private val securityService: SecurityService,
     @GetMapping("/car-last-arrival-state")
     fun getActualCarArrivalState(carId: Long): ResponseEntity<CarArrivalStateDto> {
         return ResponseEntity(carArrivalStateService.getActualArrivalStateByCarId(carId), HttpStatus.OK)
+    }
+    @PostMapping("/create-long-repair-process")
+    fun createLongRepairRequest(@RequestBody repairInfoDto: RepairInfoDto,
+                                @RequestParam repairProcessId: Long): ResponseEntity<LongRepairProcessDto?> {
+        return ResponseEntity(longRepairService.createNewLongRepairProcess(repairInfoDto, repairProcessId), HttpStatus.CREATED)
+    }
+    @PostMapping("/update-long-repair-process")
+    fun updateLongRepairRequest(@RequestBody repairInfoDto: RepairInfoDto): ResponseEntity<LongRepairProcessDto?> {
+        return ResponseEntity(longRepairService.updateLongRepairProcess(repairInfoDto), HttpStatus.CREATED)
+    }
+    @GetMapping("/info-all")
+    fun getInfoAboutAllRepairs(): ResponseEntity<MutableList<FullInfoRepairDto>> {
+        return ResponseEntity(repairProcessService.getAllRepairs(), HttpStatus.OK)
     }
 }

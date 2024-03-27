@@ -1,6 +1,7 @@
 package com.khrustalev.administrationservice.service
 
 import com.khrustalev.administrationservice.dto.*
+import org.springframework.util.MultiValueMap
 
 interface RepairService {
     fun securityCheckCar(arrivalQuestionnaire: ArrivalQuestionnaire, securityId: Long) : Boolean
@@ -14,4 +15,5 @@ interface RepairService {
     fun getFreeBoxes() : MutableList<RepairBoxDto>
     fun carGetAway( carNumber: String) : Boolean
     fun getLastCarArrivalStateByCarId(carId: Long) : CarArrivalStateDto
+    fun getInfoAboutAllRepairs(): MutableList<FullInfoRepairDto>
 }

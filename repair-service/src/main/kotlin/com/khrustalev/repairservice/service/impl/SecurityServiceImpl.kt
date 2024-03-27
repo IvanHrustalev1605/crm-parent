@@ -26,9 +26,9 @@ class SecurityServiceImpl(private val storageFeignClient: StorageFeignClient,
         carState.receivingSecurity = securityId
         carState.is30Notificate = false
         carState.is15Notificate = false
+        carState.needLongRepair = arrivalQuestionnaire.needLongRepair
 
-
-        if (arrivalQuestionnaire.needRepair!!) {
+        if (arrivalQuestionnaire.needRepair!! || arrivalQuestionnaire.needLongRepair!!) {
             carState.timeToMakeRequestStart = LocalDateTime.now()
             carState.timeToMakeRequestEnd = LocalDateTime.now().plusHours(1)
             carState.engineerId = engineerId
@@ -39,6 +39,9 @@ class SecurityServiceImpl(private val storageFeignClient: StorageFeignClient,
             LOGGER.info("CarState успешно сохранен!")
             if (carState.needRepair!!) {
                 telegramService.sendMessage("Братишкааа! Там тачка ${arrivalQuestionnaire.carId} в ремонт приехала, заебал, работай давай \uD83D\uDE18")
+            }
+            if (carState.needLongRepair!!) {
+                telegramService.sendMessage("Братишкааа! Там тачка ${arrivalQuestionnaire.carId} в ремонт приехала, там ваще пизда ебать мой хуй! \uD83D\uDE18")
             }
             return true
         }

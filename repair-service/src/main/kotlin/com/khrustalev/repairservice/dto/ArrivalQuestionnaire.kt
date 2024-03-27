@@ -5,4 +5,5 @@ open class ArrivalQuestionnaire {
  open var needRepair: Boolean? = null
  open var engineerId: Long? = null
  open var carDescriptionProblems: String? = null
+ open var needLongRepair: Boolean? = null
 }

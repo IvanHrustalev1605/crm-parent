@@ -41,6 +41,8 @@ data class CarArrivalStateDto(
     @JsonProperty(value = "is15Notificate")
     var is15Notificate: Boolean? = null,
     @JsonProperty(value = "is30Notificate")
-    var is30Notificate: Boolean? = null
+    var is30Notificate: Boolean? = null,
+    @JsonProperty(value = "needLongRepair")
+    var needLongRepair: Boolean? = null
 
 ) : Serializable

@@ -12,4 +12,7 @@ open class ArrivalQuestionnaire {
  open var engineerId: Long? = null
  @Schema(description = "Какие то проблемы с машиной")
  open var carDescriptionProblems: String? = null
+ @Schema(description = "Нужен ли длительный ремонт")
+ open var needLongRepair: Boolean? = null
+
 }

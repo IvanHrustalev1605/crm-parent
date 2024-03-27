@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam
 import java.time.LocalDateTime
 import java.util.*
 
-@FeignClient(name = "storage-feign-client", url = "http://host.docker.internal:8888/api/storage")
+@FeignClient(name = "storage-feign-client", url = "http://localhost:8888/api/storage")
 interface StorageFeignClient {
     /*Test Data*/
     @GetMapping("/test-data")
@@ -39,6 +39,10 @@ interface StorageFeignClient {
     fun getPreviousRepairStateByCarId(@RequestParam carId: Long) : CarRepairStateDto
     @GetMapping("/carState/arrival/get-actual-by-car-id")
     fun getLastArrivalStateByCarId(@RequestParam carId: Long) : CarArrivalStateDto
+    @PostMapping("/carState/longRepair/save")
+    fun saveCarLongRepairState(@RequestBody carLongRepairStateDto: CarLongRepairStateDto) : CarLongRepairStateDto?
+    @GetMapping("/carState/longRepair/get-previous-repair-state/by-car-id")
+    fun getPreviousLongRepairStateByCarId(@RequestParam carId: Long) : CarLongRepairStateDto?
 
     /*Engineer*/
     @GetMapping("/engineer/find-id-by-name")
@@ -51,6 +55,16 @@ interface StorageFeignClient {
     fun getRepairProcessByCarNumberAndActualTrue(@RequestParam("carNumber") carNumber: String) : RepairProcessDto?
     @PostMapping("/repairProcess/save")
     fun saveRepairProcess(@RequestBody(required = true) repairProcess: RepairProcessDto) : Long
+    @PostMapping("/repairProcess/longRepair/save")
+    fun saveLongRepairProcess(@RequestBody longRepairProcessDto: LongRepairProcessDto) : LongRepairProcessDto?
+    @PostMapping("/repairProcess/longRepair/actual-by-carId")
+    fun getActualLongRepairProcessByCarId(@RequestParam carId: Long) : LongRepairProcessDto
+    @GetMapping("/repairProcess/longRepair/get-by-repair-id")
+    fun getLongRepairProcessByRepairId(@RequestParam repairProcessId: Long) : LongRepairProcessDto
+    @GetMapping("/repairProcess/all-fast")
+    fun getAllFastRepairProcess() : MutableList<RepairProcessDto>
+    @GetMapping("/repairProcess/all-long")
+    fun getAllLongRepairProcess() : MutableList<LongRepairProcessDto>
 
     @GetMapping("/repairProcess/find-by-id")
     fun getRepairProcessById(@RequestParam repairProcessId: Long) : RepairProcessDto
@@ -97,6 +111,7 @@ interface StorageFeignClient {
     fun getBoxById(@RequestParam id: Long) : ResponseEntity<RepairBoxDto>
     @PostMapping("/repairBox/save")
     fun saveBox(@RequestBody repairBoxDto: RepairBoxDto) : ResponseEntity<RepairBoxDto>
+
 
 
 }

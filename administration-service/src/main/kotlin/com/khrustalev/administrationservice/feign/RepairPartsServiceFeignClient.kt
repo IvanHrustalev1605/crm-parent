@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestParam
 
-@FeignClient(name = "repair-parts-storage", url = "http://host.docker.internal:8182/api/rest/api/repair-parts-service")
+@FeignClient(name = "repair-parts-storage", url = "http://localhost:8182/api/rest/api/repair-parts-service")
 interface RepairPartsServiceFeignClient {
     @PostMapping("/put-parts-to-storage-place")
     fun putPartsToStoragePlace(@RequestBody acceptablePartsDtoList: MutableList<AcceptablePartsDto>) : ResponseEntity<Boolean>

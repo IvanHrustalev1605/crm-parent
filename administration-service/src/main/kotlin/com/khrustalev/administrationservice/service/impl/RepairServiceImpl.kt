@@ -19,6 +19,10 @@ class RepairServiceImpl(private val repairProcessFeignClient: RepairProcessFeign
         return repairProcessFeignClient.getActualCarArrivalState(carId)
     }
 
+    override fun getInfoAboutAllRepairs(): MutableList<FullInfoRepairDto> {
+        return repairProcessFeignClient.getInfoAboutAllRepairs()
+    }
+
     override fun createRepairRequest(repairInfoDto: RepairInfoDto, repairRequestList: MutableList<Long>): RepairDto {
         return repairProcessFeignClient.createRepairRequest(repairInfoDto, repairRequestList)
     }

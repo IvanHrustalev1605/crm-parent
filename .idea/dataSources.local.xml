@@ -1,21 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="dataSourceStorageLocal" created-in="IU-232.9921.47">
-    <data-source name="storage-service@localhost" uuid="d6bb1a80-6065-44ba-9b9b-2c9d22a22183">
-      <database-info product="PostgreSQL" version="15.2" jdbc-version="4.2" driver-name="PostgreSQL JDBC Driver" driver-version="42.6.0" dbms="POSTGRES" exact-version="15.2" exact-driver-version="42.6">
-        <identifier-quote-string>&quot;</identifier-quote-string>
-      </database-info>
-      <case-sensitivity plain-identifiers="lower" quoted-identifiers="exact" />
-      <secret-storage>master_key</secret-storage>
-      <user-name>postgres</user-name>
-      <schema-mapping>
-        <introspection-scope>
-          <node kind="database" qname="storage-service">
-            <node kind="schema" qname="public" />
-          </node>
-        </introspection-scope>
-      </schema-mapping>
-    </data-source>
+  <component name="dataSourceStorageLocal" created-in="IU-232.10072.27">
     <data-source name="@localhost" uuid="013ec0f0-0165-4f6d-9ce8-7a834a3e9d87">
       <database-info product="Elasticsearch" version="7.17.10" jdbc-version="4.2" driver-name="Elasticsearch JDBC Driver" driver-version="7.17" dbms="UNKNOWN" exact-version="8.12" exact-driver-version="7.17">
         <identifier-quote-string>&quot;</identifier-quote-string>
@@ -23,6 +8,24 @@
       <case-sensitivity plain-identifiers="exact" quoted-identifiers="exact" />
       <secret-storage>master_key</secret-storage>
       <schema-mapping />
+    </data-source>
+    <data-source name="postgres@localhost" uuid="669ac9f3-415c-4542-a77f-ad1e5eeda09d">
+      <database-info product="PostgreSQL" version="16.2 (Debian 16.2-1.pgdg120+2)" jdbc-version="4.2" driver-name="PostgreSQL JDBC Driver" driver-version="42.6.0" dbms="POSTGRES" exact-version="16.2" exact-driver-version="42.6">
+        <identifier-quote-string>&quot;</identifier-quote-string>
+      </database-info>
+      <case-sensitivity plain-identifiers="lower" quoted-identifiers="exact" />
+      <secret-storage>master_key</secret-storage>
+      <user-name>admin</user-name>
+      <schema-mapping>
+        <introspection-scope>
+          <node kind="database" qname="storage_service">
+            <node kind="schema">
+              <name qname="dictionary" />
+              <name qname="storage" />
+            </node>
+          </node>
+        </introspection-scope>
+      </schema-mapping>
     </data-source>
   </component>
 </project>

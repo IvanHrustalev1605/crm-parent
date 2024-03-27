@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="JpaBuddyIdeaProjectConfig" newRepositoryParent="org.springframework.data.jpa.repository.JpaRepository">
+  <component name="JpaBuddyIdeaProjectConfig" migrateIndexesAndConstraints="true" reUseTableSchema="true" newRepositoryParent="org.springframework.data.jpa.repository.JpaRepository">
     <option name="defaultUnitInitialized" value="true" />
     <option name="renamerInitialized" value="true" />
-    <option name="newEntityIdStrategy" value="Identity" />
+    <option name="reverseEngineeringLastDbConnectionId" value="669ac9f3-415c-4542-a77f-ad1e5eeda09d" />
+    <option name="reLastEntityCreationPackage" value="storage-service/src/main/kotlin/com/khrustalev/storageservice/entity/schems/storage" />
+    <option name="newEntityIdStrategy" />
   </component>
 </project>

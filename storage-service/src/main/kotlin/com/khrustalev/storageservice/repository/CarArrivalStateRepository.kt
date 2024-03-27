@@ -10,5 +10,5 @@ interface CarArrivalStateRepository : JpaRepository<CarArrivalState, Long> {
     @Query(value = "select cas from CarArrivalState cas where cas.needRepair = true " +
             "and cas.repairRequestWritten = false")
     fun findAllWithoutRepairRequests() : MutableList<CarArrivalState>
-    fun findFirstByCar_IdAndInBaseTrue(carId: Long) : CarArrivalState
+    fun findFirstByCar_IdAndInBaseTrueOrderByStateChangeTimeDesc(carId: Long) : CarArrivalState
 }

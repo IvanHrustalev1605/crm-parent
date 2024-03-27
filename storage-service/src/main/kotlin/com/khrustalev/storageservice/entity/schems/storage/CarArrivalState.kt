@@ -29,6 +29,8 @@ open class CarArrivalState(
     @Column
     open var inBase: Boolean = true,
     @Column
+    open var needLongRepair: Boolean? = null,
+    @Column
     open var timeToMakeRequestStart: LocalDateTime? = null,
     @Column
     open var timeToMakeRequestEnd: LocalDateTime? = null,

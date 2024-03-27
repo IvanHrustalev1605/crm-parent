@@ -1,5 +1,6 @@
 package com.khrustalev.repairservice.dto
 
+import java.time.LocalDateTime
 import java.util.UUID
 
 class RepairInfoDto {
@@ -13,4 +14,8 @@ class RepairInfoDto {
     val carNumber: String? = null
     val carId: Long? = null
     val repairBoxNumber: Int = 0
+    val longRepairStateId: Int? = null
+    val carStayInBase: Boolean? = null
+    val reasons: String = ""
+    val expectedEnd: LocalDateTime? = null
 }

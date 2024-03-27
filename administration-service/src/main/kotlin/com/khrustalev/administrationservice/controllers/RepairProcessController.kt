@@ -64,7 +64,7 @@ class RepairProcessController(private val repairService: RepairService) {
             "А водитель получает уведомление, что он может проезжать в ремонтную зону и номер бокса",
         parameters = [Parameter(name = "repairProcessId", description = "ID процесса ремонта", required = true)],
         responses = [
-            ApiResponse(responseCode = "200", description = "Машина успешно принята в работу. Водитель может проезжать", content = [Content(mediaType = MediaType.TEXT_PLAIN_VALUE, schema = Schema(implementation = Boolean::class))]),
+            ApiResponse(responseCode = "200", description = "Машина успешно принята в работу. Водитель может проезжать", content = [Content(mediaType = MediaType.APPLICATION_JSON_VALUE, schema = Schema(implementation = Boolean::class))]),
             ApiResponse(responseCode = "500", description = "Произошла ошибка на сервере", content = [Content(mediaType = "text/plain", schema = Schema(implementation = String::class))]),
             ApiResponse(responseCode = "403", description = "Отказано в доступе", content = [Content(mediaType = "text/plain", schema = Schema(implementation = String::class))])
         ])
@@ -95,7 +95,7 @@ class RepairProcessController(private val repairService: RepairService) {
             "actual = false",
         parameters = [Parameter(name = "repairProcessId", description = "ID ремонтного процесса", required = true)],
         responses = [
-            ApiResponse(responseCode = "200", description = "Ремонт успешно завершен", content = [Content(mediaType = MediaType.TEXT_PLAIN_VALUE, schema = Schema(implementation = Boolean::class))]),
+            ApiResponse(responseCode = "200", description = "Ремонт успешно завершен", content = [Content(mediaType = MediaType.APPLICATION_JSON_VALUE, schema = Schema(implementation = Boolean::class))]),
             ApiResponse(responseCode = "500", description = "Произошла ошибка на сервере", content = [Content(mediaType = "text/plain", schema = Schema(implementation = String::class))]),
             ApiResponse(responseCode = "403", description = "Отказано в доступе", content = [Content(mediaType = "text/plain", schema = Schema(implementation = String::class))])
         ])
@@ -151,5 +151,10 @@ class RepairProcessController(private val repairService: RepairService) {
     @GetMapping("/last-car-arrival-state")
     fun getActualCarArrivalState(@RequestParam carId: Long) : ResponseEntity<CarArrivalStateDto> {
         return ResponseEntity(repairService.getLastCarArrivalStateByCarId(carId), HttpStatus.OK)
+    }
+    @Operation
+    @GetMapping("/all-repairs-info")
+    fun getAllRepairProcess() : ResponseEntity<MutableList<FullInfoRepairDto>> {
+        return ResponseEntity(repairService.getInfoAboutAllRepairs(), HttpStatus.OK)
     }
 }

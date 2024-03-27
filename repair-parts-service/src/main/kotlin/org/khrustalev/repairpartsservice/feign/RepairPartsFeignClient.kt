@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestParam
 import java.util.*
 
-@FeignClient(name = "storage-service-repair-parts-feign-client", url = "http://host.docker.internal:8888/api/storage/repairParts")
+@FeignClient(name = "storage-service-repair-parts-feign-client", url = "http://localhost:8888/api/storage/repairParts")
 interface RepairPartsFeignClient {
     @GetMapping("/by-id")
     fun findById(@RequestParam id: Long) : RepairPartsDto 

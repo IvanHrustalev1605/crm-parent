@@ -5,11 +5,24 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a8831c50-c17b-4626-9402-a365a662022b" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/d6bb1a80-6065-44ba-9b9b-2c9d22a22183.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/d6bb1a80-6065-44ba-9b9b-2c9d22a22183.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/d6bb1a80-6065-44ba-9b9b-2c9d22a22183/storage_v2/_src_/database/storage-service.Y0EIeg/schema/public.abK9xQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/d6bb1a80-6065-44ba-9b9b-2c9d22a22183/storage_v2/_src_/database/storage-service.Y0EIeg/schema/public.abK9xQ.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/jpa-buddy.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jpa-buddy.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_18_03_2024_11_02_[Changes]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_18_03_2024_11_02__Changes_.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_18_03_2024_18_18_[Changes]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_18_03_2024_18_18__Changes_.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_20_03_2024_10_50_[Changes]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_20_03_2024_10_50__Changes_.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_25_03_2024_9_58__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_25_03_2024_9_58__Changes_.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/repair-parts-service/src/main/kotlin/org/khrustalev/repairpartsservice/controllers/RepairPartsController.kt" beforeDir="false" afterPath="$PROJECT_DIR$/repair-parts-service/src/main/kotlin/org/khrustalev/repairpartsservice/controllers/RepairPartsController.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/repair-parts-service/src/main/kotlin/org/khrustalev/repairpartsservice/feign/RepairPartsFeignClient.kt" beforeDir="false" afterPath="$PROJECT_DIR$/repair-parts-service/src/main/kotlin/org/khrustalev/repairpartsservice/feign/RepairPartsFeignClient.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/repair-parts-service/src/main/kotlin/org/khrustalev/repairpartsservice/service/RepairPartsService.kt" beforeDir="false" afterPath="$PROJECT_DIR$/repair-parts-service/src/main/kotlin/org/khrustalev/repairpartsservice/service/RepairPartsService.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/repair-parts-service/src/main/kotlin/org/khrustalev/repairpartsservice/service/impl/RepairPartsServiceImpl.kt" beforeDir="false" afterPath="$PROJECT_DIR$/repair-parts-service/src/main/kotlin/org/khrustalev/repairpartsservice/service/impl/RepairPartsServiceImpl.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/repair-parts-service/src/main/kotlin/org/khrustalev/repairpartsservice/feign/StoragePlaceFeignClient.kt" beforeDir="false" afterPath="$PROJECT_DIR$/repair-parts-service/src/main/kotlin/org/khrustalev/repairpartsservice/feign/StoragePlaceFeignClient.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,9 +37,8 @@
         <option value="Kotlin Enum" />
         <option value="com.haulmont.jpb.NewDataClass" />
         <option value="com.haulmont.jpb.JpaRepository" />
-        <option value="Dockerfile" />
+        <option value="com.haulmont.jpb.JpaEntity" />
         <option value="Kotlin Interface" />
-        <option value="HTML File" />
         <option value="Kotlin Class" />
       </list>
     </option>
@@ -39,6 +51,9 @@
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="ROOT_SYNC" value="DONT_SYNC" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/administration-service/src/main/kotlin/com/khrustalev/administrationservice/feign/StorageFeignClient.kt" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="JpbToolWindowState">
     <option name="isToolWindowVisible" value="false" />
@@ -60,8 +75,8 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "ASKED_ADD_EXTERNAL_FILES": "true",
-    "DefaultHtmlFileTemplate": "HTML File",
     "DtoCreateDialog.IS_JSON_IGNORE_UNKNOWN_PROPERTIES": "true",
+    "LOGSTASH_STARTER": "D:\\logstash-8.12.2\\bin\\logstash.lib.sh",
     "RequestMappingsPanelOrder0": "0",
     "RequestMappingsPanelOrder1": "1",
     "RequestMappingsPanelWidth0": "75",
@@ -70,47 +85,43 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
-    "com.google.cloudcode.ide_session_index": "20240325_0000",
+    "com.google.cloudcode.ide_session_index": "20240313_0000",
     "git-widget-placeholder": "develop",
     "jdk.selected.JAVA_MODULE": "openjdk-19",
-    "last_opened_file_path": "C:/IdeaProjects/crm-parent/repair-parts-service",
+    "last_opened_file_path": "D:/IdeaProjects/crm-parent/repair-service/src/main/kotlin/com/khrustalev/repairservice/dto",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
     "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.15",
+    "project.structure.proportion": "0.0",
     "project.structure.side.proportion": "0.36206895",
     "settings.editor.selected.configurable": "preferences.pluginManager",
     "vue.rearranger.settings.migration": "true"
   },
   "keyToStringList": {
     "DatabaseDriversLRU": [
+      "elasticsearch",
       "postgresql"
     ]
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\IdeaProjects\crm-parent\repair-parts-service" />
-      <recent name="C:\IdeaProjects\crm-parent\repair-service" />
-      <recent name="C:\IdeaProjects\crm-parent\administration-service" />
-      <recent name="C:\IdeaProjects\crm-parent\storage-service\src" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\IdeaProjects\crm-parent\storage-service" />
-      <recent name="C:\IdeaProjects\crm-parent\storage-service\src\main\resources" />
+      <recent name="D:\IdeaProjects\crm-parent\repair-service\src\main\kotlin\com\khrustalev\repairservice\dto" />
+      <recent name="D:\IdeaProjects\crm-parent\administration-service\src\main\kotlin\com\khrustalev\administrationservice\dto" />
+      <recent name="D:\IdeaProjects\crm-parent\document-service" />
     </key>
     <key name="CreateKotlinClassDialog.RecentsKey">
-      <recent name="com.khrustalev.storageservice.mappers" />
-      <recent name="org.khrustalev.repairpertsservice.service.impl" />
-      <recent name="com.khrustalev.storageservice.service.impl" />
-      <recent name="com.khrustalev.storageservice.service.abstracts" />
+      <recent name="com.khrustalev.administrationservice.service.impl" />
       <recent name="com.khrustalev.repairservice.service.impl" />
+      <recent name="com.khrustalev.storageservice.service.impl" />
+      <recent name="com.khrustalev.storageservice.entity.enums" />
+      <recent name="com.khrustalev.storageservice.elasticsearch.service.impl" />
     </key>
     <key name="MoveKotlinTopLevelDeclarationsDialog.RECENTS_KEY">
-      <recent name="org.khrustalev.repairpertsservice.service.impl" />
+      <recent name="com.khrustalev.administrationservice.service" />
       <recent name="com.khrustalev.storageservice.service.abstracts" />
       <recent name="com.khrustalev.storageservice.dto" />
       <recent name="com.khrustalev.storageservice.mappers" />
@@ -118,7 +129,7 @@
     </key>
     <key name="CopyKotlinDeclarationDialog.RECENTS_KEY">
       <recent name="com.khrustalev.repairservice.dto" />
-      <recent name="org.khrustalev.repairpertsservice.dto" />
+      <recent name="com.khrustalev.administrationservice.dto" />
       <recent name="com.khrustalev.storageservice.entity.enums" />
       <recent name="com.khrustalev.repairservice.dto.enums" />
       <recent name="com.khrustalev.storageservice.utils" />
@@ -131,7 +142,15 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.AdministrationServiceApplication">
+  <component name="RunManager" selected="Spring Boot.RepairServiceApplication">
+    <configuration name="logstash-config.conf" type="LOGSTASH_RUN_CONFIGURATION" factoryName="Logstash configuration factory" temporary="true">
+      <option name="FILE_PATH" value="D:\IdeaProjects\crm-parent\storage-service\src\main\resources\logstash-config.conf" />
+      <option name="STARTER_PATH" value="D:\logstash-8.12.2\bin\logstash.lib.sh" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="PARAMETERS" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="AdministrationServiceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <module name="administration-service" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.khrustalev.administrationservice.AdministrationServiceApplication" />
@@ -174,14 +193,21 @@
       </method>
     </configuration>
     <configuration default="true" type="docker-deploy" factoryName="docker-compose.yml" temporary="true">
-      <deployment type="docker-compose.yml">
-        <settings />
-      </deployment>
+      <deployment type="docker-compose.yml" />
       <method v="2" />
     </configuration>
     <configuration default="true" type="docker-deploy" factoryName="dockerfile" temporary="true">
       <deployment type="dockerfile">
         <settings />
+      </deployment>
+      <method v="2" />
+    </configuration>
+    <configuration name="administration-service/Dockerfile" type="docker-deploy" factoryName="dockerfile" temporary="true" server-name="Docker">
+      <deployment type="dockerfile">
+        <settings>
+          <option name="buildOnly" value="true" />
+          <option name="sourceFilePath" value="administration-service/Dockerfile" />
+        </settings>
       </deployment>
       <method v="2" />
     </configuration>
@@ -193,12 +219,12 @@
       </deployment>
       <method v="2" />
     </configuration>
-    <configuration name="docker-compose.yml.storage-service: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
+    <configuration name="docker-compose.yml.elasticsearch: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
       <deployment type="docker-compose.yml">
         <settings>
           <option name="services">
             <list>
-              <option value="storage-service" />
+              <option value="elasticsearch" />
             </list>
           </option>
           <option name="sourceFilePath" value="docker-compose.yml" />
@@ -206,20 +232,11 @@
       </deployment>
       <method v="2" />
     </configuration>
-    <configuration name="storage-service/Dockerfile" type="docker-deploy" factoryName="dockerfile" temporary="true" server-name="Docker">
-      <deployment type="dockerfile">
-        <settings>
-          <option name="imageTag" value="storage-service" />
-          <option name="buildOnly" value="true" />
-          <option name="sourceFilePath" value="storage-service/Dockerfile" />
-        </settings>
-      </deployment>
-      <method v="2" />
-    </configuration>
     <list>
-      <item itemvalue="Docker.docker-compose.yml.storage-service: Compose Deployment" />
+      <item itemvalue="Docker.docker-compose.yml.elasticsearch: Compose Deployment" />
+      <item itemvalue="Docker.administration-service/Dockerfile" />
       <item itemvalue="Docker.docker-compose.yml: Compose Deployment" />
-      <item itemvalue="Docker.storage-service/Dockerfile" />
+      <item itemvalue="Logstash.logstash-config.conf" />
       <item itemvalue="Spring Boot.AdministrationServiceApplication" />
       <item itemvalue="Spring Boot.DocumentServiceApplication" />
       <item itemvalue="Spring Boot.RepairServiceApplication" />
@@ -230,8 +247,9 @@
       <list>
         <item itemvalue="Spring Boot.RepairPartsServiceApplication" />
         <item itemvalue="Docker.docker-compose.yml: Compose Deployment" />
-        <item itemvalue="Docker.docker-compose.yml.storage-service: Compose Deployment" />
-        <item itemvalue="Docker.storage-service/Dockerfile" />
+        <item itemvalue="Docker.docker-compose.yml.elasticsearch: Compose Deployment" />
+        <item itemvalue="Logstash.logstash-config.conf" />
+        <item itemvalue="Docker.administration-service/Dockerfile" />
       </list>
     </recent_temporary>
   </component>
@@ -252,10 +270,15 @@
       <workItem from="1709731334352" duration="22000" />
       <workItem from="1709799503801" duration="20580000" />
       <workItem from="1710316958868" duration="13358000" />
-      <workItem from="1710748916926" duration="10628000" />
-      <workItem from="1711092624354" duration="231000" />
-      <workItem from="1711092890142" duration="2983000" />
-      <workItem from="1711096232228" duration="9972000" />
+      <workItem from="1710424306079" duration="6080000" />
+      <workItem from="1710844876879" duration="20576000" />
+      <workItem from="1711001554585" duration="19190000" />
+      <workItem from="1711031070105" duration="2271000" />
+      <workItem from="1711033370743" duration="5434000" />
+      <workItem from="1711289547475" duration="6209000" />
+      <workItem from="1711437073933" duration="1554000" />
+      <workItem from="1711440231721" duration="3844000" />
+      <workItem from="1711471168311" duration="28363000" />
     </task>
     <servers />
   </component>
@@ -275,5 +298,21 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="kotlin-line">
+          <url>file://$PROJECT_DIR$/document-service/src/main/kotlin/org/khrustalev/documentservice/service/impl/WordServiceImpl.kt</url>
+          <line>30</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="kotlin-line">
+          <url>file://$PROJECT_DIR$/document-service/src/main/kotlin/org/khrustalev/documentservice/service/impl/WordServiceImpl.kt</url>
+          <line>35</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

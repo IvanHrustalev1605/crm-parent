@@ -43,4 +43,8 @@ class RepairServiceImpl(private val repairRepository: RepairRepository,
             ?.toList()
             ?.toMutableList()
     }
+
+    override fun getAll(): MutableList<RepairDto> {
+        return repairRepository.findAll().map { repairMapper.toDto(it) }.toMutableList()
+    }
 }
